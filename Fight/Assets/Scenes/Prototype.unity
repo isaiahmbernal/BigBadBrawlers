@@ -1174,6 +1174,8 @@ MonoBehaviour:
   jumpTimerMax: 0
   playerDirection: R
   playerLook: 
+  secretMoves: 
+  secretCode: 
 --- !u!114 &1721290328
 MonoBehaviour:
   m_ObjectHideFlags: 0

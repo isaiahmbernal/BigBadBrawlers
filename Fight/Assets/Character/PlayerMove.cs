@@ -22,8 +22,17 @@ public class PlayerMove : MonoBehaviour
   private bool startJumpTimer;
   private bool releasedJump;
   
-  public string playerDirection = "R";
-  public string playerLook = "";
+  public string playerDirection;
+  public string playerLook;
+
+  public string secretMoves;
+  public string secretCode;
+
+  private void Start()
+  {
+    secretMoves = "";
+    secretCode = "UUDDLRLR";
+  }
   
   private void Awake()
   {
@@ -99,6 +108,24 @@ public class PlayerMove : MonoBehaviour
     {
       playerLook = "U";
       anim.SetInteger("Look", 1);
+      // if (secretMoves.Length < 8)
+      // {
+      //   secretMoves = secretMoves + playerLook;
+      //   if (secretMoves == secretCode)
+      //   {
+      //     rb2d.constraints = RigidbodyConstraints2D.None;
+      //   }
+      // }
+      // else
+      // {
+      //   secretMoves = secretMoves.Remove(0, 1);
+      //   secretMoves = secretMoves + playerLook;
+      //   if (secretMoves == secretCode)
+      //   {
+      //     rb2d.constraints = RigidbodyConstraints2D.None;
+      //   }
+      // }
+      // Debug.Log(secretMoves);
       // Debug.Log("Looking Up");
     }
     else if (Input.GetAxis("Vertical") == 0 && playerLook != "" && !playerAttack.isAttacking)
@@ -111,6 +138,24 @@ public class PlayerMove : MonoBehaviour
     {
       playerLook = "D";
       anim.SetInteger("Look", -1);
+      // if (secretMoves.Length < 8)
+      // {
+      //   secretMoves = secretMoves + playerLook;
+      //   if (secretMoves == secretCode)
+      //   {
+      //     rb2d.constraints = RigidbodyConstraints2D.None;
+      //   }
+      // }
+      // else
+      // {
+      //   secretMoves = secretMoves.Remove(0, 1);
+      //   secretMoves = secretMoves + playerLook;
+      //   if (secretMoves == secretCode)
+      //   {
+      //     rb2d.constraints = RigidbodyConstraints2D.None;
+      //   }
+      // }
+      // Debug.Log(secretMoves);
       // Debug.Log("Looking Down");
     }
 
@@ -147,19 +192,55 @@ public class PlayerMove : MonoBehaviour
     {
       playerDirection = "R";
       spriteRenderer.flipX = false;
+      // if (secretMoves.Length < 8)
+      // {
+      //   secretMoves = secretMoves + playerDirection;
+      //   if (secretMoves == secretCode)
+      //   {
+      //     rb2d.constraints = RigidbodyConstraints2D.None;
+      //   }
+      // }
+      // else
+      // {
+      //   secretMoves = secretMoves.Remove(0, 1);
+      //   secretMoves = secretMoves + playerDirection;
+      //   if (secretMoves == secretCode)
+      //   {
+      //     rb2d.constraints = RigidbodyConstraints2D.None;
+      //   }
+      // }
+      // Debug.Log(secretMoves);
       // Debug.Log(playerDirection);
     }
     else if (movement.x < 0 && playerDirection != "L" && canMove)
     {
       playerDirection = "L";
       spriteRenderer.flipX = true;
+      // if (secretMoves.Length < 8)
+      // {
+      //   secretMoves = secretMoves + playerDirection;
+      //   if (secretMoves == secretCode)
+      //   {
+      //     rb2d.constraints = RigidbodyConstraints2D.None;
+      //   }
+      // }
+      // else
+      // {
+      //   secretMoves = secretMoves.Remove(0, 1);
+      //   secretMoves = secretMoves + playerDirection;
+      //   if (secretMoves == secretCode)
+      //   {
+      //     rb2d.constraints = RigidbodyConstraints2D.None;
+      //   }
+      // }
+      // Debug.Log(secretMoves);
       // Debug.Log(playerDirection);
     }
-
-    if (canMove)
-    {
-      transform.position += movement * Time.deltaTime * moveSpeed;
-    }
+    // if (canMove)
+    // {
+    //   transform.position += movement * Time.deltaTime * moveSpeed;
+    // }
+    transform.position += movement * Time.deltaTime * moveSpeed;
   }
 
   private void StartJump()

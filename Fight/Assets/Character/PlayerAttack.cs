@@ -86,7 +86,7 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = true;
         playerMove.canMove = false;
         anim.SetBool("isAttacking", true);
-        playerMove.rb2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        // playerMove.rb2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         if (playerMove.playerLook == "")
         {
             switch (playerMove.playerDirection)
@@ -123,8 +123,8 @@ public class PlayerAttack : MonoBehaviour
         releaseLight = false;
         startLightTimer = false;
         lightTimer = lightTimerMax;
-        playerMove.rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-        playerMove.rb2d.velocity = new Vector3(0f, -1f, 0f);
+        // playerMove.rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+        // playerMove.rb2d.velocity = new Vector3(playerMove.rb2d.velocity.x, -1f, 0f);
         if (playerMove.playerLook == "")
         {
             switch (playerMove.playerDirection)

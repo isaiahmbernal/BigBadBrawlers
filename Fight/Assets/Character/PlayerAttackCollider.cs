@@ -22,7 +22,7 @@ public class PlayerAttackCollider : MonoBehaviour
     
     attackDirection = 0;
     damage = 10f;
-    attackForce = damage / 8;
+    attackForce = damage / 2;
   }
 
   public void HurtEnemy()
@@ -35,7 +35,7 @@ public class PlayerAttackCollider : MonoBehaviour
       Debug.Log("Attack Direction: " + attackDirection);
       // Debug.Log(gameObject.name + ": Hit Enemy for " + damage + " with force of " + (attackForce / attackDirection));
       Debug.Log(gameObject.name + ": Hit Enemy for " + damage + " with force of " + attackForce);
-      otherPlayer.GetComponent<Rigidbody2D>().AddForce(new Vector2(attackForce, 0), ForceMode2D.Impulse);
+      otherPlayer.GetComponent<Rigidbody2D>().AddForce(new Vector2(attackForce * attackDirection, 0), ForceMode2D.Impulse);
       // rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
     }
   }
