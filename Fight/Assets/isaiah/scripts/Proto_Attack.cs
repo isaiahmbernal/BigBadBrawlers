@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class Proto_Attack : MonoBehaviour
 {
     private Animator anim;
-    public PlayerMove playerMove;
-    public PlayerAttackCollider rAttack;
-    public PlayerAttackCollider lAttack;
-    public PlayerAttackCollider uAttack;
-    public PlayerAttackCollider dAttack;
+    public Proto_Movement playerMove;
+    public Proto_AttackCollider rAttack;
+    public Proto_AttackCollider lAttack;
+    public Proto_AttackCollider uAttack;
+    public Proto_AttackCollider dAttack;
     
     public bool isAttacking;
 
@@ -23,11 +23,11 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
-        playerMove = gameObject.GetComponent<PlayerMove>();
-        rAttack = transform.Find("R-Attack").GetComponent<PlayerAttackCollider>();
-        lAttack = transform.Find("L-Attack").GetComponent<PlayerAttackCollider>();
-        uAttack = transform.Find("U-Attack").GetComponent<PlayerAttackCollider>();
-        dAttack = transform.Find("D-Attack").GetComponent<PlayerAttackCollider>();
+        playerMove = gameObject.GetComponent<Proto_Movement>();
+        rAttack = transform.Find("R-Attack").GetComponent<Proto_AttackCollider>();
+        lAttack = transform.Find("L-Attack").GetComponent<Proto_AttackCollider>();
+        uAttack = transform.Find("U-Attack").GetComponent<Proto_AttackCollider>();
+        dAttack = transform.Find("D-Attack").GetComponent<Proto_AttackCollider>();
 
         isAttacking = false;
         
@@ -41,12 +41,12 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerMove.isGrounded == true)
+        if (Input.GetButtonDown("Player_One_Light") && playerMove.isGrounded == true)
         {
             pressedLight = true;
         }
         if (
-            Input.GetKeyDown(KeyCode.E)
+            Input.GetButtonDown("Player_One_Light")
             && playerMove.isGrounded == false
             && maxLights > 0
             && !isAttacking
@@ -130,11 +130,11 @@ public class PlayerAttack : MonoBehaviour
             switch (playerMove.playerDirection)
             {
                 case "R":
-                    rAttack.attackSprite.color = new Color(0f, 0f, 0f, .1f);
+                    rAttack.attackSprite.color = new Color(0f, 0, 0f, .1f);
                     // rAttack.HurtEnemy();
                     break;
                 case "L":
-                    lAttack.attackSprite.color = new Color(0f, 0f, 0f, .1f);
+                    lAttack.attackSprite.color = new Color(0f, 0, 0f, .1f);
                     // lAttack.HurtEnemy();
                     break;
             }
@@ -144,11 +144,11 @@ public class PlayerAttack : MonoBehaviour
             switch (playerMove.playerLook)
             {
                 case "U":
-                    uAttack.attackSprite.color = new Color(0f, 0f, 0f, .1f);
+                    uAttack.attackSprite.color = new Color(0f, 0, 0f, .1f);
                     // uAttack.HurtEnemy();
                     break;
                 case "D":
-                    dAttack.attackSprite.color = new Color(0f, 0f, 0f, .1f);
+                    dAttack.attackSprite.color = new Color(0f, 0, 0f, .1f);
                     // dAttack.HurtEnemy();
                     break;
             }

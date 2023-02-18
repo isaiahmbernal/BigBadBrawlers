@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class Dummy_Health : MonoBehaviour
 {
   public Animator anim;
-  public float health;
+  public Dummy_Movement playerMove;
+  public float damage;
   public bool wasHit;
   public bool isHurt;
   public bool startHurtTimer;
@@ -15,11 +16,12 @@ public class PlayerHealth : MonoBehaviour
   void Awake()
   {
     anim = gameObject.GetComponent<Animator>();
-    health = 100.0f;
+    playerMove = gameObject.GetComponent<Dummy_Movement>();
+    damage = 0f;
     wasHit = false;
     isHurt = false;
     startHurtTimer = false;
-    hurtTimerMax = .5f;
+    hurtTimerMax = .25f;
     hurtTimer = hurtTimerMax;
   }
 
@@ -50,6 +52,7 @@ public class PlayerHealth : MonoBehaviour
   {
     wasHit = false;
     isHurt = true;
+    playerMove.canMove = false;
     anim.SetBool("isHurt", true);
     startHurtTimer = true;
     Debug.Log(gameObject.name + ": I was hit!");
@@ -60,5 +63,6 @@ public class PlayerHealth : MonoBehaviour
     startHurtTimer = false;
     hurtTimer = hurtTimerMax;
     anim.SetBool("isHurt", false);
+    playerMove.canMove = true;
   }
 }

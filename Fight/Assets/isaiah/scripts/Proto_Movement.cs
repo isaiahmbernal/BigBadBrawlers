@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class Proto_Movement : MonoBehaviour
 {
   public Rigidbody2D rb2d;
   private Animator anim;
   private SpriteRenderer spriteRenderer;
-  public PlayerAttack playerAttack;
+  public Proto_Attack playerAttack;
 
   public bool canMove;
   public float moveSpeed;
 
   public bool isGrounded;
+  public bool isFalling;
+  public bool isAscending;
   public float gravityScale;
+  public float bounceForce;
   public int jumps;
   public float jumpForce;
   private float jumpTimer;
@@ -39,13 +42,16 @@ public class PlayerMove : MonoBehaviour
     rb2d = gameObject.GetComponent<Rigidbody2D>();
     anim = gameObject.GetComponent<Animator>();
     spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-    playerAttack = gameObject.GetComponent<PlayerAttack>();
+    playerAttack = gameObject.GetComponent<Proto_Attack>();
 
     canMove = true;
-    moveSpeed = 15f;
+    moveSpeed = 10f;
 
     isGrounded = true;
+    isFalling = false;
+    isAscending = false;
     gravityScale = 5f;
+    bounceForce = 10f;
     jumps = 2;
     jumpForce = 15f;
     jumpTimerMax = .01f;
@@ -94,152 +100,76 @@ public class PlayerMove : MonoBehaviour
   {
     // gameObject.transform.Rotate(0f, 0f, 0f);
 
-    if (Input.GetButtonDown("Jump") && jumps > 0 && canMove)
+    if (Input.GetButtonDown("Player_One_Jump") && jumps > 0 && canMove)
     {
       pressedJump = true;
     }
 
-    if (Input.GetButtonUp("Jump"))
+    if (Input.GetButtonUp("Player_One_Jump"))
     {
       releasedJump = true;
     }
 
-    if (Input.GetAxis("Vertical") > 0 && playerLook != "U" && !playerAttack.isAttacking)
+    if (Input.GetAxis("Player_One_Vertical") > 0 && playerLook != "U" && !playerAttack.isAttacking)
     {
       playerLook = "U";
       anim.SetInteger("Look", 1);
-      // if (secretMoves.Length < 8)
-      // {
-      //   secretMoves = secretMoves + playerLook;
-      //   if (secretMoves == secretCode)
-      //   {
-      //     rb2d.constraints = RigidbodyConstraints2D.None;
-      //   }
-      // }
-      // else
-      // {
-      //   secretMoves = secretMoves.Remove(0, 1);
-      //   secretMoves = secretMoves + playerLook;
-      //   if (secretMoves == secretCode)
-      //   {
-      //     rb2d.constraints = RigidbodyConstraints2D.None;
-      //   }
-      // }
-      // Debug.Log(secretMoves);
-      // Debug.Log("Looking Up");
     }
-    else if (Input.GetAxis("Vertical") == 0 && playerLook != "" && !playerAttack.isAttacking)
+    else if (Input.GetAxis("Player_One_Vertical") == 0 && playerLook != "" && !playerAttack.isAttacking)
     {
       playerLook = "";
       anim.SetInteger("Look", 0);
       // Debug.Log("Looking Neutral");
     }
-    else if (Input.GetAxis("Vertical") < 0 && playerLook != "D" && !playerAttack.isAttacking)
+    else if (Input.GetAxis("Player_One_Vertical") < 0 && playerLook != "D" && !playerAttack.isAttacking)
     {
       playerLook = "D";
       anim.SetInteger("Look", -1);
-      // if (secretMoves.Length < 8)
-      // {
-      //   secretMoves = secretMoves + playerLook;
-      //   if (secretMoves == secretCode)
-      //   {
-      //     rb2d.constraints = RigidbodyConstraints2D.None;
-      //   }
-      // }
-      // else
-      // {
-      //   secretMoves = secretMoves.Remove(0, 1);
-      //   secretMoves = secretMoves + playerLook;
-      //   if (secretMoves == secretCode)
-      //   {
-      //     rb2d.constraints = RigidbodyConstraints2D.None;
-      //   }
-      // }
-      // Debug.Log(secretMoves);
-      // Debug.Log("Looking Down");
     }
 
-    Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+    Vector3 movement = new Vector3(Input.GetAxis("Player_One_Horizontal"), 0f, 0f);
 
     if (movement.x == 0)
     {
       anim.SetBool("isRunning", false);
     }
-
-    if ((movement.x > 0 || movement.x < 0) && rb2d.velocity.y == 0)
+    else if ((movement.x > 0 || movement.x < 0) && rb2d.velocity.y == 0)
     {
       anim.SetBool("isRunning", true);
     }
 
     if (rb2d.velocity.y < 0)
     {
-      anim.SetBool("isFalling", true);
-      anim.SetBool("isAscending", false);
+      isFalling = true;
+      anim.SetBool("isFalling", isFalling);
+      isAscending = false;
+      anim.SetBool("isAscending", isAscending);
     }
     else if (rb2d.velocity.y == 0)
     {
-      anim.SetBool("isFalling", false);
-      anim.SetBool("isAscending", false);
+      isFalling = false;
+      anim.SetBool("isFalling", isFalling);
+      isAscending = false;
+      anim.SetBool("isAscending", isAscending);
     }
     else if (rb2d.velocity.y > 0)
     {
-      anim.SetBool("isFalling", false);
-      anim.SetBool("isAscending", true);
+      isFalling = false;
+      anim.SetBool("isFalling", isFalling);
+      isAscending = true;
+      anim.SetBool("isAscending", isAscending);
     }
 
-    // Debug.Log(movement);
     if (movement.x > 0 && playerDirection != "R" && canMove)
     {
       playerDirection = "R";
       spriteRenderer.flipX = false;
-      // if (secretMoves.Length < 8)
-      // {
-      //   secretMoves = secretMoves + playerDirection;
-      //   if (secretMoves == secretCode)
-      //   {
-      //     rb2d.constraints = RigidbodyConstraints2D.None;
-      //   }
-      // }
-      // else
-      // {
-      //   secretMoves = secretMoves.Remove(0, 1);
-      //   secretMoves = secretMoves + playerDirection;
-      //   if (secretMoves == secretCode)
-      //   {
-      //     rb2d.constraints = RigidbodyConstraints2D.None;
-      //   }
-      // }
-      // Debug.Log(secretMoves);
-      // Debug.Log(playerDirection);
     }
     else if (movement.x < 0 && playerDirection != "L" && canMove)
     {
       playerDirection = "L";
       spriteRenderer.flipX = true;
-      // if (secretMoves.Length < 8)
-      // {
-      //   secretMoves = secretMoves + playerDirection;
-      //   if (secretMoves == secretCode)
-      //   {
-      //     rb2d.constraints = RigidbodyConstraints2D.None;
-      //   }
-      // }
-      // else
-      // {
-      //   secretMoves = secretMoves.Remove(0, 1);
-      //   secretMoves = secretMoves + playerDirection;
-      //   if (secretMoves == secretCode)
-      //   {
-      //     rb2d.constraints = RigidbodyConstraints2D.None;
-      //   }
-      // }
-      // Debug.Log(secretMoves);
-      // Debug.Log(playerDirection);
     }
-    // if (canMove)
-    // {
-    //   transform.position += movement * Time.deltaTime * moveSpeed;
-    // }
     transform.position += movement * Time.deltaTime * moveSpeed;
   }
 
@@ -270,6 +200,7 @@ public class PlayerMove : MonoBehaviour
     if (other.transform.tag == "Floor")
     {
       // Debug.Log("Collided with FLOOR");
+      rb2d.velocity = new Vector3(rb2d.velocity.x, 0f, 0f);
       jumps = 2;
       anim.SetInteger("Jumps", jumps);
       playerAttack.maxLights = 3;
