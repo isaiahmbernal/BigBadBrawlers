@@ -5,6 +5,40 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+  public int playerNum = 2;
+  public Object[] playerPrefabs;
+
+  void Awake()
+  {
+    playerPrefabs = Resources.LoadAll("prefabs", typeof(GameObject));
+  }
+
+  void Start()
+  {
+    for (int i = 0; i < playerNum; i += 1)
+    {
+      Debug.Log("i: " + i);
+      // GameObject player = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/isaiah/prefabs/Proto", typeof(GameObject));
+      // GameObject player = Resources.Load("Proto.prefab");
+      Object prefab = playerPrefabs[0];
+      GameObject player;
+      switch (i)
+      {
+        case 0:
+          player = (GameObject)Instantiate(prefab, new Vector3(-4, 0, 0), Quaternion.identity);
+          player.name = "Player_One";
+          Debug.Log("Player One Spawned");
+          break;
+        case 1:
+          player = (GameObject)Instantiate(prefab, new Vector3(4, 0, 0), Quaternion.identity);
+          player.name = "Player_Two";
+          Debug.Log("Player One Spawned");
+          break;
+      }
+    }
+  }
+
   void Update()
   {
     if (Input.GetKeyDown("`"))
