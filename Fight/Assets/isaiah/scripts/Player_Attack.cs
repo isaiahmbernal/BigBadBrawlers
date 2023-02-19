@@ -59,6 +59,7 @@ public class Player_Attack : MonoBehaviour
         pressedLight = true;
       }
     }
+
     else if (gameObject.name == "Player_Two")
     {
       if (Input.GetButtonDown("Player_Two_Light") && Player_Movement.isGrounded == true)
@@ -67,6 +68,44 @@ public class Player_Attack : MonoBehaviour
       }
       if (
           Input.GetButtonDown("Player_Two_Light")
+          && Player_Movement.isGrounded == false
+          && maxLights > 0
+          && !isAttacking
+          )
+      {
+        maxLights -= 1;
+        Debug.Log(maxLights);
+        pressedLight = true;
+      }
+    }
+
+    else if (gameObject.name == "Player_Three")
+    {
+      if (Input.GetButtonDown("Player_Three_Light") && Player_Movement.isGrounded == true)
+      {
+        pressedLight = true;
+      }
+      if (
+          Input.GetButtonDown("Player_Three_Light")
+          && Player_Movement.isGrounded == false
+          && maxLights > 0
+          && !isAttacking
+          )
+      {
+        maxLights -= 1;
+        Debug.Log(maxLights);
+        pressedLight = true;
+      }
+    }
+
+    else if (gameObject.name == "Player_Four")
+    {
+      if (Input.GetButtonDown("Player_Four_Light") && Player_Movement.isGrounded == true)
+      {
+        pressedLight = true;
+      }
+      if (
+          Input.GetButtonDown("Player_Four_Light")
           && Player_Movement.isGrounded == false
           && maxLights > 0
           && !isAttacking

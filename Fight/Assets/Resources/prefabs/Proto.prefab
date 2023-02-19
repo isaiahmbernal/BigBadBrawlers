@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1669727957522214095}
   - component: {fileID: 1669727957522214086}
   - component: {fileID: 1669727957522214090}
-  - component: {fileID: 1669727957522214089}
   - component: {fileID: 1669727957522214088}
+  - component: {fileID: 1640843528568742440}
   m_Layer: 0
   m_Name: Proto
   m_TagString: Player
@@ -171,7 +171,26 @@ MonoBehaviour:
   startHurtTimer: 0
   hurtTimerMax: 0
   hurtTimer: 0
---- !u!114 &1669727957522214089
+--- !u!114 &1669727957522214088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669727957522214085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5564077a6931baef0b88944dfc876c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player_Movement: {fileID: 0}
+  rAttack: {fileID: 0}
+  lAttack: {fileID: 0}
+  uAttack: {fileID: 0}
+  dAttack: {fileID: 0}
+  isAttacking: 0
+  maxLights: 0
+--- !u!114 &1640843528568742440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,25 +218,6 @@ MonoBehaviour:
   playerLook: 
   secretMoves: 
   secretCode: 
---- !u!114 &1669727957522214088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669727957522214085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5564077a6931baef0b88944dfc876c7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player_Movement: {fileID: 0}
-  rAttack: {fileID: 0}
-  lAttack: {fileID: 0}
-  uAttack: {fileID: 0}
-  dAttack: {fileID: 0}
-  isAttacking: 0
-  maxLights: 0
 --- !u!1 &1669727957538907605
 GameObject:
   m_ObjectHideFlags: 0

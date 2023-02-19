@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-  public int playerNum = 2;
+  public int playerNum;
   public Object[] playerPrefabs;
 
   void Awake()
   {
+    playerNum = 4;
     playerPrefabs = Resources.LoadAll("prefabs", typeof(GameObject));
   }
 
@@ -26,14 +27,24 @@ public class GameManager : MonoBehaviour
       switch (i)
       {
         case 0:
-          player = (GameObject)Instantiate(prefab, new Vector3(-4, 0, 0), Quaternion.identity);
+          player = (GameObject)Instantiate(prefab, new Vector3(-4, -1, 0), Quaternion.identity);
           player.name = "Player_One";
           Debug.Log("Player One Spawned");
           break;
         case 1:
-          player = (GameObject)Instantiate(prefab, new Vector3(4, 0, 0), Quaternion.identity);
+          player = (GameObject)Instantiate(prefab, new Vector3(4, -1, 0), Quaternion.identity);
           player.name = "Player_Two";
-          Debug.Log("Player One Spawned");
+          Debug.Log("Player Two Spawned");
+          break;
+        case 2:
+          player = (GameObject)Instantiate(prefab, new Vector3(-4, 0, 0), Quaternion.identity);
+          player.name = "Player_Three";
+          Debug.Log("Player Three Spawned");
+          break;
+        case 3:
+          player = (GameObject)Instantiate(prefab, new Vector3(4, 0, 0), Quaternion.identity);
+          player.name = "Player_Four";
+          Debug.Log("Player Four Spawned");
           break;
       }
     }

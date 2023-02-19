@@ -173,6 +173,78 @@ public class Player_Movement : MonoBehaviour
 
     }
 
+    else if (gameObject.name == "Player_Three")
+    {
+
+      // JUMP
+      if (Input.GetButtonDown("Player_Three_Jump") && jumps > 0 && canMove)
+      {
+        pressedJump = true;
+      }
+      if (Input.GetButtonUp("Player_Three_Jump"))
+      {
+        releasedJump = true;
+      }
+
+      // LOOK UP AND DOWN
+      if (Input.GetAxis("Player_Three_Vertical") > 0 && playerLook != "U" && !Player_Attack.isAttacking)
+      {
+        playerLook = "U";
+        Animator.SetInteger("Look", 1);
+      }
+      else if (Input.GetAxis("Player_Three_Vertical") == 0 && playerLook != "" && !Player_Attack.isAttacking)
+      {
+        playerLook = "";
+        Animator.SetInteger("Look", 0);
+        // Debug.Log("Looking Neutral");
+      }
+      else if (Input.GetAxis("Player_Three_Vertical") < 0 && playerLook != "D" && !Player_Attack.isAttacking)
+      {
+        playerLook = "D";
+        Animator.SetInteger("Look", -1);
+      }
+
+      // HORIZONTAL MOVEMENT
+      movement = new Vector3(Input.GetAxis("Player_Three_Horizontal"), 0f, 0f);
+
+    }
+
+    else if (gameObject.name == "Player_Four")
+    {
+
+      // JUMP
+      if (Input.GetButtonDown("Player_Four_Jump") && jumps > 0 && canMove)
+      {
+        pressedJump = true;
+      }
+      if (Input.GetButtonUp("Player_Four_Jump"))
+      {
+        releasedJump = true;
+      }
+
+      // LOOK UP AND DOWN
+      if (Input.GetAxis("Player_Four_Vertical") > 0 && playerLook != "U" && !Player_Attack.isAttacking)
+      {
+        playerLook = "U";
+        Animator.SetInteger("Look", 1);
+      }
+      else if (Input.GetAxis("Player_Four_Vertical") == 0 && playerLook != "" && !Player_Attack.isAttacking)
+      {
+        playerLook = "";
+        Animator.SetInteger("Look", 0);
+        // Debug.Log("Looking Neutral");
+      }
+      else if (Input.GetAxis("Player_Four_Vertical") < 0 && playerLook != "D" && !Player_Attack.isAttacking)
+      {
+        playerLook = "D";
+        Animator.SetInteger("Look", -1);
+      }
+
+      // HORIZONTAL MOVEMENT
+      movement = new Vector3(Input.GetAxis("Player_Four_Horizontal"), 0f, 0f);
+
+    }
+
     if (movement.x == 0)
     {
       Animator.SetBool("isRunning", false);
