@@ -19,3 +19,9 @@ https://youtu.be/DafuOFnji4w
 Instantiate Players on Scene Load Based on Player Count var, Supports Four Players:
 
 https://youtu.be/3Q-uiDSBcS4
+
+
+[February 19th, 2023]
+Camera Movement:
+
+https://youtu.be/NYyS7bLnjnw
