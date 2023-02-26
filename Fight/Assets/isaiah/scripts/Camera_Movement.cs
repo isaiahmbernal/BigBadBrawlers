@@ -11,14 +11,13 @@ public class Camera_Movement : MonoBehaviour
 
   void Awake()
   {
-    
     mainCamera = Camera.main;
     GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
   }
 
   void FixedUpdate()
   {
-    Distance();
+    // Distance();
     Position();
   }
 
@@ -52,7 +51,7 @@ public class Camera_Movement : MonoBehaviour
       centerY = 2f;
     }
 
-    mainCamera.transform.position = new Vector3(centerX, centerY, -10);
+    mainCamera.transform.position = new Vector3(centerX, centerY, transform.position.z);
   }
 
   void Distance()
@@ -78,9 +77,9 @@ public class Camera_Movement : MonoBehaviour
     {
       mainCamera.orthographicSize = 5;
     }
-    else if (currGreatest < 2)
+    else if (currGreatest < 4)
     {
-      mainCamera.orthographicSize = 2;
+      mainCamera.orthographicSize = 4;
     }
     else
     {

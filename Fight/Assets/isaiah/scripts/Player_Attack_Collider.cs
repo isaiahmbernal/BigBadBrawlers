@@ -6,7 +6,7 @@ public class Player_Attack_Collider : MonoBehaviour
 {
   public List<GameObject> enemies;
   
-  public Player_Attack Player_Attack;
+  // public Player_Attack Player_Attack;
   public SpriteRenderer SpriteRenderer;
 
   public float damage;
@@ -17,13 +17,13 @@ public class Player_Attack_Collider : MonoBehaviour
   {
     enemies = new List<GameObject>();
 
-    Player_Attack = gameObject.GetComponentInParent<Player_Attack>();
+    // Player_Attack = gameObject.GetComponentInParent<Player_Attack>();
     SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     SpriteRenderer.color = new Color(0f, 0f, 0f, .1f);
 
     damage = 5f;
-    xAttackForce = damage / 1.5f;
-    yAttackForce = damage * 1.5f;
+    xAttackForce = damage * 0.30f;
+    yAttackForce = damage * 0.70f;
   }
 
   public void HurtEnemy()
@@ -37,31 +37,31 @@ public class Player_Attack_Collider : MonoBehaviour
         // Debug.Log("Hitting " + enemy.name);
         float currentDamage = 0f;
 
-        Player_Health Player_Health = enemy.GetComponent<Player_Health>();
-        Player_Health.damage += damage;
-        currentDamage = Player_Health.damage;
-        Player_Health.wasHit = true;
+        Player_Health health = enemy.GetComponent<Player_Health>();
+        health.damage += damage;
+        currentDamage = health.damage;
+        health.wasHit = true;
 
-        Rigidbody2D Enemy_Rigidbody2D = enemy.GetComponent<Rigidbody2D>();
+        Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
 
         // KNOCKBACK
         switch (gameObject.name)
         {
           case "R-Attack":
-            Enemy_Rigidbody2D.velocity = new Vector3 (xAttackForce + (currentDamage / 50), Enemy_Rigidbody2D.velocity.y, 0f);
-            Debug.Log("Hit For " + (xAttackForce + (currentDamage / 50)));
+            enemyRB.velocity = new Vector3 (xAttackForce + (currentDamage / 45), enemyRB.velocity.y, 0f);
+            Debug.Log("Hit For " + (xAttackForce + (currentDamage / 45)));
             break;
           case "L-Attack":
-            Enemy_Rigidbody2D.velocity = new Vector3 (-xAttackForce - (currentDamage / 50), Enemy_Rigidbody2D.velocity.y, 0f);
-            Debug.Log("Hit For " + (xAttackForce + (currentDamage / 50)));
+            enemyRB.velocity = new Vector3 (-xAttackForce - (currentDamage / 45), enemyRB.velocity.y, 0f);
+            Debug.Log("Hit For " + (xAttackForce + (currentDamage / 45)));
             break;
           case "U-Attack":
-            Enemy_Rigidbody2D.velocity = new Vector3 (Enemy_Rigidbody2D.velocity.x, yAttackForce, 0f);
-            Debug.Log("Hit For " + (xAttackForce + (currentDamage / 50)));
+            enemyRB.velocity = new Vector3 (enemyRB.velocity.x, yAttackForce + (currentDamage / 45), 0f);
+            Debug.Log("Hit For " + (yAttackForce + (currentDamage / 45)));
             break;
           case "D-Attack":
-            Enemy_Rigidbody2D.velocity = new Vector3 (Enemy_Rigidbody2D.velocity.x, -yAttackForce, 0f);
-            Debug.Log("Hit For " + (xAttackForce + (currentDamage / 50)));
+            enemyRB.velocity = new Vector3 (enemyRB.velocity.x, -yAttackForce - (currentDamage / 45), 0f);
+            Debug.Log("Hit For " + (yAttackForce - (currentDamage / 45)));
             break;
         }
       }

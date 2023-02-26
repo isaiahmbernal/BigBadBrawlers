@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-  public Rigidbody2D Rigidbody2D;
-  private Animator Animator;
-  private SpriteRenderer SpriteRenderer;
-  public Player_Attack Player_Attack;
+  public Rigidbody2D rb2d;
+  private Animator anim;
+  private SpriteRenderer sprite;
+  // public Player_Attack Player_Attack;
 
-  public bool canMove;
+  // public bool canMove;
   public float moveSpeed;
 
-  public bool isGrounded;
-  public bool isFalling;
-  public bool isAscending;
+  // public bool isGrounded;
+  // public bool isFalling;
+  // public bool isAscending;
   public float gravityScale;
-  public float bounceForce;
-  public int jumps;
+  // public float bounceForce;
+  // public int jumps;
   public float jumpForce;
   private float jumpTimer;
   public float jumpTimerMax;
@@ -25,48 +25,48 @@ public class Player_Movement : MonoBehaviour
   private bool startJumpTimer;
   private bool releasedJump;
 
-  public string playerDirection;
-  public string playerLook;
+  // public string playerDirection;
+  // public string playerLook;
 
-  public string secretMoves;
-  public string secretCode;
+  // public string secretMoves;
+  // public string secretCode;
 
-  private void Start()
-  {
-    secretMoves = "";
-    secretCode = "UUDDLRLR";
-  }
+  // private void Start()
+  // {
+  //   secretMoves = "";
+  //   secretCode = "UUDDLRLR";
+  // }
 
   private void Awake()
   {
-    Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-    Animator = gameObject.GetComponent<Animator>();
-    SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-    Player_Attack = gameObject.GetComponent<Player_Attack>();
+    rb2d = gameObject.GetComponent<Rigidbody2D>();
+    anim = gameObject.GetComponent<Animator>();
+    sprite = gameObject.GetComponent<SpriteRenderer>();
+    // Player_Attack = gameObject.GetComponent<Player_Attack>();
 
-    canMove = true;
-    moveSpeed = 10f;
+    // canMove = true;
+    moveSpeed = 3f;
 
-    isGrounded = true;
-    isFalling = false;
-    isAscending = false;
-    gravityScale = 5f;
-    bounceForce = 10f;
-    jumps = 2;
-    jumpForce = 15f;
+    // isGrounded = true;
+    // isFalling = false;
+    // isAscending = false;
+    gravityScale = 1.5f;
+    // bounceForce = 3f;
+    // jumps = 2;
+    jumpForce = 4f;
     jumpTimerMax = .01f;
     jumpTimer = jumpTimerMax;
     pressedJump = false;
     startJumpTimer = false;
     releasedJump = false;
 
-    playerDirection = "R";
-    playerLook = "";
+    // playerDirection = "R";
+    // playerLook = "";
 
-    Rigidbody2D.gravityScale = gravityScale;
-    Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-    Animator.SetBool("isRunning", false);
-    Animator.SetInteger("Jumps", jumps);
+    rb2d.gravityScale = gravityScale;
+    rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+    anim.SetBool("isRunning", false);
+    // anim.SetInteger("Jumps", jumps);
   }
 
   private void Update()
@@ -105,7 +105,8 @@ public class Player_Movement : MonoBehaviour
     {
 
       // JUMP
-      if (Input.GetButtonDown("Player_One_Jump") && jumps > 0 && canMove)
+      // if (Input.GetButtonDown("Player_One_Jump") && jumps > 0 && canMove)
+      if (Input.GetButtonDown("Player_One_Jump") && anim.GetInteger("Jumps") > 0 && anim.GetBool("canMove"))
       {
         pressedJump = true;
       }
@@ -115,25 +116,32 @@ public class Player_Movement : MonoBehaviour
       }
 
       // LOOK UP AND DOWN
-      if (Input.GetAxis("Player_One_Vertical") > 0 && playerLook != "U" && !Player_Attack.isAttacking)
+      // if (Input.GetAxis("Player_One_Vertical") > 0 && playerLook != "U" && !anim.GetBool("isAttacking"))
+      if (Input.GetAxis("Player_One_Vertical") > 0 && anim.GetInteger("Look") <= 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "U";
-        Animator.SetInteger("Look", 1);
+        // playerLook = "U";
+        anim.SetInteger("Look", 1);
       }
-      else if (Input.GetAxis("Player_One_Vertical") == 0 && playerLook != "" && !Player_Attack.isAttacking)
+      // else if (Input.GetAxis("Player_One_Vertical") == 0 && playerLook != "" && !anim.GetBool("isAttacking"))
+      else if (Input.GetAxis("Player_One_Vertical") == 0 && anim.GetInteger("Look") != 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "";
-        Animator.SetInteger("Look", 0);
+        // playerLook = "";
+        anim.SetInteger("Look", 0);
         // Debug.Log("Looking Neutral");
       }
-      else if (Input.GetAxis("Player_One_Vertical") < 0 && playerLook != "D" && !Player_Attack.isAttacking)
+      // else if (Input.GetAxis("Player_One_Vertical") < 0 && playerLook != "D" && !anim.GetBool("isAttacking"))
+      else if (Input.GetAxis("Player_One_Vertical") < 0 && anim.GetInteger("Look") >= 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "D";
-        Animator.SetInteger("Look", -1);
+        // playerLook = "D";
+        anim.SetInteger("Look", -1);
       }
 
       // HORIZONTAL MOVEMENT
-      movement = new Vector3(Input.GetAxis("Player_One_Horizontal"), 0f, 0f);
+      // if (canMove)
+      if (anim.GetBool("canMove"))
+      {
+        movement = new Vector3(Input.GetAxis("Player_One_Horizontal"), 0f, 0f);
+      }
 
     }
 
@@ -141,7 +149,8 @@ public class Player_Movement : MonoBehaviour
     {
 
       // JUMP
-      if (Input.GetButtonDown("Player_Two_Jump") && jumps > 0 && canMove)
+      // if (Input.GetButtonDown("Player_Two_Jump") && jumps > 0 && canMove)
+      if (Input.GetButtonDown("Player_Two_Jump") && anim.GetInteger("Jumps") > 0 && anim.GetBool("canMove"))
       {
         pressedJump = true;
       }
@@ -151,25 +160,32 @@ public class Player_Movement : MonoBehaviour
       }
 
       // LOOK UP AND DOWN
-      if (Input.GetAxis("Player_Two_Vertical") > 0 && playerLook != "U" && !Player_Attack.isAttacking)
+      // if (Input.GetAxis("Player_Two_Vertical") > 0 && playerLook != "U" && !anim.GetBool("isAttacking"))
+      if (Input.GetAxis("Player_Two_Vertical") > 0 && anim.GetInteger("Look") <= 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "U";
-        Animator.SetInteger("Look", 1);
+        // playerLook = "U";
+        anim.SetInteger("Look", 1);
       }
-      else if (Input.GetAxis("Player_Two_Vertical") == 0 && playerLook != "" && !Player_Attack.isAttacking)
+      // else if (Input.GetAxis("Player_Two_Vertical") == 0 && playerLook != "" && !anim.GetBool("isAttacking"))
+      else if (Input.GetAxis("Player_Two_Vertical") == 0 && anim.GetInteger("Look") != 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "";
-        Animator.SetInteger("Look", 0);
+        // playerLook = "";
+        anim.SetInteger("Look", 0);
         // Debug.Log("Looking Neutral");
       }
-      else if (Input.GetAxis("Player_Two_Vertical") < 0 && playerLook != "D" && !Player_Attack.isAttacking)
+      // else if (Input.GetAxis("Player_Two_Vertical") < 0 && playerLook != "D" && !anim.GetBool("isAttacking"))
+      else if (Input.GetAxis("Player_Two_Vertical") < 0 && anim.GetInteger("Look") >= 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "D";
-        Animator.SetInteger("Look", -1);
+        // playerLook = "D";
+        anim.SetInteger("Look", -1);
       }
 
       // HORIZONTAL MOVEMENT
-      movement = new Vector3(Input.GetAxis("Player_Two_Horizontal"), 0f, 0f);
+      // if (canMove)
+      if (anim.GetBool("canMove"))
+      {
+        movement = new Vector3(Input.GetAxis("Player_Two_Horizontal"), 0f, 0f);
+      }
 
     }
 
@@ -177,7 +193,8 @@ public class Player_Movement : MonoBehaviour
     {
 
       // JUMP
-      if (Input.GetButtonDown("Player_Three_Jump") && jumps > 0 && canMove)
+      // if (Input.GetButtonDown("Player_Three_Jump") && jumps > 0 && canMove)
+      if (Input.GetButtonDown("Player_Three_Jump") && anim.GetInteger("Jumps") > 0 && anim.GetBool("canMove"))
       {
         pressedJump = true;
       }
@@ -187,25 +204,32 @@ public class Player_Movement : MonoBehaviour
       }
 
       // LOOK UP AND DOWN
-      if (Input.GetAxis("Player_Three_Vertical") > 0 && playerLook != "U" && !Player_Attack.isAttacking)
+      // if (Input.GetAxis("Player_Three_Vertical") > 0 && playerLook != "U" && !anim.GetBool("isAttacking"))
+      if (Input.GetAxis("Player_Three_Vertical") > 0 && anim.GetInteger("Look") <= 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "U";
-        Animator.SetInteger("Look", 1);
+        // playerLook = "U";
+        anim.SetInteger("Look", 1);
       }
-      else if (Input.GetAxis("Player_Three_Vertical") == 0 && playerLook != "" && !Player_Attack.isAttacking)
+      // else if (Input.GetAxis("Player_Three_Vertical") == 0 && playerLook != "" && !anim.GetBool("isAttacking"))
+      else if (Input.GetAxis("Player_Three_Vertical") == 0 && anim.GetInteger("Look") != 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "";
-        Animator.SetInteger("Look", 0);
+        // playerLook = "";
+        anim.SetInteger("Look", 0);
         // Debug.Log("Looking Neutral");
       }
-      else if (Input.GetAxis("Player_Three_Vertical") < 0 && playerLook != "D" && !Player_Attack.isAttacking)
+      // else if (Input.GetAxis("Player_Three_Vertical") < 0 && playerLook != "D" && !anim.GetBool("isAttacking"))
+      else if (Input.GetAxis("Player_Three_Vertical") < 0 && anim.GetInteger("Look") >= 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "D";
-        Animator.SetInteger("Look", -1);
+        // playerLook = "D";
+        anim.SetInteger("Look", -1);
       }
 
       // HORIZONTAL MOVEMENT
-      movement = new Vector3(Input.GetAxis("Player_Three_Horizontal"), 0f, 0f);
+      // if (canMove)
+      if (anim.GetBool("canMove"))
+      {
+        movement = new Vector3(Input.GetAxis("Player_Three_Horizontal"), 0f, 0f);
+      }
 
     }
 
@@ -213,7 +237,8 @@ public class Player_Movement : MonoBehaviour
     {
 
       // JUMP
-      if (Input.GetButtonDown("Player_Four_Jump") && jumps > 0 && canMove)
+      // if (Input.GetButtonDown("Player_Four_Jump") && jumps > 0 && canMove)
+      if (Input.GetButtonDown("Player_Four_Jump") && anim.GetInteger("Jumps") > 0 && anim.GetBool("canMove"))
       {
         pressedJump = true;
       }
@@ -223,68 +248,79 @@ public class Player_Movement : MonoBehaviour
       }
 
       // LOOK UP AND DOWN
-      if (Input.GetAxis("Player_Four_Vertical") > 0 && playerLook != "U" && !Player_Attack.isAttacking)
+      // if (Input.GetAxis("Player_Four_Vertical") > 0 && playerLook != "U" && !anim.GetBool("isAttacking"))
+      if (Input.GetAxis("Player_Four_Vertical") > 0 && anim.GetInteger("Look") <= 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "U";
-        Animator.SetInteger("Look", 1);
+        // playerLook = "U";
+        anim.SetInteger("Look", 1);
       }
-      else if (Input.GetAxis("Player_Four_Vertical") == 0 && playerLook != "" && !Player_Attack.isAttacking)
+      // else if (Input.GetAxis("Player_Four_Vertical") == 0 && playerLook != "" && !anim.GetBool("isAttacking"))
+      else if (Input.GetAxis("Player_Four_Vertical") == 0 && anim.GetInteger("Look") != 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "";
-        Animator.SetInteger("Look", 0);
+        // playerLook = "";
+        anim.SetInteger("Look", 0);
         // Debug.Log("Looking Neutral");
       }
-      else if (Input.GetAxis("Player_Four_Vertical") < 0 && playerLook != "D" && !Player_Attack.isAttacking)
+      // else if (Input.GetAxis("Player_Four_Vertical") < 0 && playerLook != "D" && !anim.GetBool("isAttacking"))
+      else if (Input.GetAxis("Player_Four_Vertical") < 0 && anim.GetInteger("Look") >= 0 && !anim.GetBool("isAttacking"))
       {
-        playerLook = "D";
-        Animator.SetInteger("Look", -1);
+        // playerLook = "D";
+        anim.SetInteger("Look", -1);
       }
 
       // HORIZONTAL MOVEMENT
-      movement = new Vector3(Input.GetAxis("Player_Four_Horizontal"), 0f, 0f);
+      // if (canMove)
+      if (anim.GetBool("canMove"))
+      {
+        movement = new Vector3(Input.GetAxis("Player_Four_Horizontal"), 0f, 0f);
+      }
 
     }
 
     if (movement.x == 0)
     {
-      Animator.SetBool("isRunning", false);
+      anim.SetBool("isRunning", false);
     }
-    else if ((movement.x > 0 || movement.x < 0) && Rigidbody2D.velocity.y == 0)
+    else if ((movement.x > 0 || movement.x < 0) && rb2d.velocity.y == 0)
     {
-      Animator.SetBool("isRunning", true);
-    }
-
-    if (Rigidbody2D.velocity.y < 0)
-    {
-      isFalling = true;
-      Animator.SetBool("isFalling", isFalling);
-      isAscending = false;
-      Animator.SetBool("isAscending", isAscending);
-    }
-    else if (Rigidbody2D.velocity.y == 0)
-    {
-      isFalling = false;
-      Animator.SetBool("isFalling", isFalling);
-      isAscending = false;
-      Animator.SetBool("isAscending", isAscending);
-    }
-    else if (Rigidbody2D.velocity.y > 0)
-    {
-      isFalling = false;
-      Animator.SetBool("isFalling", isFalling);
-      isAscending = true;
-      Animator.SetBool("isAscending", isAscending);
+      anim.SetBool("isRunning", true);
     }
 
-    if (movement.x > 0 && playerDirection != "R" && canMove)
+    if (rb2d.velocity.y < 0)
     {
-      playerDirection = "R";
-      SpriteRenderer.flipX = false;
+      // isFalling = true;
+      anim.SetBool("isFalling", true);
+      // isAscending = false;
+      anim.SetBool("isAscending", false);
     }
-    else if (movement.x < 0 && playerDirection != "L" && canMove)
+    else if (rb2d.velocity.y == 0)
     {
-      playerDirection = "L";
-      SpriteRenderer.flipX = true;
+      // isFalling = false;
+      anim.SetBool("isFalling", false);
+      // isAscending = false;
+      anim.SetBool("isAscending", false);
+    }
+    else if (rb2d.velocity.y > 0)
+    {
+      // isFalling = false;
+      anim.SetBool("isFalling", false);
+      // isAscending = true;
+      anim.SetBool("isAscending", true);
+    }
+
+    // if (movement.x > 0 && playerDirection != "R" && canMove)
+    if (movement.x > 0 && anim.GetInteger("Direction") != 1 && anim.GetBool("canMove"))
+    {
+      // playerDirection = "R";
+      anim.SetInteger("Direction", 1);
+      sprite.flipX = false;
+    }
+    // else if (movement.x < 0 && playerDirection != "L" && canMove)
+    else if (movement.x < 0 && anim.GetInteger("Direction") != -1 && anim.GetBool("canMove"))
+    {
+      // playerDirection = "L";
+      anim.SetInteger("Direction", -1);
+      sprite.flipX = true;
     }
     transform.position += movement * Time.deltaTime * moveSpeed;
   }
@@ -292,23 +328,25 @@ public class Player_Movement : MonoBehaviour
   private void StartJump()
   {
     // Resetting Y velocity to 0 to remove downward force
-    jumps -= 1;
-    Rigidbody2D.velocity = new Vector3(Rigidbody2D.velocity.x, 0f, 0f);
-    Animator.SetBool("isJumping", true);
-    Rigidbody2D.gravityScale = 0f;
-    Rigidbody2D.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+
+    // jumps -= 1;
+    rb2d.velocity = new Vector3(rb2d.velocity.x, 0f, 0f);
+    anim.SetBool("isJumping", true);
+    anim.SetInteger("Jumps", anim.GetInteger("Jumps") - 1);
+    rb2d.gravityScale = 0f;
+    rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
     pressedJump = false;
     startJumpTimer = true;
-    Animator.SetInteger("Jumps", jumps);
+    // anim.SetInteger("Jumps", jumps);
   }
 
   private void StopJump()
   {
-    Rigidbody2D.gravityScale = gravityScale;
+    rb2d.gravityScale = gravityScale;
     releasedJump = false;
     jumpTimer = jumpTimerMax;
     startJumpTimer = false;
-    Animator.SetBool("isJumping", false);
+    anim.SetBool("isJumping", false);
   }
 
   private void OnCollisionEnter2D(Collision2D other)
@@ -316,14 +354,15 @@ public class Player_Movement : MonoBehaviour
     if (other.transform.tag == "Floor")
     {
       // Debug.Log("Collided with FLOOR");
-      Rigidbody2D.velocity = new Vector3(Rigidbody2D.velocity.x, 0f, 0f);
-      jumps = 2;
-      Animator.SetInteger("Jumps", jumps);
-      Player_Attack.maxLights = 3;
+      rb2d.velocity = new Vector3(rb2d.velocity.x, 0f, 0f);
+      // jumps = 2;
+      anim.SetInteger("Jumps", 2);
+      // Player_Attack.maxLights = 3;
+      anim.SetInteger("Lights", 3);
 
       // Debug.Log("Collided with FLOOR");
-      isGrounded = true;
-      Animator.SetBool("isGrounded", true);
+      // isGrounded = true;
+      anim.SetBool("isGrounded", true);
     }
   }
 
@@ -332,8 +371,8 @@ public class Player_Movement : MonoBehaviour
     if (other.transform.tag == "Floor")
     {
       // Debug.Log("No longer touching FLOOR");
-      isGrounded = false;
-      Animator.SetBool("isGrounded", false);
+      // isGrounded = false;
+      anim.SetBool("isGrounded", false);
     }
   }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player_Health : MonoBehaviour
 {
-  public Animator Animator;
-  public Player_Movement Player_Movement;
+  public Animator anim;
+  // public Player_Movement Player_Movement;
   public float damage;
   public bool wasHit;
   public bool isHurt;
@@ -15,8 +15,8 @@ public class Player_Health : MonoBehaviour
 
   void Awake()
   {
-    Animator = gameObject.GetComponent<Animator>();
-    Player_Movement = gameObject.GetComponent<Player_Movement>();
+    anim = gameObject.GetComponent<Animator>();
+    // Player_Movement = gameObject.GetComponent<Player_Movement>();
     damage = 0f;
     wasHit = false;
     isHurt = false;
@@ -52,8 +52,9 @@ public class Player_Health : MonoBehaviour
   {
     wasHit = false;
     isHurt = true;
-    Player_Movement.canMove = false;
-    Animator.SetBool("isHurt", true);
+    anim.SetBool("canMove", false);
+    // Player_Movement.canMove = false;
+    anim.SetBool("isHurt", true);
     startHurtTimer = true;
     Debug.Log(gameObject.name + ": I was hit!");
   }
@@ -62,7 +63,8 @@ public class Player_Health : MonoBehaviour
   {
     startHurtTimer = false;
     hurtTimer = hurtTimerMax;
-    Animator.SetBool("isHurt", false);
-    Player_Movement.canMove = true;
+    anim.SetBool("isHurt", false);
+    anim.SetBool("canMove", true);
+    // Player_Movement.canMove = true;
   }
 }
