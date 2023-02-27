@@ -1,4 +1,4 @@
-# AET_373_SDP_Group8
+# Super Dude Bros
 Unity Version:
 
 2021.3.16
@@ -30,3 +30,8 @@ https://youtu.be/NYyS7bLnjnw
 Momo Fight Demo:
 
 https://youtu.be/ek37mSkKTVA
+
+[February 26, 2023]
+Player HUD and Indicators:
+
+https://youtu.be/ueot_UhkNAc
