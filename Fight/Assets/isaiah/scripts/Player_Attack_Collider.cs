@@ -17,7 +17,6 @@ public class Player_Attack_Collider : MonoBehaviour
   {
     enemies = new List<GameObject>();
 
-    // Player_Attack = gameObject.GetComponentInParent<Player_Attack>();
     sprite = gameObject.GetComponent<SpriteRenderer>();
     sprite.color = new Color(0f, 0f, 0f, .1f);
 
@@ -37,13 +36,9 @@ public class Player_Attack_Collider : MonoBehaviour
         // Debug.Log("Hitting " + enemy.name);
         float currentDamage = 0f;
 
-        // Player_Health health = enemy.GetComponent<Player_Health>();
         Animator enemyAnim = enemy.GetComponent<Animator>();
         enemyAnim.SetFloat("Health", enemyAnim.GetFloat("Health") + damage);
-        // health.damage += damage;
         currentDamage = enemyAnim.GetFloat("Health");
-        // currentDamage = health.damage;
-        // health.wasHit = true;
         enemyAnim.SetBool("wasHit", true);
 
         Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();

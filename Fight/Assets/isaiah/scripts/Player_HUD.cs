@@ -16,14 +16,6 @@ public class Player_HUD : MonoBehaviour
   {
     nameText = gameObject.transform.Find("Player_Name").GetComponent<TMP_Text>();
     healthText = gameObject.transform.Find("Player_Health").GetComponent<TMP_Text>();
-    // if (gameObject.name == "Player_One_HUD")
-    // {
-    //   Debug.Log("Bruh");
-    //   nameText.text = "Player One";
-    //   player = GameObject.Find("Player_One");
-    // }
-    // anim = player.GetComponent<Animator>();
-    // healthText.text = anim.GetFloat("Health").ToString();
   }
 
   void Start()

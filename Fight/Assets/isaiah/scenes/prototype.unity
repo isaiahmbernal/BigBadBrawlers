@@ -813,7 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54466aca6e10a423b83f03ae6b23c221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 2
+  playerNum: 3
   playerPrefabs: []
   playerList: []
   hudPrefab: {fileID: 4415992327253317129, guid: ae590870514c248f19747db35adb51c6, type: 3}

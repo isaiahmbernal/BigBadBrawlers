@@ -6,15 +6,11 @@ public class Player_Attack : MonoBehaviour
 {
   private Animator anim;
   public Rigidbody2D rb;
-  // public Player_Movement Player_Movement;
   public Player_Attack_Collider rAttack;
   public Player_Attack_Collider lAttack;
   public Player_Attack_Collider uAttack;
   public Player_Attack_Collider dAttack;
 
-  // public bool isAttacking;
-
-  // public int maxLights;
   private bool pressedLight;
   private bool releaseLight;
   private bool startLightTimer;
@@ -25,15 +21,11 @@ public class Player_Attack : MonoBehaviour
   {
     rb = gameObject.GetComponent<Rigidbody2D>();
     anim = gameObject.GetComponent<Animator>();
-    // Player_Movement = gameObject.GetComponent<Player_Movement>();
     rAttack = transform.Find("R-Attack").GetComponent<Player_Attack_Collider>();
     lAttack = transform.Find("L-Attack").GetComponent<Player_Attack_Collider>();
     uAttack = transform.Find("U-Attack").GetComponent<Player_Attack_Collider>();
     dAttack = transform.Find("D-Attack").GetComponent<Player_Attack_Collider>();
 
-    // isAttacking = false;
-
-    // maxLights = 3;
     pressedLight = false;
     releaseLight = false;
     startLightTimer = false;
@@ -51,17 +43,12 @@ public class Player_Attack : MonoBehaviour
       }
       if (
           Input.GetButtonDown("Player_One_Light")
-          // && Player_Movement.isGrounded == false
           && !anim.GetBool("isGrounded")
-          // && maxLights > 0
           && anim.GetInteger("Lights") > 0
-          // && !isAttacking
           && !anim.GetBool("isAttacking")
           )
       {
-        // maxLights -= 1;
         anim.SetInteger("Lights", anim.GetInteger("Lights") - 1);
-        // Debug.Log(maxLights);
         pressedLight = true;
       }
     }
@@ -74,17 +61,12 @@ public class Player_Attack : MonoBehaviour
       }
       if (
           Input.GetButtonDown("Player_Two_Light")
-          // && Player_Movement.isGrounded == false
           && !anim.GetBool("isGrounded")
-          // && maxLights > 0
           && anim.GetInteger("Lights") > 0
-          // && !isAttacking
           && !anim.GetBool("isAttacking")
           )
       {
-        // maxLights -= 1;
         anim.SetInteger("Lights", anim.GetInteger("Lights") - 1);
-        // Debug.Log(maxLights);
         pressedLight = true;
       }
     }
@@ -97,17 +79,12 @@ public class Player_Attack : MonoBehaviour
       }
       if (
           Input.GetButtonDown("Player_Three_Light")
-          // && Player_Movement.isGrounded == false
           && !anim.GetBool("isGrounded")
-          // && maxLights > 0
           && anim.GetInteger("Lights") > 0
-          // && !isAttacking
           && !anim.GetBool("isAttacking")
           )
       {
-        // maxLights -= 1;
         anim.SetInteger("Lights", anim.GetInteger("Lights") - 1);
-        // Debug.Log(maxLights);
         pressedLight = true;
       }
     }
@@ -120,17 +97,12 @@ public class Player_Attack : MonoBehaviour
       }
       if (
           Input.GetButtonDown("Player_Four_Light")
-          // && Player_Movement.isGrounded == false
           && !anim.GetBool("isGrounded")
-          // && maxLights > 0
           && anim.GetInteger("Lights") > 0
-          // && !isAttacking
           && !anim.GetBool("isAttacking")
           )
       {
-        // maxLights -= 1;
         anim.SetInteger("Lights", anim.GetInteger("Lights") - 1);
-        // Debug.Log(maxLights);
         pressedLight = true;
       }
     }
@@ -161,16 +133,13 @@ public class Player_Attack : MonoBehaviour
   void StartLight()
   {
     pressedLight = false;
-    // isAttacking = true;
-    // Vector3 preVelocity = rb.velocity;
+
     if (anim.GetBool("isGrounded"))
     {
-      // Player_Movement.canMove = false;
       anim.SetBool("canMove", false);
     }
     anim.SetBool("isAttacking", true);
     // Player_Movement.rb2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-    // if (Player_Movement.playerLook == "")
     if (anim.GetInteger("Look") == 0)
     {
       if (anim.GetInteger("Direction") > 0)
@@ -183,17 +152,6 @@ public class Player_Attack : MonoBehaviour
         lAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
         lAttack.HurtEnemy();
       }
-      // switch (Player_Movement.playerDirection)
-      // {
-      //   case 1:
-      //     rAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
-      //     rAttack.HurtEnemy();
-      //     break;
-      //   case -1:
-      //     lAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
-      //     lAttack.HurtEnemy();
-      //     break;
-      // }
     }
     else
     {
@@ -207,19 +165,6 @@ public class Player_Attack : MonoBehaviour
         dAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
         dAttack.HurtEnemy();
       }
-
-      // switch (Player_Movement.playerLook)
-      // {
-      //   case "U":
-      //     uAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
-      //     uAttack.HurtEnemy();
-      //     break;
-      //   case "D":
-
-      //     dAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
-      //     dAttack.HurtEnemy();
-      //     break;
-      // }
     }
     startLightTimer = true;
   }
@@ -253,40 +198,7 @@ public class Player_Attack : MonoBehaviour
       }
     }
 
-    // isAttacking = false;
     anim.SetBool("isAttacking", false);
     anim.SetBool("canMove", true);
-    // Player_Movement.canMove = true;
-    // Player_Movement.rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-    // Player_Movement.rb2d.velocity = new Vector3(Player_Movement.rb2d.velocity.x, -1f, 0f);
-    // if (Player_Movement.playerLook == "")
-    // {
-    //   switch (Player_Movement.playerDirection)
-    //   {
-    //     case "R":
-    //       rAttack.sprite.color = new Color(0f, 0, 0f, .1f);
-    //       // rAttack.HurtEnemy();
-    //       break;
-    //     case "L":
-    //       lAttack.sprite.color = new Color(0f, 0, 0f, .1f);
-    //       // lAttack.HurtEnemy();
-    //       break;
-    //   }
-    // }
-    // else
-    // {
-    //   switch (Player_Movement.playerLook)
-    //   {
-    //     case "U":
-    //       uAttack.sprite.color = new Color(0f, 0, 0f, .1f);
-    //       // uAttack.HurtEnemy();
-    //       break;
-    //     case "D":
-    //       dAttack.sprite.color = new Color(0f, 0, 0f, .1f);
-    //       // dAttack.HurtEnemy();
-    //       break;
-    //   }
-    // }
-
   }
 }

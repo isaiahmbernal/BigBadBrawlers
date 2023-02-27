@@ -5,9 +5,8 @@ using UnityEngine;
 public class Player_Health : MonoBehaviour
 {
   public Animator anim;
-  // public Player_Movement Player_Movement;
-  // public float damage;
-  // public bool wasHit;
+  public SpriteRenderer sprite;
+
   public bool isHurt;
   public bool startHurtTimer;
   public float hurtTimerMax;
@@ -16,9 +15,7 @@ public class Player_Health : MonoBehaviour
   void Awake()
   {
     anim = gameObject.GetComponent<Animator>();
-    // Player_Movement = gameObject.GetComponent<Player_Movement>();
-    // damage = 0f;
-    // wasHit = false;
+    sprite = gameObject.GetComponent<SpriteRenderer>();
     isHurt = false;
     startHurtTimer = false;
     hurtTimerMax = .25f;
@@ -27,13 +24,11 @@ public class Player_Health : MonoBehaviour
 
   void FixedUpdate()
   {
-    // if (wasHit)
     if (anim.GetBool("wasHit"))
     {
       StartHurt();
     }
 
-    // if (!wasHit && !isHurt && startHurtTimer && hurtTimer <= 0)
     if (!anim.GetBool("wasHit") && !isHurt && startHurtTimer && hurtTimer <= 0)
     {
       EndHurt();
@@ -52,14 +47,13 @@ public class Player_Health : MonoBehaviour
 
   void StartHurt()
   {
-    // wasHit = false;
     anim.SetBool("wasHit", false);
     isHurt = true;
     anim.SetBool("canMove", false);
-    // Player_Movement.canMove = false;
     anim.SetBool("isHurt", true);
     startHurtTimer = true;
     Debug.Log(gameObject.name + ": I was hit!");
+    sprite.color = Color.red;
   }
 
   void EndHurt()
@@ -68,6 +62,6 @@ public class Player_Health : MonoBehaviour
     hurtTimer = hurtTimerMax;
     anim.SetBool("isHurt", false);
     anim.SetBool("canMove", true);
-    // Player_Movement.canMove = true;
+    sprite.color = new Color(255, 255, 255);
   }
 }

@@ -17,7 +17,7 @@ public class Camera_Movement : MonoBehaviour
 
   void FixedUpdate()
   {
-    // Distance();
+    Distance();
     Position();
   }
 
@@ -50,7 +50,6 @@ public class Camera_Movement : MonoBehaviour
     {
       centerY = 2f;
     }
-
     mainCamera.transform.position = new Vector3(centerX, centerY, transform.position.z);
   }
 
@@ -73,17 +72,14 @@ public class Camera_Movement : MonoBehaviour
         }
       }
     }
-    if (currGreatest > 5)
+    mainCamera.fieldOfView = currGreatest * 60f;
+    if (mainCamera.fieldOfView < 50f)
     {
-      mainCamera.orthographicSize = 5;
+      mainCamera.fieldOfView = 50f;
     }
-    else if (currGreatest < 4)
+    else if (mainCamera.fieldOfView > 70f)
     {
-      mainCamera.orthographicSize = 4;
-    }
-    else
-    {
-      mainCamera.orthographicSize = currGreatest;
+      mainCamera.fieldOfView = 70f;
     }
   }
 }

@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
   {
     canvas = GameObject.Find("Canvas");
     playerList = new List<GameObject>();
-    playerNum = 4;
     playerPrefabs = Resources.LoadAll("characters", typeof(GameObject));
     // indicatorList = Resources.LoadAll("indicators", typeof(Sprite));
     indicatorList = Resources.LoadAll<Sprite>("indicators");
@@ -38,9 +37,9 @@ public class GameManager : MonoBehaviour
           player.transform.Find("Indicator").GetComponent<SpriteRenderer>().sprite = indicatorList[i];
           playerList.Add(player);
           Debug.Log("Player One Spawned");
+
           HUD = Instantiate(hudPrefab);
           HUD.name = "Player_One_HUD";
-          // HUD.transform.parent = canvas.transform;
           HUD.transform.SetParent(canvas.transform);
           HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(-50f, 40f, 0f);
           Debug.Log("Player One HUD Created");
@@ -51,9 +50,9 @@ public class GameManager : MonoBehaviour
           player.transform.Find("Indicator").GetComponent<SpriteRenderer>().sprite = indicatorList[i];
           playerList.Add(player);
           Debug.Log("Player Two Spawned");
+
           HUD = Instantiate(hudPrefab);
           HUD.name = "Player_Two_HUD";
-          // HUD.transform.parent = canvas.transform;
           HUD.transform.SetParent(canvas.transform);
           HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(50f, 40f, 0f);
           Debug.Log("Player Two HUD Created");
@@ -64,9 +63,9 @@ public class GameManager : MonoBehaviour
           player.transform.Find("Indicator").GetComponent<SpriteRenderer>().sprite = indicatorList[i];
           playerList.Add(player);
           Debug.Log("Player Three Spawned");
+
           HUD = Instantiate(hudPrefab);
           HUD.name = "Player_Three_HUD";
-          // HUD.transform.parent = canvas.transform;
           HUD.transform.SetParent(canvas.transform);
           HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(-150f, 40f, 0f);
           Debug.Log("Player Three HUD Created");
@@ -77,9 +76,9 @@ public class GameManager : MonoBehaviour
           player.transform.Find("Indicator").GetComponent<SpriteRenderer>().sprite = indicatorList[i];
           playerList.Add(player);
           Debug.Log("Player Four Spawned");
+          
           HUD = Instantiate(hudPrefab);
           HUD.name = "Player_Four_HUD";
-          // HUD.transform.parent = canvas.transform;
           HUD.transform.SetParent(canvas.transform);
           HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, 40f, 0f);
           Debug.Log("Player Four HUD Created");
