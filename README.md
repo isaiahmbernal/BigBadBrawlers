@@ -1,4 +1,4 @@
-# AET_373_SDP_Group8
+# Super Dude Bros
 Unity Version:
 
 2021.3.16
