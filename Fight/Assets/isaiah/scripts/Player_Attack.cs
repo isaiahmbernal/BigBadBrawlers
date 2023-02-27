@@ -175,22 +175,22 @@ public class Player_Attack : MonoBehaviour
     {
       if (anim.GetInteger("Direction") > 0)
       {
-        rAttack.SpriteRenderer.color = new Color(255f, 0f, 0f, .3f);
+        rAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
         rAttack.HurtEnemy();
       }
       else if (anim.GetInteger("Direction") < 0)
       {
-        lAttack.SpriteRenderer.color = new Color(255f, 0f, 0f, .3f);
+        lAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
         lAttack.HurtEnemy();
       }
       // switch (Player_Movement.playerDirection)
       // {
       //   case 1:
-      //     rAttack.SpriteRenderer.color = new Color(255f, 0f, 0f, .3f);
+      //     rAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
       //     rAttack.HurtEnemy();
       //     break;
       //   case -1:
-      //     lAttack.SpriteRenderer.color = new Color(255f, 0f, 0f, .3f);
+      //     lAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
       //     lAttack.HurtEnemy();
       //     break;
       // }
@@ -199,24 +199,24 @@ public class Player_Attack : MonoBehaviour
     {
       if (anim.GetInteger("Look") > 0)
       {
-        uAttack.SpriteRenderer.color = new Color(255f, 0f, 0f, .3f);
+        uAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
         uAttack.HurtEnemy();
       }
       else if (anim.GetInteger("Look") < 0)
       {
-        dAttack.SpriteRenderer.color = new Color(255f, 0f, 0f, .3f);
+        dAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
         dAttack.HurtEnemy();
       }
 
       // switch (Player_Movement.playerLook)
       // {
       //   case "U":
-      //     uAttack.SpriteRenderer.color = new Color(255f, 0f, 0f, .3f);
+      //     uAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
       //     uAttack.HurtEnemy();
       //     break;
       //   case "D":
 
-      //     dAttack.SpriteRenderer.color = new Color(255f, 0f, 0f, .3f);
+      //     dAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
       //     dAttack.HurtEnemy();
       //     break;
       // }
@@ -234,22 +234,22 @@ public class Player_Attack : MonoBehaviour
     {
       if (anim.GetInteger("Direction") > 0)
       {
-        rAttack.SpriteRenderer.color = new Color(0f, 0, 0f, .1f);
+        rAttack.sprite.color = new Color(0f, 0, 0f, .1f);
       }
       else if (anim.GetInteger("Direction") < 0)
       {
-        lAttack.SpriteRenderer.color = new Color(0f, 0, 0f, .1f);
+        lAttack.sprite.color = new Color(0f, 0, 0f, .1f);
       }
     }
     else
     {
       if (anim.GetInteger("Look") > 0)
       {
-        uAttack.SpriteRenderer.color = new Color(0f, 0, 0f, .1f);
+        uAttack.sprite.color = new Color(0f, 0, 0f, .1f);
       }
       else if (anim.GetInteger("Look") < 0)
       {
-        dAttack.SpriteRenderer.color = new Color(0f, 0, 0f, .1f);
+        dAttack.sprite.color = new Color(0f, 0, 0f, .1f);
       }
     }
 
@@ -264,11 +264,11 @@ public class Player_Attack : MonoBehaviour
     //   switch (Player_Movement.playerDirection)
     //   {
     //     case "R":
-    //       rAttack.SpriteRenderer.color = new Color(0f, 0, 0f, .1f);
+    //       rAttack.sprite.color = new Color(0f, 0, 0f, .1f);
     //       // rAttack.HurtEnemy();
     //       break;
     //     case "L":
-    //       lAttack.SpriteRenderer.color = new Color(0f, 0, 0f, .1f);
+    //       lAttack.sprite.color = new Color(0f, 0, 0f, .1f);
     //       // lAttack.HurtEnemy();
     //       break;
     //   }
@@ -278,11 +278,11 @@ public class Player_Attack : MonoBehaviour
     //   switch (Player_Movement.playerLook)
     //   {
     //     case "U":
-    //       uAttack.SpriteRenderer.color = new Color(0f, 0, 0f, .1f);
+    //       uAttack.sprite.color = new Color(0f, 0, 0f, .1f);
     //       // uAttack.HurtEnemy();
     //       break;
     //     case "D":
-    //       dAttack.SpriteRenderer.color = new Color(0f, 0, 0f, .1f);
+    //       dAttack.sprite.color = new Color(0f, 0, 0f, .1f);
     //       // dAttack.HurtEnemy();
     //       break;
     //   }

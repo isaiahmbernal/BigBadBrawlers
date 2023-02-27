@@ -476,7 +476,7 @@ AnimatorStateMachine:
     m_Position: {x: 50, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -448169620818073066}
-    m_Position: {x: 290, y: 490, z: 0}
+    m_Position: {x: 400, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3421988812400218851}
     m_Position: {x: -300, y: 360, z: 0}
@@ -491,13 +491,13 @@ AnimatorStateMachine:
     m_Position: {x: -550, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5618581266903040123}
-    m_Position: {x: 380, y: 210, z: 0}
+    m_Position: {x: 400, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8829862162018094892}
-    m_Position: {x: 390, y: 310, z: 0}
+    m_Position: {x: 400, y: 340, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1823499778521865179}
-    m_Position: {x: 390, y: 420, z: 0}
+    m_Position: {x: 220, y: 660, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -475879979916341988}
     m_Position: {x: -630, y: 570, z: 0}
@@ -506,7 +506,7 @@ AnimatorStateMachine:
     m_Position: {x: -430, y: 660, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 689415126513498168}
-    m_Position: {x: -150, y: 70, z: 0}
+    m_Position: {x: 390, y: 460, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -4884442795649067626}
@@ -909,12 +909,6 @@ AnimatorController:
     m_DefaultInt: 2
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Lights
-    m_Type: 3
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: isAscending
     m_Type: 4
     m_DefaultFloat: 0
@@ -927,6 +921,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: Lights
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   - m_Name: isAttacking
     m_Type: 4
     m_DefaultFloat: 0
@@ -934,6 +934,18 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: isCharging
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: Health
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: wasHit
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

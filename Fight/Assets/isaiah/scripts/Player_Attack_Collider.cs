@@ -7,7 +7,7 @@ public class Player_Attack_Collider : MonoBehaviour
   public List<GameObject> enemies;
   
   // public Player_Attack Player_Attack;
-  public SpriteRenderer SpriteRenderer;
+  public SpriteRenderer sprite;
 
   public float damage;
   public float xAttackForce;
@@ -18,8 +18,8 @@ public class Player_Attack_Collider : MonoBehaviour
     enemies = new List<GameObject>();
 
     // Player_Attack = gameObject.GetComponentInParent<Player_Attack>();
-    SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-    SpriteRenderer.color = new Color(0f, 0f, 0f, .1f);
+    sprite = gameObject.GetComponent<SpriteRenderer>();
+    sprite.color = new Color(0f, 0f, 0f, .1f);
 
     damage = 5f;
     xAttackForce = damage * 0.30f;
@@ -37,10 +37,14 @@ public class Player_Attack_Collider : MonoBehaviour
         // Debug.Log("Hitting " + enemy.name);
         float currentDamage = 0f;
 
-        Player_Health health = enemy.GetComponent<Player_Health>();
-        health.damage += damage;
-        currentDamage = health.damage;
-        health.wasHit = true;
+        // Player_Health health = enemy.GetComponent<Player_Health>();
+        Animator enemyAnim = enemy.GetComponent<Animator>();
+        enemyAnim.SetFloat("Health", enemyAnim.GetFloat("Health") + damage);
+        // health.damage += damage;
+        currentDamage = enemyAnim.GetFloat("Health");
+        // currentDamage = health.damage;
+        // health.wasHit = true;
+        enemyAnim.SetBool("wasHit", true);
 
         Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
 
@@ -79,7 +83,7 @@ public class Player_Attack_Collider : MonoBehaviour
         enemies.Add(other.gameObject);
         // Debug.Log("Dummy Added " + other.gameObject.name + " to enemy list");
 
-        SpriteRenderer.color = new Color(0f, 255f, 0f, .3f);
+        sprite.color = new Color(0f, 255f, 0f, .3f);
         // Debug.Log(gameObject.name + ": Touching Enemy");
       }
     }
@@ -87,7 +91,7 @@ public class Player_Attack_Collider : MonoBehaviour
 
   public void OnTriggerExit2D(Collider2D other)
   {
-    SpriteRenderer.color = new Color(0f, 0f, 0f, .1f);
+    sprite.color = new Color(0f, 0f, 0f, .1f);
     enemies.Remove(other.gameObject);
     // Debug.Log("Dummy Removed " + other.gameObject.name + " from enemy list");
   }
