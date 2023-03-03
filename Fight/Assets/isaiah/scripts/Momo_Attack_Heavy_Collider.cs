@@ -15,7 +15,10 @@ public class Momo_Attack_Heavy_Collider : MonoBehaviour
   {
     if (other.gameObject.tag == "Player" && other.gameObject.name != parentName)
     {
-      damage = 5 * chargeStage;
+      damage = 4 * chargeStage;
+      Animator otherAnim = other.gameObject.GetComponent<Animator>();
+      otherAnim.SetFloat("Health", otherAnim.GetFloat("Health") + damage);
+
       xAttackForce = damage * .4f;
       yAttackForce = damage * .4f;
 
@@ -25,6 +28,7 @@ public class Momo_Attack_Heavy_Collider : MonoBehaviour
       if (directionX > 0 && directionY > 0)
       {
         other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(-xAttackForce, -yAttackForce, 0f); ;
+        
       }
       else if (directionX < 0 && directionY > 0)
       {
@@ -38,6 +42,7 @@ public class Momo_Attack_Heavy_Collider : MonoBehaviour
       {
         other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(xAttackForce, yAttackForce, 0f); ;
       }
+
         Destroy(gameObject);
     }
   }

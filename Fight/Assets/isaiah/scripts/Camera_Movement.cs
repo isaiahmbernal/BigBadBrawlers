@@ -64,22 +64,22 @@ public class Camera_Movement : MonoBehaviour
         // Debug.Log("j: " + j);
         float currDist = Vector3.Distance(GameManager.playerList[i].transform.position, GameManager.playerList[j].transform.position);
         // Debug.Log("i: " + i + " | j: " + j);
-        Debug.Log("Distance " + currDist + " between " + GameManager.playerList[i].name + " and " + GameManager.playerList[j].name);
+        // Debug.Log("Distance " + currDist + " between " + GameManager.playerList[i].name + " and " + GameManager.playerList[j].name);
         if (currDist > currGreatest)
         {
           currGreatest = currDist;
-          Debug.Log("New Distance: " + currGreatest);
+          // Debug.Log("New Distance: " + currGreatest);
         }
       }
     }
     mainCamera.fieldOfView = currGreatest * 60f;
-    if (mainCamera.fieldOfView < 50f)
-    {
-      mainCamera.fieldOfView = 50f;
-    }
-    else if (mainCamera.fieldOfView > 70f)
+    if (mainCamera.fieldOfView < 70f)
     {
       mainCamera.fieldOfView = 70f;
+    }
+    else if (mainCamera.fieldOfView > 90f)
+    {
+      mainCamera.fieldOfView = 90f;
     }
   }
 }

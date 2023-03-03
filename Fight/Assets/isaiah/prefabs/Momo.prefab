@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5980050846109514095}
   - component: {fileID: 5980050846109514094}
-  - component: {fileID: 5980050846109514093}
+  - component: {fileID: 5286258354484385900}
   - component: {fileID: 5980050846109514092}
   m_Layer: 0
   m_Name: U-Attack
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5980050846109514080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.125, z: 0}
+  m_LocalPosition: {x: 0, y: 0.19, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -86,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5980050846109514093
-CircleCollider2D:
+--- !u!70 &5286258354484385900
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,8 +100,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
 --- !u!114 &5980050846109514092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   sprite: {fileID: 0}
-  damage: 0
+  damage: 6
   xAttackForce: 0
   yAttackForce: 0
 --- !u!1 &5980050846720261110
@@ -248,8 +248,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0065748543, y: -0.16873366}
-  m_Size: {x: 0.3350741, y: 0.42212123}
+  m_Offset: {x: -0.0036390573, y: -0.20536914}
+  m_Size: {x: 0.46449384, y: 0.5264769}
   m_Direction: 0
 --- !u!50 &5980050846720261109
 Rigidbody2D:
@@ -285,9 +285,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  sprite: {fileID: 0}
   isHurt: 0
   startHurtTimer: 0
-  hurtTimerMax: 0
+  hurtTimerMax: 0.25
   hurtTimer: 0
 --- !u!114 &5980050846720261114
 MonoBehaviour:
@@ -302,9 +303,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 0}
-  moveSpeed: 0
-  gravityScale: 0
-  jumpForce: 0
+  moveSpeed: 2
+  gravityScale: 1.5
+  maxJumps: 2
+  jumpForce: 2.3
   jumpTimerMax: 0
 --- !u!114 &5980050846720261115
 MonoBehaviour:
@@ -323,6 +325,8 @@ MonoBehaviour:
   lAttack: {fileID: 0}
   uAttack: {fileID: 0}
   dAttack: {fileID: 0}
+  lightTimerMax: 0.4
+  lightTimer: 0
 --- !u!114 &1255982599968702720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5980050846804325093}
   - component: {fileID: 5980050846804325092}
-  - component: {fileID: 5980050846804325091}
+  - component: {fileID: 7285057502730282584}
   - component: {fileID: 5980050846804325090}
   m_Layer: 0
   m_Name: R-Attack
@@ -374,14 +378,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5980050846804325094}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.154, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.3, y: -0.15, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.5, z: 0.4}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5980050846720261105}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &5980050846804325092
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -423,7 +427,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
@@ -434,8 +438,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5980050846804325091
-CircleCollider2D:
+--- !u!70 &7285057502730282584
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -448,8 +452,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1.0000002, y: 2.0000005}
+  m_Direction: 0
 --- !u!114 &5980050846804325090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   sprite: {fileID: 0}
-  damage: 0
+  damage: 4
   xAttackForce: 0
   yAttackForce: 0
 --- !u!1 &5980050847338079029
@@ -477,7 +481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5980050847338079028}
   - component: {fileID: 5980050847338079027}
-  - component: {fileID: 5980050847338079026}
+  - component: {fileID: 4823408264108741447}
   - component: {fileID: 5980050847338079025}
   m_Layer: 0
   m_Name: L-Attack
@@ -493,14 +497,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5980050847338079029}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -0.154, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.3, y: -0.15, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.5, z: 0.4}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5980050846720261105}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &5980050847338079027
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -542,7 +546,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
@@ -553,8 +557,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5980050847338079026
-CircleCollider2D:
+--- !u!70 &4823408264108741447
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -567,8 +571,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1.0000002, y: 2.0000005}
+  m_Direction: 0
 --- !u!114 &5980050847338079025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,7 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   sprite: {fileID: 0}
-  damage: 0
+  damage: 4
   xAttackForce: 0
   yAttackForce: 0
 --- !u!1 &5980050847655989388
@@ -596,7 +600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5980050847655989387}
   - component: {fileID: 5980050847655989386}
-  - component: {fileID: 5980050847655989385}
+  - component: {fileID: 5370751208195436796}
   - component: {fileID: 5980050847655989384}
   m_Layer: 0
   m_Name: D-Attack
@@ -613,7 +617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5980050847655989388}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.295, z: 0}
+  m_LocalPosition: {x: 0, y: -0.513, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -672,8 +676,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5980050847655989385
-CircleCollider2D:
+--- !u!70 &5370751208195436796
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -686,8 +690,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
 --- !u!114 &5980050847655989384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,7 +706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   sprite: {fileID: 0}
-  damage: 0
+  damage: 6
   xAttackForce: 0
   yAttackForce: 0
 --- !u!1 &8100099500103500048
@@ -730,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8100099500103500048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []

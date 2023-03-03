@@ -18,7 +18,7 @@ public class Player_Health : MonoBehaviour
     sprite = gameObject.GetComponent<SpriteRenderer>();
     isHurt = false;
     startHurtTimer = false;
-    hurtTimerMax = .25f;
+    // hurtTimerMax = .25f;
     hurtTimer = hurtTimerMax;
   }
 

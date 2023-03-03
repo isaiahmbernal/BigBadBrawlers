@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
   {
     canvas = GameObject.Find("Canvas");
     playerList = new List<GameObject>();
-    playerPrefabs = Resources.LoadAll("characters", typeof(GameObject));
+    // playerPrefabs = Resources.LoadAll("characters", typeof(GameObject));
     // indicatorList = Resources.LoadAll("indicators", typeof(Sprite));
     indicatorList = Resources.LoadAll<Sprite>("indicators");
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
           HUD = Instantiate(hudPrefab);
           HUD.name = "Player_One_HUD";
           HUD.transform.SetParent(canvas.transform);
-          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(-50f, 40f, 0f);
+          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(-100f, 100f, 0f);
           Debug.Log("Player One HUD Created");
           break;
         case 1:
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
           HUD = Instantiate(hudPrefab);
           HUD.name = "Player_Two_HUD";
           HUD.transform.SetParent(canvas.transform);
-          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(50f, 40f, 0f);
+          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(100f, 100f, 0f);
           Debug.Log("Player Two HUD Created");
           break;
         case 2:
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
           HUD = Instantiate(hudPrefab);
           HUD.name = "Player_Three_HUD";
           HUD.transform.SetParent(canvas.transform);
-          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(-150f, 40f, 0f);
+          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(-300f, 100f, 0f);
           Debug.Log("Player Three HUD Created");
           break;
         case 3:
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
           HUD = Instantiate(hudPrefab);
           HUD.name = "Player_Four_HUD";
           HUD.transform.SetParent(canvas.transform);
-          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(150f, 40f, 0f);
+          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(300f, 100f, 0f);
           Debug.Log("Player Four HUD Created");
           break;
       }
@@ -92,6 +92,17 @@ public class GameManager : MonoBehaviour
     if (Input.GetKeyDown("`"))
     {
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+  }
+
+  void OnTriggerExit2D(Collider2D other)
+  {
+    if (other.gameObject.tag == "Player")
+    {
+      Animator otherAnim = other.gameObject.GetComponent<Animator>();
+      otherAnim.SetInteger("Lives", otherAnim.GetInteger("Lives") - 1);
+      otherAnim.transform.position = new Vector3(0, 0, 1);
+      Debug.Log("Brruh");
     }
   }
 }

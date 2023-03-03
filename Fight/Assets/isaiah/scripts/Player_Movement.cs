@@ -23,11 +23,11 @@ public class Player_Movement : MonoBehaviour
     anim = gameObject.GetComponent<Animator>();
     sprite = gameObject.GetComponent<SpriteRenderer>();
     
-    moveSpeed = 3f;
-    gravityScale = 1.5f;
-    maxJumps = 2;
-    jumpForce = 4f;
-    jumpTimerMax = .01f;
+    // moveSpeed = 3f;
+    // gravityScale = 1.5f;
+    // maxJumps = 2;
+    // jumpForce = 2.3f;
+    jumpTimerMax = .2f;
     jumpTimer = jumpTimerMax;
     pressedJump = false;
     startJumpTimer = false;
@@ -209,11 +209,11 @@ public class Player_Movement : MonoBehaviour
 
     }
 
-    if (movement.x == 0)
+    if (movement.x == 0 || !anim.GetBool("isGrounded"))
     {
       anim.SetBool("isRunning", false);
     }
-    else if ((movement.x > 0 || movement.x < 0) && rb2d.velocity.y == 0)
+    else if ((movement.x > 0 || movement.x < 0) && rb2d.velocity.y == 0 && anim.GetBool("isGrounded"))
     {
       anim.SetBool("isRunning", true);
     }

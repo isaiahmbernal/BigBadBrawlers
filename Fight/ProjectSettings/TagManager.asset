@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Player_Head
   - Attack_Collider
+  - World_Border
   layers:
   - Default
   - TransparentFX

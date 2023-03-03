@@ -20,7 +20,7 @@ public class Player_Attack_Collider : MonoBehaviour
     sprite = gameObject.GetComponent<SpriteRenderer>();
     sprite.color = new Color(0f, 0f, 0f, .1f);
 
-    damage = 5f;
+    // damage = 5f;
     xAttackForce = damage * 0.30f;
     yAttackForce = damage * 0.70f;
   }
