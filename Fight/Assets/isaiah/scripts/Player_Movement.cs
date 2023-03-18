@@ -8,7 +8,7 @@ public class Player_Movement : MonoBehaviour
   private Animator anim;
   private SpriteRenderer sprite;
   public float moveSpeed;
-  public float gravityScale;
+  public float myGravity;
   public int maxJumps;
   public float jumpForce;
   private float jumpTimer;
@@ -23,17 +23,13 @@ public class Player_Movement : MonoBehaviour
     anim = gameObject.GetComponent<Animator>();
     sprite = gameObject.GetComponent<SpriteRenderer>();
     
-    // moveSpeed = 3f;
-    // gravityScale = 1.5f;
-    // maxJumps = 2;
-    // jumpForce = 2.3f;
     jumpTimerMax = .2f;
     jumpTimer = jumpTimerMax;
     pressedJump = false;
     startJumpTimer = false;
     releasedJump = false;
 
-    rb2d.gravityScale = gravityScale;
+    myGravity = rb2d.gravityScale;
     rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
     anim.SetBool("isRunning", false);
   }
@@ -262,7 +258,7 @@ public class Player_Movement : MonoBehaviour
 
   private void StopJump()
   {
-    rb2d.gravityScale = gravityScale;
+    rb2d.gravityScale = myGravity;
     releasedJump = false;
     jumpTimer = jumpTimerMax;
     startJumpTimer = false;
