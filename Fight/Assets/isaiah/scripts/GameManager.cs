@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
   {
     if (other.gameObject.tag == "Player")
     {
-      Animator otherAnim = other.gameObject.GetComponent<Animator>();
+      Animator otherAnim = other.gameObject.GetComponentInParent<Animator>();
       otherAnim.SetInteger("Lives", otherAnim.GetInteger("Lives") - 1);
       otherAnim.transform.position = new Vector3(0, 0, 1);
       Debug.Log("Brruh");

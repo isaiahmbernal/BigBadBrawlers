@@ -18,12 +18,12 @@ TagManager:
   - Background
   - Platforms
   - Players
+  - Player-Tracking
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Proto-Platform
+  - Momo-Platform
+  - Boxer-Platform
+  - Stick-Platform
   - 
   - 
   - 

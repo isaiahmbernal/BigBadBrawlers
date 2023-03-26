@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8285318018654346039}
   - component: {fileID: 994128251869042357}
   - component: {fileID: 7629229420390193428}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Platform-Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 197159119414068715}
   - component: {fileID: 6709000751506910584}
   - component: {fileID: 6818973939138155081}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Platform-Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,11 +596,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 0}
   platformCollider: {fileID: 0}
-  startPlatformFall: 0
-  endPlatformFall: 0
-  maxPlatformFallTime: 0.4
-  currPlatformFallTime: 0.4
-  isPlatformFalling: 0
   moveSpeed: 2
   myGravity: 0
   maxJumps: 2
@@ -687,6 +682,7 @@ MonoBehaviour:
   rb2d: {fileID: 0}
   sprite: {fileID: 0}
   shieldSprite: {fileID: 0}
+  playerCollider: {fileID: 0}
   dodgeDirection: 0
   pressedDodge: 0
   maxDodgeTimer: 0.5

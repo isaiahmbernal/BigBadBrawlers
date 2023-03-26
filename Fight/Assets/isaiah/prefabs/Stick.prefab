@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7163639123455876750}
   - component: {fileID: 4326975067192071379}
   - component: {fileID: 5112083665207196348}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Platform-Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 7855267590849627847}
   - component: {fileID: 2927736119273693793}
   - component: {fileID: 7508358751689519743}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Platform-Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

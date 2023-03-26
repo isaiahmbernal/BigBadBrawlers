@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 1062743510}
   - component: {fileID: 1062743512}
   - component: {fileID: 1062743511}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Stage
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 1603048636}
   - component: {fileID: 1603048635}
   - component: {fileID: 1603048637}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,8 +785,8 @@ MonoBehaviour:
   playerNum: 2
   playerPrefabs:
   - {fileID: 5980050846720261110, guid: 9b5d5e0586a9f4cebae2e813608dfb10, type: 3}
-  - {fileID: 5980050846720261110, guid: 8b8867ad954434325bf6e82560256a5b, type: 3}
   - {fileID: 5980050846720261110, guid: 32378b70b0e104c0bb8e4427f26e2b6b, type: 3}
+  - {fileID: 5980050846720261110, guid: 8b8867ad954434325bf6e82560256a5b, type: 3}
   - {fileID: 5980050846720261110, guid: fc04dfd2d324a4829b73a1ba44bb1bc8, type: 3}
   playerList: []
   hudPrefab: {fileID: 4415992327253317129, guid: ae590870514c248f19747db35adb51c6, type: 3}

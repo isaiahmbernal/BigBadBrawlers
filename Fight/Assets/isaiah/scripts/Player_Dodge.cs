@@ -8,6 +8,7 @@ public class Player_Dodge : MonoBehaviour
     public Rigidbody2D rb2d;
     public SpriteRenderer sprite;
     public SpriteRenderer shieldSprite;
+    public Collider2D playerCollider;
 
     public int dodgeDirection;
     public bool pressedDodge;
@@ -23,6 +24,7 @@ public class Player_Dodge : MonoBehaviour
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
         shieldSprite = transform.Find("Shield").GetComponent<SpriteRenderer>();
+        playerCollider = transform.Find("Player-Collider").GetComponent<Collider2D>();
 
         dodgeDirection = 0;
         pressedDodge = false;
@@ -205,6 +207,7 @@ public class Player_Dodge : MonoBehaviour
         anim.SetBool("canMove", false);
         sprite.color = new Color(255f, 255f, 255f, .3f);
         shieldSprite.enabled = false;
+        playerCollider.enabled = false;
 
         rb2d.gravityScale = myGravity / 2;
         rb2d.velocity = new Vector2(0f, 0f);
@@ -289,5 +292,6 @@ public class Player_Dodge : MonoBehaviour
         currDodgeTimer = maxDodgeTimer;
         rb2d.velocity = new Vector2(0f, 0f);
         rb2d.gravityScale = myGravity;
+        playerCollider.enabled = true;
     }
 }
