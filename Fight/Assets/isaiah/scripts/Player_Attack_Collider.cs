@@ -36,7 +36,7 @@ public class Player_Attack_Collider : MonoBehaviour
         // Debug.Log("Hitting " + enemy.name);
         float currentDamage = 0f;
 
-        Animator enemyAnim = enemy.GetComponent<Animator>();
+        Animator enemyAnim = enemy.GetComponentInParent<Animator>();
 
         if (!enemyAnim.GetBool("isDodging"))
         {
@@ -52,7 +52,7 @@ public class Player_Attack_Collider : MonoBehaviour
             currentDamage = enemyAnim.GetFloat("Health");
             enemyAnim.SetBool("wasHit", true);
 
-            Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
+            Rigidbody2D enemyRB = enemy.GetComponentInParent<Rigidbody2D>();
 
             // KNOCKBACK
             switch (gameObject.name)

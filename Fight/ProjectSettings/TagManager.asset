@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
-  - Player_Head
   - Attack_Collider
   - World_Border
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -16,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Background
-  - 
-  - 
+  - Platforms
+  - Players
   - 
   - 
   - 

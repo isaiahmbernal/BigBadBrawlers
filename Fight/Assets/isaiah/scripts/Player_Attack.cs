@@ -144,8 +144,9 @@ public class Player_Attack : MonoBehaviour
 
     if (anim.GetBool("isGrounded"))
     {
-      anim.SetBool("canMove", false);
+      anim.SetBool("canMove", false);  
     }
+    anim.SetBool("canTurn", false);
     anim.SetBool("isAttacking", true);
     // Player_Movement.rb2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
     if (anim.GetInteger("Look") == 0)
@@ -208,5 +209,6 @@ public class Player_Attack : MonoBehaviour
 
     anim.SetBool("isAttacking", false);
     anim.SetBool("canMove", true);
+    anim.SetBool("canTurn", true);
   }
 }

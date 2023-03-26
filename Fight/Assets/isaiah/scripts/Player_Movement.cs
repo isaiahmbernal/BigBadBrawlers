@@ -7,6 +7,7 @@ public class Player_Movement : MonoBehaviour
   public Rigidbody2D rb2d;
   private Animator anim;
   private SpriteRenderer sprite;
+  public Collider2D platformCollider;
   public float moveSpeed;
   public float myGravity;
   public int maxJumps;
@@ -22,6 +23,7 @@ public class Player_Movement : MonoBehaviour
     rb2d = gameObject.GetComponent<Rigidbody2D>();
     anim = gameObject.GetComponent<Animator>();
     sprite = gameObject.GetComponent<SpriteRenderer>();
+    platformCollider = transform.Find("Platform-Collider").GetComponent<Collider2D>();
     
     jumpTimerMax = .2f;
     jumpTimer = jumpTimerMax;
@@ -31,7 +33,6 @@ public class Player_Movement : MonoBehaviour
 
     myGravity = rb2d.gravityScale;
     rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-    anim.SetBool("isRunning", false);
   }
 
   private void Update()
@@ -91,6 +92,11 @@ public class Player_Movement : MonoBehaviour
       else if (Input.GetAxis("Player_One_Vertical") < 0 && anim.GetInteger("Look") >= 0 && !anim.GetBool("isAttacking"))
       {
         anim.SetInteger("Look", -1);
+
+        if (anim.GetBool("isPlatformed"))
+        {
+          platformCollider.enabled = false;
+        }
       }
 
       // HORIZONTAL MOVEMENT
@@ -125,6 +131,11 @@ public class Player_Movement : MonoBehaviour
       else if (Input.GetAxis("Player_Two_Vertical") < 0 && anim.GetInteger("Look") >= 0 && !anim.GetBool("isAttacking"))
       {
         anim.SetInteger("Look", -1);
+
+        if (anim.GetBool("isPlatformed"))
+        {
+          platformCollider.enabled = false;
+        }
       }
 
       // HORIZONTAL MOVEMENT
@@ -160,6 +171,11 @@ public class Player_Movement : MonoBehaviour
       else if (Input.GetAxis("Player_Three_Vertical") < 0 && anim.GetInteger("Look") >= 0 && !anim.GetBool("isAttacking"))
       {
         anim.SetInteger("Look", -1);
+
+        if (anim.GetBool("isPlatformed"))
+        {
+          platformCollider.enabled = false;
+        }
       }
 
       // HORIZONTAL MOVEMENT
@@ -195,6 +211,11 @@ public class Player_Movement : MonoBehaviour
       else if (Input.GetAxis("Player_Four_Vertical") < 0 && anim.GetInteger("Look") >= 0 && !anim.GetBool("isAttacking"))
       {
         anim.SetInteger("Look", -1);
+
+        if (anim.GetBool("isPlatformed"))
+        {
+          platformCollider.enabled = false;
+        }
       }
 
       // HORIZONTAL MOVEMENT
@@ -230,12 +251,12 @@ public class Player_Movement : MonoBehaviour
       anim.SetBool("isAscending", true);
     }
 
-    if (movement.x > 0 && anim.GetInteger("Direction") != 1 && anim.GetBool("canMove"))
+    if (movement.x > 0 && anim.GetInteger("Direction") != 1 && anim.GetBool("canTurn"))
     {
       anim.SetInteger("Direction", 1);
       sprite.flipX = false;
     }
-    else if (movement.x < 0 && anim.GetInteger("Direction") != -1 && anim.GetBool("canMove"))
+    else if (movement.x < 0 && anim.GetInteger("Direction") != -1 && anim.GetBool("canTurn"))
     {
       anim.SetInteger("Direction", -1);
       sprite.flipX = true;
@@ -254,6 +275,7 @@ public class Player_Movement : MonoBehaviour
     rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
     pressedJump = false;
     startJumpTimer = true;
+    platformCollider.enabled = false;
   }
 
   private void StopJump()
@@ -263,17 +285,20 @@ public class Player_Movement : MonoBehaviour
     jumpTimer = jumpTimerMax;
     startJumpTimer = false;
     anim.SetBool("isJumping", false);
+    // platformCollider.enabled = true;
   }
 
   private void OnCollisionEnter2D(Collision2D other)
   {
-    if (other.transform.tag == "Floor")
+
+    if (other.transform.tag == "Floor" && !anim.GetBool("isJumping") && (other.transform.position.y < gameObject.transform.position.y))
     {
-      // Debug.Log("Collided with FLOOR");
-      rb2d.velocity = new Vector3(rb2d.velocity.x, 0f, 0f);
+      Debug.Log("Collided with FLOOR");
+      // rb2d.velocity = new Vector3(rb2d.velocity.x, 0f, 0f);
       anim.SetInteger("Jumps", maxJumps);
       anim.SetInteger("Lights", 3);
       anim.SetBool("isGrounded", true);
+      platformCollider.enabled = true;
     }
   }
 
@@ -281,8 +306,42 @@ public class Player_Movement : MonoBehaviour
   {
     if (other.transform.tag == "Floor")
     {
-      // Debug.Log("No longer touching FLOOR");
+      anim.SetBool("isPlatformed", false);
       anim.SetBool("isGrounded", false);
     }
   }
+
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.transform.tag == "Platform" && !anim.GetBool("isJumping") && (other.transform.position.y < gameObject.transform.position.y))
+    {
+      Debug.Log("Collided with PLATFORM");
+      // rb2d.velocity = new Vector3(rb2d.velocity.x, 0f, 0f);
+      anim.SetInteger("Jumps", maxJumps);
+      anim.SetInteger("Lights", 3);
+      anim.SetBool("isGrounded", true);
+      anim.SetBool("isPlatformed", true);
+      platformCollider.enabled = true;
+    }
+
+    else if (other.transform.tag == "Floor" && !anim.GetBool("isJumping") && (other.transform.position.y < gameObject.transform.position.y))
+    {
+      Debug.Log("Collided with FLOOR");
+      // rb2d.velocity = new Vector3(rb2d.velocity.x, 0f, 0f);
+      anim.SetInteger("Jumps", maxJumps);
+      anim.SetInteger("Lights", 3);
+      anim.SetBool("isGrounded", true);
+      platformCollider.enabled = true;
+    }
+  }
+
+  private void OnTriggerExit2D(Collider2D other)
+  {
+    if (other.transform.tag == "Platform")
+    {
+      anim.SetBool("isPlatformed", false);
+      anim.SetBool("isGrounded", false);
+    }
+  }
+
 }
