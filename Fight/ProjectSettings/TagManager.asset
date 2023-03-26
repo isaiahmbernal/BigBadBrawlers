@@ -19,15 +19,15 @@ TagManager:
   - Platforms
   - Players
   - Player-Tracking
-  - 
+  - Stage
   - Proto-Platform
   - Momo-Platform
   - Boxer-Platform
   - Stick-Platform
-  - 
-  - 
-  - 
-  - 
+  - Proto-Stage
+  - Momo-Stage
+  - Boxer-Stage
+  - Stick-Stage
   - 
   - 
   - 

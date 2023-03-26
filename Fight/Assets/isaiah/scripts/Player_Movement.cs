@@ -323,16 +323,6 @@ public class Player_Movement : MonoBehaviour
       anim.SetBool("isPlatformed", true);
       platformCollider.enabled = true;
     }
-
-    else if (other.transform.tag == "Floor" && !anim.GetBool("isJumping") && (other.transform.position.y < gameObject.transform.position.y))
-    {
-      Debug.Log("Collided with FLOOR");
-      // rb2d.velocity = new Vector3(rb2d.velocity.x, 0f, 0f);
-      anim.SetInteger("Jumps", maxJumps);
-      anim.SetInteger("Lights", 3);
-      anim.SetBool("isGrounded", true);
-      platformCollider.enabled = true;
-    }
   }
 
   private void OnTriggerExit2D(Collider2D other)
