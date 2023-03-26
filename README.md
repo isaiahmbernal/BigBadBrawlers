@@ -50,3 +50,8 @@ https://youtu.be/29uHZkk3t28
 Proper Passthrough Dodging:
 
 https://youtu.be/fb9w3pEMKHk
+
+[March 26, 2023]
+Scuffed Controller Input:
+
+https://youtu.be/gASd-pVoJfU
