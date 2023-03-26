@@ -40,3 +40,13 @@ https://youtu.be/ueot_UhkNAc
 Prototype v0.0.1
 
 https://youtu.be/35bxiK3PHLo
+
+[March 25, 2023]
+Jump Through Platforms:
+
+https://youtu.be/29uHZkk3t28
+
+[March 25, 2023]
+Proper Passthrough Dodging:
+
+https://youtu.be/fb9w3pEMKHk
