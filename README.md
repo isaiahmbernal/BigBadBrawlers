@@ -55,3 +55,8 @@ https://youtu.be/fb9w3pEMKHk
 Scuffed Controller Input:
 
 https://youtu.be/gASd-pVoJfU
+
+[March 26, 2023]
+State of Animations:
+
+https://youtu.be/DANLRivr2Ws
