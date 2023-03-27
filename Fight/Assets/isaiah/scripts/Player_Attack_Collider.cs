@@ -21,8 +21,8 @@ public class Player_Attack_Collider : MonoBehaviour
     sprite.color = new Color(0f, 0f, 0f, .1f);
 
     // damage = 5f;
-    xAttackForce = damage * 0.30f;
-    yAttackForce = damage * 0.70f;
+    xAttackForce = damage * .60f;
+    yAttackForce = damage * .70f;
   }
 
   public void HurtEnemy()
@@ -58,20 +58,20 @@ public class Player_Attack_Collider : MonoBehaviour
             switch (gameObject.name)
             {
               case "R-Attack":
-                enemyRB.velocity = new Vector3 (xAttackForce + (currentDamage / 45), enemyRB.velocity.y, 0f);
-                Debug.Log("Hit For " + (xAttackForce + (currentDamage / 45)));
+                enemyRB.velocity = new Vector3 (xAttackForce + (currentDamage / 30), enemyRB.velocity.y, 0f);
+                // Debug.Log("Hit For " + (xAttackForce + (currentDamage / 30)));
                 break;
               case "L-Attack":
-                enemyRB.velocity = new Vector3 (-xAttackForce - (currentDamage / 45), enemyRB.velocity.y, 0f);
-                Debug.Log("Hit For " + (xAttackForce + (currentDamage / 45)));
+                enemyRB.velocity = new Vector3 (-xAttackForce - (currentDamage / 30), enemyRB.velocity.y, 0f);
+                // Debug.Log("Hit For " + (xAttackForce + (currentDamage / 30)));
                 break;
               case "U-Attack":
-                enemyRB.velocity = new Vector3 (enemyRB.velocity.x, yAttackForce + (currentDamage / 45), 0f);
-                Debug.Log("Hit For " + (yAttackForce + (currentDamage / 45)));
+                enemyRB.velocity = new Vector3 (enemyRB.velocity.x, yAttackForce + (currentDamage / 30), 0f);
+                // Debug.Log("Hit For " + (yAttackForce + (currentDamage / 30)));
                 break;
               case "D-Attack":
-                enemyRB.velocity = new Vector3 (enemyRB.velocity.x, -yAttackForce - (currentDamage / 45), 0f);
-                Debug.Log("Hit For " + (yAttackForce - (currentDamage / 45)));
+                enemyRB.velocity = new Vector3 (enemyRB.velocity.x, -yAttackForce - (currentDamage / 30), 0f);
+                // Debug.Log("Hit For " + (yAttackForce - (currentDamage / 30)));
                 break;
             }
           }

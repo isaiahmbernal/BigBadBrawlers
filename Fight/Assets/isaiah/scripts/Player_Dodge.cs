@@ -40,7 +40,7 @@ public class Player_Dodge : MonoBehaviour
         if (gameObject.name == "Player_One")
         {
             if (
-                Input.GetButtonDown("Player_One_Horizontal")
+                Input.GetAxis("Player_One_Horizontal") != 0
                 && anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && anim.GetBool("isGrounded")
@@ -75,7 +75,7 @@ public class Player_Dodge : MonoBehaviour
         else if (gameObject.name == "Player_Two")
         {
             if (
-                Input.GetButtonDown("Player_Two_Horizontal")
+                Input.GetAxis("Player_Two_Horizontal") != 0
                 && anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && anim.GetBool("isGrounded")
@@ -110,7 +110,7 @@ public class Player_Dodge : MonoBehaviour
         else if (gameObject.name == "Player_Three")
         {
             if (
-                Input.GetButtonDown("Player_Three_Horizontal")
+                Input.GetAxis("Player_Three_Horizontal") != 0
                 && anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && anim.GetBool("isGrounded")
@@ -145,7 +145,7 @@ public class Player_Dodge : MonoBehaviour
         else if (gameObject.name == "Player_Four")
         {
             if (
-                Input.GetButtonDown("Player_Four_Horizontal")
+                Input.GetAxis("Player_Four_Horizontal") != 0
                 && anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && anim.GetBool("isGrounded")

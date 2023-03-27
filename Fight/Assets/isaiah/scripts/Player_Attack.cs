@@ -164,12 +164,12 @@ public class Player_Attack : MonoBehaviour
     }
     else
     {
-      if (anim.GetInteger("Look") > 0)
+      if (anim.GetInteger("Look") == 1)
       {
         uAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
         uAttack.HurtEnemy();
       }
-      else if (anim.GetInteger("Look") < 0)
+      else if (anim.GetInteger("Look") == -1)
       {
         dAttack.sprite.color = new Color(255f, 0f, 0f, .3f);
         dAttack.HurtEnemy();
@@ -197,11 +197,11 @@ public class Player_Attack : MonoBehaviour
     }
     else
     {
-      if (anim.GetInteger("Look") > 0)
+      if (anim.GetInteger("Look") == 1)
       {
         uAttack.sprite.color = new Color(0f, 0, 0f, .1f);
       }
-      else if (anim.GetInteger("Look") < 0)
+      else if (anim.GetInteger("Look") == -1)
       {
         dAttack.sprite.color = new Color(0f, 0, 0f, .1f);
       }

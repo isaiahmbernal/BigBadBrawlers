@@ -703,7 +703,7 @@ MonoBehaviour:
   lAttack: {fileID: 0}
   uAttack: {fileID: 0}
   dAttack: {fileID: 0}
-  lightTimerMax: 0.3
+  lightTimerMax: 0.5
   lightTimer: 0
 --- !u!114 &1293397792272314238
 MonoBehaviour:

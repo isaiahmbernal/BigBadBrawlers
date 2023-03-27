@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 5980050846720261113}
   - component: {fileID: 5980050846720261114}
   - component: {fileID: 5980050846720261115}
-  - component: {fileID: 1255982599968702720}
+  - component: {fileID: 7785948635493504037}
   - component: {fileID: 2786250096121001276}
   - component: {fileID: 8420047659818313407}
   m_Layer: 8
@@ -721,9 +721,9 @@ MonoBehaviour:
   lAttack: {fileID: 0}
   uAttack: {fileID: 0}
   dAttack: {fileID: 0}
-  lightTimerMax: 0.4
-  lightTimer: 0
---- !u!114 &1255982599968702720
+  lightTimerMax: 0.8
+  lightTimer: 0.8
+--- !u!114 &7785948635493504037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
