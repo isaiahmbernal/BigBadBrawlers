@@ -60,3 +60,9 @@ https://youtu.be/gASd-pVoJfU
 State of Animations:
 
 https://youtu.be/DANLRivr2Ws
+
+
+[April 04, 2023]
+Character Select + Game HUD:
+
+https://youtu.be/ISzS2hvvZ18
