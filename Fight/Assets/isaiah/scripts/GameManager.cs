@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
-  public int playerNum;
-  public Object[] playerPrefabs;
+  public int playerNum = 2;
   public List<GameObject> playerList;
+  public Transform playerOneLives;
+  public Transform playerTwoLives;
+  public GameObject momoPrefab;
+  public GameObject boxerPrefab;
+  public GameObject stickPrefab;
   public GameObject hudPrefab;
   public GameObject canvas;
   public Sprite[] indicatorList;
@@ -16,6 +19,7 @@ public class GameManager : MonoBehaviour
   void Awake()
   {
     canvas = GameObject.Find("Canvas");
+
     playerList = new List<GameObject>();
     // playerPrefabs = Resources.LoadAll("characters", typeof(GameObject));
     // indicatorList = Resources.LoadAll("indicators", typeof(Sprite));
@@ -23,72 +27,59 @@ public class GameManager : MonoBehaviour
 
     for (int i = 0; i < playerNum; i += 1)
     {
-      // Debug.Log("i: " + i);
-      // GameObject player = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/isaiah/prefabs/Proto", typeof(GameObject));
-      // GameObject player = Resources.Load("Proto.prefab");
-      Object prefab = playerPrefabs[i];
+      Object charPrefab;
       GameObject player;
-      GameObject HUD;
+      // GameObject HUD;
       switch (i)
       {
         case 0:
-          player = (GameObject)Instantiate(prefab, new Vector3(-1, 0, 1), Quaternion.identity);
+
+          charPrefab = momoPrefab;
+
+          if (PlayerPrefs.GetString("Player_One_Character") == "Momo") {
+            charPrefab = momoPrefab;
+          } else if (PlayerPrefs.GetString("Player_One_Character") == "Boxer") {
+            charPrefab = boxerPrefab;
+          } else if (PlayerPrefs.GetString("Player_One_Character") == "Stick") {
+            charPrefab = stickPrefab;
+          }
+
+          player = (GameObject)Instantiate(charPrefab, new Vector3(-1, 0, 1), Quaternion.identity);
           player.name = "Player_One";
           player.transform.Find("Indicator").GetComponent<SpriteRenderer>().sprite = indicatorList[i];
           playerList.Add(player);
           Debug.Log("Player One Spawned");
 
-          HUD = Instantiate(hudPrefab);
-          HUD.name = "Player_One_HUD";
-          HUD.transform.SetParent(canvas.transform);
-          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(-100f, 100f, 0f);
-          Debug.Log("Player One HUD Created");
           break;
+
         case 1:
-          player = (GameObject)Instantiate(prefab, new Vector3(1, 0, 1), Quaternion.identity);
+
+          charPrefab = momoPrefab;
+          
+          if (PlayerPrefs.GetString("Player_Two_Character") == "Momo") {
+            charPrefab = momoPrefab;
+          } else if (PlayerPrefs.GetString("Player_Two_Character") == "Boxer") {
+            charPrefab = boxerPrefab;
+          } else if (PlayerPrefs.GetString("Player_Two_Character") == "Stick") {
+            charPrefab = stickPrefab;
+          }
+          
+          player = (GameObject)Instantiate(charPrefab, new Vector3(1, 0, 1), Quaternion.identity);
           player.name = "Player_Two";
           player.transform.Find("Indicator").GetComponent<SpriteRenderer>().sprite = indicatorList[i];
           playerList.Add(player);
           Debug.Log("Player Two Spawned");
 
-          HUD = Instantiate(hudPrefab);
-          HUD.name = "Player_Two_HUD";
-          HUD.transform.SetParent(canvas.transform);
-          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(100f, 100f, 0f);
-          Debug.Log("Player Two HUD Created");
           break;
-        case 2:
-          player = (GameObject)Instantiate(prefab, new Vector3(-1, 1, 1), Quaternion.identity);
-          player.name = "Player_Three";
-          player.transform.Find("Indicator").GetComponent<SpriteRenderer>().sprite = indicatorList[i];
-          playerList.Add(player);
-          Debug.Log("Player Three Spawned");
 
-          HUD = Instantiate(hudPrefab);
-          HUD.name = "Player_Three_HUD";
-          HUD.transform.SetParent(canvas.transform);
-          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(-300f, 100f, 0f);
-          Debug.Log("Player Three HUD Created");
-          break;
-        case 3:
-          player = (GameObject)Instantiate(prefab, new Vector3(1, 1, 1), Quaternion.identity);
-          player.name = "Player_Four";
-          player.transform.Find("Indicator").GetComponent<SpriteRenderer>().sprite = indicatorList[i];
-          playerList.Add(player);
-          Debug.Log("Player Four Spawned");
-          
-          HUD = Instantiate(hudPrefab);
-          HUD.name = "Player_Four_HUD";
-          HUD.transform.SetParent(canvas.transform);
-          HUD.GetComponent<RectTransform>().anchoredPosition = new Vector3(300f, 100f, 0f);
-          Debug.Log("Player Four HUD Created");
-          break;
       }
     }
   }
 
   void Start()
   {
+    Debug.Log("Player One: " + PlayerPrefs.GetString("Player_One_Character"));
+    Debug.Log("Player Two: " + PlayerPrefs.GetString("Player_Two_Character"));
     Application.targetFrameRate = 60;
   }
 
@@ -104,10 +95,27 @@ public class GameManager : MonoBehaviour
   {
     if (other.gameObject.tag == "Player")
     {
-      Animator otherAnim = other.gameObject.GetComponentInParent<Animator>();
+      // Debug.Log("Player Dieded");
+      Animator otherAnim = other.gameObject.GetComponent<Animator>();
+      int currLives = otherAnim.GetInteger("Lives");
+      if (currLives == 0) {
+        Debug.Log("Game Over");
+        otherAnim.SetFloat("Health", 0);
+        otherAnim.transform.position = new Vector3(0, 0, 1);
+        return;
+      }
       otherAnim.SetInteger("Lives", otherAnim.GetInteger("Lives") - 1);
       otherAnim.transform.position = new Vector3(0, 0, 1);
-      Debug.Log("Brruh");
+      // Debug.Log(other.gameObject.name);
+      if (other.gameObject.name == "Player_One") {
+        Debug.Log("Player One Lost Life");
+        otherAnim.SetFloat("Health", 0);
+        Destroy(playerOneLives.GetChild(0).gameObject);
+      } else if (other.gameObject.name == "Player_Two") {
+        Debug.Log("Player Two Lost Life");
+        otherAnim.SetFloat("Health", 0);
+        Destroy(playerTwoLives.GetChild(0).gameObject);
+      }
     }
   }
 }

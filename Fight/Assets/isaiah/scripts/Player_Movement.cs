@@ -85,14 +85,15 @@ public class Player_Movement : MonoBehaviour
                 releasedJump = true;
             }
 
-            if (Input.GetAxis("Player_One_Vertical") != 0)
-            {
-              Debug.Log("Vertical: " + Input.GetAxis("Player_One_Vertical"));
-            }
+            // if (Input.GetAxis("Player_One_Vertical_Controller") != 0)
+            // {
+            //   Debug.Log("Vertical: " + Input.GetAxis("Player_One_Vertical_Controller"));
+            // }
 
             // LOOK UP AND DOWN
             if (
-                Input.GetAxis("Player_One_Vertical") == 1f
+                (Input.GetAxis("Player_One_Vertical_Controller") == 1f
+                || Input.GetAxis("Player_One_Vertical_Keyboard") == 1f)
                 && anim.GetInteger("Look") <= 0
                 && !anim.GetBool("isAttacking")
             )
@@ -101,7 +102,8 @@ public class Player_Movement : MonoBehaviour
                 anim.SetInteger("Look", 1);
             }
             else if (
-                Input.GetAxis("Player_One_Vertical") == 0
+                (Input.GetAxis("Player_One_Vertical_Controller") == 0
+                && Input.GetAxis("Player_One_Vertical_Keyboard") == 0)
                 && anim.GetInteger("Look") != 0
                 && !anim.GetBool("isAttacking")
             )
@@ -109,7 +111,8 @@ public class Player_Movement : MonoBehaviour
                 anim.SetInteger("Look", 0);
             }
             else if (
-                Input.GetAxis("Player_One_Vertical") == -1f
+                (Input.GetAxis("Player_One_Vertical_Controller") == -1f
+                || Input.GetAxis("Player_One_Vertical_Keyboard") == -1f)
                 && anim.GetInteger("Look") >= 0
                 && !anim.GetBool("isAttacking")
             )
@@ -126,7 +129,11 @@ public class Player_Movement : MonoBehaviour
             // HORIZONTAL MOVEMENT
             if (anim.GetBool("canMove"))
             {
-                movement = new Vector3(Input.GetAxis("Player_One_Horizontal"), 0f, 0f);
+                if (Input.GetAxis("Player_One_Horizontal_Controller") != 0f) {
+                    movement = new Vector3(Input.GetAxis("Player_One_Horizontal_Controller"), 0f, 0f);
+                } else {
+                    movement = new Vector3(Input.GetAxis("Player_One_Horizontal_Keyboard"), 0f, 0f);
+                }
             }
         }
         else if (gameObject.name == "Player_Two")
@@ -145,14 +152,15 @@ public class Player_Movement : MonoBehaviour
                 releasedJump = true;
             }
 
-            if (Input.GetAxis("Player_Two_Vertical") != 0)
-            {
-              Debug.Log("Vertical: " + Input.GetAxis("Player_Two_Vertical"));
-            }
+            // if (Input.GetAxis("Player_Two_Vertical_Controller") != 0)
+            // {
+            //   Debug.Log("Vertical: " + Input.GetAxis("Player_Two_Vertical_Controller"));
+            // }
 
             // LOOK UP AND DOWN
             if (
-                Input.GetAxis("Player_Two_Vertical") == 1f
+                (Input.GetAxis("Player_Two_Vertical_Controller") == 1f
+                || Input.GetAxis("Player_Two_Vertical_Keyboard") == 1f)
                 && anim.GetInteger("Look") <= 0
                 && !anim.GetBool("isAttacking")
             )
@@ -160,7 +168,8 @@ public class Player_Movement : MonoBehaviour
                 anim.SetInteger("Look", 1);
             }
             else if (
-                Input.GetAxis("Player_Two_Vertical") == 0
+                (Input.GetAxis("Player_Two_Vertical_Controller") == 0
+                && Input.GetAxis("Player_Two_Vertical_Keyboard") == 0)
                 && anim.GetInteger("Look") != 0
                 && !anim.GetBool("isAttacking")
             )
@@ -168,7 +177,8 @@ public class Player_Movement : MonoBehaviour
                 anim.SetInteger("Look", 0);
             }
             else if (
-                Input.GetAxis("Player_Two_Vertical") == -1f
+                (Input.GetAxis("Player_Two_Vertical_Controller") == -1f
+                || Input.GetAxis("Player_Two_Vertical_Keyboard") == -1f)
                 && anim.GetInteger("Look") >= 0
                 && !anim.GetBool("isAttacking")
             )
@@ -184,123 +194,11 @@ public class Player_Movement : MonoBehaviour
             // HORIZONTAL MOVEMENT
             if (anim.GetBool("canMove"))
             {
-                movement = new Vector3(Input.GetAxis("Player_Two_Horizontal"), 0f, 0f);
-            }
-        }
-        else if (gameObject.name == "Player_Three")
-        {
-            // JUMP
-            if (
-                Input.GetButtonDown("Player_Three_Jump")
-                && anim.GetInteger("Jumps") > 0
-                && anim.GetBool("canMove")
-            )
-            {
-                pressedJump = true;
-            }
-            if (Input.GetButtonUp("Player_Three_Jump"))
-            {
-                releasedJump = true;
-            }
-
-            if (Input.GetAxis("Player_Three_Vertical") != 0)
-            {
-              Debug.Log("Vertical: " + Input.GetAxis("Player_Three_Vertical"));
-            }
-
-            // LOOK UP AND DOWN
-            if (
-                Input.GetAxis("Player_Three_Vertical") == 1f
-                && anim.GetInteger("Look") <= 0
-                && !anim.GetBool("isAttacking")
-            )
-            {
-                anim.SetInteger("Look", 1);
-            }
-            else if (
-                Input.GetAxis("Player_Three_Vertical") == 0
-                && anim.GetInteger("Look") != 0
-                && !anim.GetBool("isAttacking")
-            )
-            {
-                anim.SetInteger("Look", 0);
-            }
-            else if (
-                Input.GetAxis("Player_Three_Vertical") == -1f
-                && anim.GetInteger("Look") >= 0
-                && !anim.GetBool("isAttacking")
-            )
-            {
-                anim.SetInteger("Look", -1);
-
-                if (anim.GetBool("isPlatformed"))
-                {
-                    platformCollider.enabled = false;
+                if (Input.GetAxis("Player_Two_Horizontal_Controller") != 0f) {
+                    movement = new Vector3(Input.GetAxis("Player_Two_Horizontal_Controller"), 0f, 0f);
+                } else {
+                    movement = new Vector3(Input.GetAxis("Player_Two_Horizontal_Keyboard"), 0f, 0f);
                 }
-            }
-
-            // HORIZONTAL MOVEMENT
-            if (anim.GetBool("canMove"))
-            {
-                movement = new Vector3(Input.GetAxis("Player_Three_Horizontal"), 0f, 0f);
-            }
-        }
-        else if (gameObject.name == "Player_Four")
-        {
-            // JUMP
-            if (
-                Input.GetButtonDown("Player_Four_Jump")
-                && anim.GetInteger("Jumps") > 0
-                && anim.GetBool("canMove")
-            )
-            {
-                pressedJump = true;
-            }
-            if (Input.GetButtonUp("Player_Four_Jump"))
-            {
-                releasedJump = true;
-            }
-
-            if (Input.GetAxis("Player_Four_Vertical") != 0)
-            {
-              Debug.Log("Vertical: " + Input.GetAxis("Player_Four_Vertical"));
-            }
-
-            // LOOK UP AND DOWN
-            if (
-                Input.GetAxis("Player_Four_Vertical") == 1f
-                && anim.GetInteger("Look") <= 0
-                && !anim.GetBool("isAttacking")
-            )
-            {
-                anim.SetInteger("Look", 1);
-            }
-            else if (
-                Input.GetAxis("Player_Four_Vertical") == 0
-                && anim.GetInteger("Look") != 0
-                && !anim.GetBool("isAttacking")
-            )
-            {
-                anim.SetInteger("Look", 0);
-            }
-            else if (
-                Input.GetAxis("Player_Four_Vertical") == -1f
-                && anim.GetInteger("Look") >= 0
-                && !anim.GetBool("isAttacking")
-            )
-            {
-                anim.SetInteger("Look", -1);
-
-                if (anim.GetBool("isPlatformed"))
-                {
-                    platformCollider.enabled = false;
-                }
-            }
-
-            // HORIZONTAL MOVEMENT
-            if (anim.GetBool("canMove"))
-            {
-                movement = new Vector3(Input.GetAxis("Player_Four_Horizontal"), 0f, 0f);
             }
         }
 
@@ -383,7 +281,7 @@ public class Player_Movement : MonoBehaviour
             anim.SetInteger("Lights", 3);
             anim.SetBool("isGrounded", true);
             platformCollider.enabled = true;
-            if (anim.GetBool("isAttacking"))
+            if (anim.GetBool("isAttacking") || anim.GetBool("isCharging"))
             {
                 anim.SetBool("canMove", false);
             }
@@ -414,7 +312,7 @@ public class Player_Movement : MonoBehaviour
             anim.SetBool("isGrounded", true);
             anim.SetBool("isPlatformed", true);
             platformCollider.enabled = true;
-            if (anim.GetBool("isAttacking"))
+            if (anim.GetBool("isAttacking") || anim.GetBool("isCharging"))
             {
               anim.SetBool("canMove", false);
             }

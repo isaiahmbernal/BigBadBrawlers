@@ -40,14 +40,15 @@ public class Player_Dodge : MonoBehaviour
         if (gameObject.name == "Player_One")
         {
             if (
-                Input.GetAxis("Player_One_Horizontal") != 0
+                (Input.GetAxis("Player_One_Horizontal_Controller") != 0
+                || Input.GetAxis("Player_One_Horizontal_Keyboard") != 0)
                 && anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && anim.GetBool("isGrounded")
                 && !anim.GetBool("isAttacking")
             )
             {
-                if (Input.GetAxis("Player_One_Horizontal") > 0f)
+                if (Input.GetAxis("Player_One_Horizontal_Controller") > 0f || Input.GetAxis("Player_One_Horizontal_Keyboard") > 0f)
                 {
                     dodgeDirection = 1;
                 }
@@ -59,7 +60,7 @@ public class Player_Dodge : MonoBehaviour
             }
             
             else if (
-                // Input.GetButtonDown("Player_One_Horizontal")
+                // Input.GetButtonDown("Player_One_Horizontal_Controller")
                 Input.GetButtonDown("Player_One_Block")
                 && !anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
@@ -75,14 +76,15 @@ public class Player_Dodge : MonoBehaviour
         else if (gameObject.name == "Player_Two")
         {
             if (
-                Input.GetAxis("Player_Two_Horizontal") != 0
+                (Input.GetAxis("Player_Two_Horizontal_Controller") != 0
+                || Input.GetAxis("Player_Two_Horizontal_Keyboard") != 0)
                 && anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && anim.GetBool("isGrounded")
                 && !anim.GetBool("isAttacking")
             )
             {
-                if (Input.GetAxis("Player_Two_Horizontal") > 0f)
+                if (Input.GetAxis("Player_Two_Horizontal_Controller") > 0f || Input.GetAxis("Player_Two_Horizontal_Keyboard") > 0f)
                 {
                     dodgeDirection = 1;
                 }
@@ -94,78 +96,8 @@ public class Player_Dodge : MonoBehaviour
             }
             
             else if (
-                // Input.GetButtonDown("Player_Two_Horizontal")
+                // Input.GetButtonDown("Player_Two_Horizontal_Controller")
                 Input.GetButtonDown("Player_Two_Block")
-                && !anim.GetBool("isBlocking")
-                && !anim.GetBool("isDodging")
-                && !anim.GetBool("isGrounded")
-                && (anim.GetInteger("Jumps") != -1)
-            )
-            {
-                anim.SetInteger("Jumps", -1);
-                dodgeDirection = 0;
-                pressedDodge = true;
-            }
-        }
-        else if (gameObject.name == "Player_Three")
-        {
-            if (
-                Input.GetAxis("Player_Three_Horizontal") != 0
-                && anim.GetBool("isBlocking")
-                && !anim.GetBool("isDodging")
-                && anim.GetBool("isGrounded")
-                && !anim.GetBool("isAttacking")
-            )
-            {
-                if (Input.GetAxis("Player_Three_Horizontal") > 0f)
-                {
-                    dodgeDirection = 1;
-                }
-                else
-                {
-                    dodgeDirection = -1;
-                }
-                pressedDodge = true;
-            }
-            
-            else if (
-                // Input.GetButtonDown("Player_Three_Horizontal")
-                Input.GetButtonDown("Player_Three_Block")
-                && !anim.GetBool("isBlocking")
-                && !anim.GetBool("isDodging")
-                && !anim.GetBool("isGrounded")
-                && (anim.GetInteger("Jumps") != -1)
-            )
-            {
-                anim.SetInteger("Jumps", -1);
-                dodgeDirection = 0;
-                pressedDodge = true;
-            }
-        }
-        else if (gameObject.name == "Player_Four")
-        {
-            if (
-                Input.GetAxis("Player_Four_Horizontal") != 0
-                && anim.GetBool("isBlocking")
-                && !anim.GetBool("isDodging")
-                && anim.GetBool("isGrounded")
-                && !anim.GetBool("isAttacking")
-            )
-            {
-                if (Input.GetAxis("Player_Four_Horizontal") > 0f)
-                {
-                    dodgeDirection = 1;
-                }
-                else
-                {
-                    dodgeDirection = -1;
-                }
-                pressedDodge = true;
-            }
-            
-            else if (
-                // Input.GetButtonDown("Player_Four_Horizontal")
-                Input.GetButtonDown("Player_Four_Block")
                 && !anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && !anim.GetBool("isGrounded")
@@ -245,36 +177,6 @@ public class Player_Dodge : MonoBehaviour
         else if (gameObject.name == "Player_Two")
         {
             if (Input.GetButton("Player_Two_Block") && anim.GetBool("isGrounded"))
-            {
-                anim.SetBool("isBlocking", true);
-                anim.SetBool("canMove", false);
-                shieldSprite.enabled = true;
-            }
-            else
-            {
-                anim.SetBool("isBlocking", false);
-                anim.SetBool("canMove", true);
-                shieldSprite.enabled = false;
-            }
-        }
-        else if (gameObject.name == "Player_Three")
-        {
-            if (Input.GetButton("Player_Three_Block") && anim.GetBool("isGrounded"))
-            {
-                anim.SetBool("isBlocking", true);
-                anim.SetBool("canMove", false);
-                shieldSprite.enabled = true;
-            }
-            else
-            {
-                anim.SetBool("isBlocking", false);
-                anim.SetBool("canMove", true);
-                shieldSprite.enabled = false;
-            }
-        }
-        else if (gameObject.name == "Player_Four")
-        {
-            if (Input.GetButton("Player_Four_Block") && anim.GetBool("isGrounded"))
             {
                 anim.SetBool("isBlocking", true);
                 anim.SetBool("canMove", false);

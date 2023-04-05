@@ -64,32 +64,6 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
         releaseCharge = true;
       }
     }
-
-    if (gameObject.name == "Player_Three")
-    {
-      if (Input.GetButtonDown("Player_Three_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer)
-      {
-        pressedCharge = true;
-      }
-
-      if (Input.GetButtonUp("Player_Three_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer && isCharging == true)
-      {
-        releaseCharge = true;
-      }
-    }
-
-    if (gameObject.name == "Player_Four")
-    {
-      if (Input.GetButtonDown("Player_Four_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer)
-      {
-        pressedCharge = true;
-      }
-
-      if (Input.GetButtonUp("Player_Four_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer && isCharging == true)
-      {
-        releaseCharge = true;
-      }
-    }
   }
 
   void FixedUpdate()
@@ -138,7 +112,11 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
     isCharging = true;
     startChargeTimer = true;
     chargeStage = 1;
-    anim.SetBool("canMove", false);
+    if (anim.GetBool("isGrounded"))
+    {
+      anim.SetBool("canMove", false);
+    }
+    anim.SetBool("canTurn", false);
     anim.SetBool("isCharging", true);
     // Debug.Log("Start Charge");
   }
@@ -202,6 +180,7 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
     chargeTimer = 0f;
     chargeStage = 1;
     anim.SetBool("canMove", true);
+    anim.SetBool("canTurn", true);
     anim.SetBool("isCharging", false);
     timeSinceLastCharge = 0f;
     runLastChargeTimer = true;

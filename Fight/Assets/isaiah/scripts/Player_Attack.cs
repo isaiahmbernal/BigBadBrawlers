@@ -37,7 +37,7 @@ public class Player_Attack : MonoBehaviour
   {
     if (gameObject.name == "Player_One")
     {
-      if (Input.GetButtonDown("Player_One_Light") && anim.GetBool("isGrounded") && !anim.GetBool("isHurt") && !anim.GetBool("isAttacking") && !anim.GetBool("isBlocking"))
+      if (Input.GetButtonDown("Player_One_Light") && anim.GetBool("isGrounded") && !anim.GetBool("isHurt") && !anim.GetBool("isAttacking") && !anim.GetBool("isBlocking") && !anim.GetBool("isDodging"))
       {
         pressedLight = true;
       }
@@ -48,6 +48,7 @@ public class Player_Attack : MonoBehaviour
           && !anim.GetBool("isAttacking")
           && !anim.GetBool("isHurt")
           && !anim.GetBool("isBlocking")
+          && !anim.GetBool("isDodging")
           )
       {
         anim.SetInteger("Lights", anim.GetInteger("Lights") - 1);
@@ -57,7 +58,7 @@ public class Player_Attack : MonoBehaviour
 
     else if (gameObject.name == "Player_Two")
     {
-      if (Input.GetButtonDown("Player_Two_Light") && anim.GetBool("isGrounded") && !anim.GetBool("isHurt") && !anim.GetBool("isAttacking") && !anim.GetBool("isBlocking"))
+      if (Input.GetButtonDown("Player_Two_Light") && anim.GetBool("isGrounded") && !anim.GetBool("isHurt") && !anim.GetBool("isAttacking") && !anim.GetBool("isBlocking") && !anim.GetBool("isDodging"))
       {
         pressedLight = true;
       }
@@ -68,6 +69,7 @@ public class Player_Attack : MonoBehaviour
           && !anim.GetBool("isAttacking")
           && !anim.GetBool("isHurt")
           && !anim.GetBool("isBlocking")
+          && !anim.GetBool("isDodging")
           )
       {
         anim.SetInteger("Lights", anim.GetInteger("Lights") - 1);
@@ -75,45 +77,7 @@ public class Player_Attack : MonoBehaviour
       }
     }
 
-    else if (gameObject.name == "Player_Three")
-    {
-      if (Input.GetButtonDown("Player_Three_Light") && anim.GetBool("isGrounded") && !anim.GetBool("isHurt") && !anim.GetBool("isAttacking") && !anim.GetBool("isBlocking"))
-      {
-        pressedLight = true;
-      }
-      if (
-          Input.GetButtonDown("Player_Three_Light")
-          && !anim.GetBool("isGrounded")
-          && anim.GetInteger("Lights") > 0
-          && !anim.GetBool("isAttacking")
-          && !anim.GetBool("isHurt")
-          && !anim.GetBool("isBlocking")
-          )
-      {
-        anim.SetInteger("Lights", anim.GetInteger("Lights") - 1);
-        pressedLight = true;
-      }
-    }
-
-    else if (gameObject.name == "Player_Four")
-    {
-      if (Input.GetButtonDown("Player_Four_Light") && anim.GetBool("isGrounded") && !anim.GetBool("isHurt") && !anim.GetBool("isAttacking") && !anim.GetBool("isBlocking"))
-      {
-        pressedLight = true;
-      }
-      if (
-          Input.GetButtonDown("Player_Four_Light")
-          && !anim.GetBool("isGrounded")
-          && anim.GetInteger("Lights") > 0
-          && !anim.GetBool("isAttacking")
-          && !anim.GetBool("isHurt")
-          && !anim.GetBool("isBlocking")
-          )
-      {
-        anim.SetInteger("Lights", anim.GetInteger("Lights") - 1);
-        pressedLight = true;
-      }
-    }
+    
   }
 
   void FixedUpdate()

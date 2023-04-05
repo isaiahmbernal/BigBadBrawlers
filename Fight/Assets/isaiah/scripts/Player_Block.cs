@@ -46,6 +46,7 @@ public class Player_Block : MonoBehaviour
                 && !anim.GetBool("isAttacking")
                 && !anim.GetBool("isHurt")
                 && anim.GetBool("isGrounded")
+                && !anim.GetBool("isCharging")
             )
             {
                 anim.SetBool("isBlocking", true);
@@ -78,6 +79,7 @@ public class Player_Block : MonoBehaviour
                 && !anim.GetBool("isAttacking")
                 && !anim.GetBool("isHurt")
                 && anim.GetBool("isGrounded")
+                && !anim.GetBool("isCharging")
             )
             {
                 anim.SetBool("isBlocking", true);
@@ -110,6 +112,7 @@ public class Player_Block : MonoBehaviour
                 && !anim.GetBool("isAttacking")
                 && !anim.GetBool("isHurt")
                 && anim.GetBool("isGrounded")
+                && !anim.GetBool("isCharging")
             )
             {
                 anim.SetBool("isBlocking", true);
@@ -142,6 +145,7 @@ public class Player_Block : MonoBehaviour
                 && !anim.GetBool("isAttacking")
                 && !anim.GetBool("isHurt")
                 && anim.GetBool("isGrounded")
+                && !anim.GetBool("isCharging")
             )
             {
                 anim.SetBool("isBlocking", true);
