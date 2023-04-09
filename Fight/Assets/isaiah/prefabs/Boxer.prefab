@@ -405,6 +405,8 @@ MonoBehaviour:
   damage: 5
   xAttackForce: 0
   yAttackForce: 0
+  timeBeforeAttack: 0.3
+  isAttacking: 0
 --- !u!1 &5980050846720261110
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +619,6 @@ MonoBehaviour:
   rAttack: {fileID: 0}
   lAttack: {fileID: 0}
   uAttack: {fileID: 0}
-  dAttack: {fileID: 0}
   lightTimerMax: 0.5
   lightTimer: 0
 --- !u!114 &1293397792272314238
@@ -782,6 +783,8 @@ MonoBehaviour:
   damage: 3
   xAttackForce: 0
   yAttackForce: 0
+  timeBeforeAttack: 0.3
+  isAttacking: 0
 --- !u!1 &5980050847338079029
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,6 +904,8 @@ MonoBehaviour:
   damage: 3
   xAttackForce: 0
   yAttackForce: 0
+  timeBeforeAttack: 0.3
+  isAttacking: 0
 --- !u!1 &5980050847655989388
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5980050847655989387
 Transform:
   m_ObjectHideFlags: 0
@@ -1020,6 +1025,8 @@ MonoBehaviour:
   damage: 5
   xAttackForce: 0
   yAttackForce: 0
+  timeBeforeAttack: 0
+  isAttacking: 0
 --- !u!1 &6301170839922016589
 GameObject:
   m_ObjectHideFlags: 0

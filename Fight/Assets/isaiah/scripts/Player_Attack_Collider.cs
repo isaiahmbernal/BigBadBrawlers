@@ -12,6 +12,8 @@ public class Player_Attack_Collider : MonoBehaviour
   public float damage;
   public float xAttackForce;
   public float yAttackForce;
+  public float timeBeforeAttack;
+  public bool isAttacking;
 
   void Awake()
   {
@@ -24,10 +26,15 @@ public class Player_Attack_Collider : MonoBehaviour
     xAttackForce = damage * .60f;
     yAttackForce = damage * .70f;
   }
+  
+  public void StartHurt() {
+    StartCoroutine(HurtEnemy());
+  }
 
-  public void HurtEnemy()
+  public IEnumerator HurtEnemy()
   {
-    // Debug.Log("HurtEnemy()");
+    yield return new WaitForSeconds(timeBeforeAttack);
+
     if (enemies.Count != 0)
     {
       // Debug.Log("Enemies Found");
