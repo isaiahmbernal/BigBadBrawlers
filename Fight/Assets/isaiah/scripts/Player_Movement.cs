@@ -290,7 +290,7 @@ public class Player_Movement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.transform.tag == "Floor")
+        if (other.transform.tag == "Floor" || other.transform.tag == "Platform")
         {
             anim.SetBool("isPlatformed", false);
             anim.SetBool("isGrounded", false);
