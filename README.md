@@ -61,8 +61,19 @@ State of Animations:
 
 https://youtu.be/DANLRivr2Ws
 
-
 [April 04, 2023]
 Character Select + Game HUD:
 
 https://youtu.be/ISzS2hvvZ18
+
+[April 09, 2023] Home Screen + Map Selection:
+
+https://youtu.be/l21deI7F81g
+
+[April 09, 2023] Time Attacks w/ Animations:
+
+https://youtu.be/H1pGjFwdHNI
+
+[April 09, 2023] State of the Game:
+
+https://youtu.be/FA7UH8cUTps
