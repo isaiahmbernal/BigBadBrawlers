@@ -50,6 +50,7 @@ public class Player_Health : MonoBehaviour
     anim.SetBool("wasHit", false);
     isHurt = true;
     anim.SetBool("canMove", false);
+    anim.SetBool("canTurn", false);
     anim.SetBool("isHurt", true);
     startHurtTimer = true;
     Debug.Log(gameObject.name + ": I was hit!");
@@ -62,6 +63,7 @@ public class Player_Health : MonoBehaviour
     hurtTimer = hurtTimerMax;
     anim.SetBool("isHurt", false);
     anim.SetBool("canMove", true);
+    anim.SetBool("canTurn", true);
     sprite.color = new Color(255, 255, 255);
   }
 }

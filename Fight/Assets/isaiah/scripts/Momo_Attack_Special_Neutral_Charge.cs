@@ -19,6 +19,9 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
   public float speed1;
   public float speed2;
   public float speed3;
+  public float chargeRecoveryTime;
+  public Transform rEnergyBlastPoint;
+  public Transform lEnergyBlastPoint;
 
   void Awake()
   {
@@ -29,12 +32,16 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
     releaseCharge = false;
     chargeTimer = 0f;
     startChargeTimer = false;
-    chargeStage = 1;
     timeSinceLastCharge = 0f;
     runLastChargeTimer = false;
     speed1 = 100f;
     speed2 = 200f;
     speed3 = 300f;
+
+    chargeRecoveryTime = 0.5f;
+
+    rEnergyBlastPoint = gameObject.transform.Find("R-EnergyBlastPoint");
+    lEnergyBlastPoint = gameObject.transform.Find("L-EnergyBlastPoint");
   }
 
   void Update()
@@ -46,7 +53,7 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
         pressedCharge = true;
       }
 
-      if (Input.GetButtonUp("Player_One_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer && isCharging == true)
+      if (Input.GetButtonUp("Player_One_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer && anim.GetBool("isCharging"))
       {
         releaseCharge = true;
       }
@@ -59,7 +66,7 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
         pressedCharge = true;
       }
 
-      if (Input.GetButtonUp("Player_Two_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer && isCharging == true)
+      if (Input.GetButtonUp("Player_Two_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer && anim.GetBool("isCharging"))
       {
         releaseCharge = true;
       }
@@ -73,7 +80,7 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
     {
       timeSinceLastCharge += Time.deltaTime;
       // Debug.Log("Last Charge Timer: " + timeSinceLastCharge);
-      if (timeSinceLastCharge > 1)
+      if (timeSinceLastCharge > 2)
       {
         runLastChargeTimer = false;
       }
@@ -84,7 +91,7 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
       StartCharge();
     }
 
-    if (releaseCharge)
+    if (releaseCharge || anim.GetBool("isHurt"))
     {
       StopCharge();
     }
@@ -93,15 +100,23 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
     {
       chargeTimer += Time.deltaTime;
 
-      if (chargeTimer > 1 && chargeTimer < 2 && chargeStage != 2)
+      if (chargeTimer > .1f && chargeTimer < 1.5f && anim.GetInteger("chargeLevel") != 1)
       {
-        chargeStage = 2;
-        Debug.Log("Charge Stage: " + chargeStage);
+        // chargeStage = 1;
+        anim.SetInteger("chargeLevel", 1);
+        // Debug.Log("Charge Stage: " + chargeStage);
       }
-      if (chargeTimer > 2 && chargeStage != 3)
+      else if (chargeTimer > 1.5f && chargeTimer < 2.75f && anim.GetInteger("chargeLevel") != 2)
       {
-        chargeStage = 3;
-        Debug.Log("Charge Stage: " + chargeStage);
+        // chargeStage = 2;
+        anim.SetInteger("chargeLevel", 2);
+        // Debug.Log("Charge Stage: " + chargeStage);
+      }
+      else if (chargeTimer > 2.75f && anim.GetInteger("chargeLevel") != 3)
+      {
+        // chargeStage = 3;
+        anim.SetInteger("chargeLevel", 3);
+        // Debug.Log("Charge Stage: " + chargeStage);
       }
     }
   }
@@ -109,25 +124,67 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
   void StartCharge()
   {
     pressedCharge = false;
-    isCharging = true;
+    // isCharging = true;
+    anim.SetBool("isCharging", true);
     startChargeTimer = true;
-    chargeStage = 1;
+    // chargeStage = 0;
+    anim.SetInteger("chargeLevel", 0);
     if (anim.GetBool("isGrounded"))
     {
       anim.SetBool("canMove", false);
     }
     anim.SetBool("canTurn", false);
-    anim.SetBool("isCharging", true);
+    // anim.SetInteger("chargeLevel", 1);
     // Debug.Log("Start Charge");
   }
 
   void StopCharge()
   {
-    GameObject chargeBall = (GameObject)Instantiate(eBall, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.1f, 1), Quaternion.identity);
+    if (anim.GetBool("isHurt")) {
+      anim.SetBool("isCharging", false);
+      releaseCharge = false;
+      // isCharging = false;
+      startChargeTimer = false;
+      chargeTimer = 0f;
+      // chargeStage = 0;
+      anim.SetInteger("chargeLevel", 0);
+      anim.SetBool("fireSpecial", false);
+      timeSinceLastCharge = 0f;
+      runLastChargeTimer = true;
+      // Debug.Log("Stop Charge");
+      return;
+    }
+
+    float xPos;
+    if (anim.GetInteger("Direction") > 0) {
+      xPos = rEnergyBlastPoint.position.x;
+      Debug.Log("Blast Point: " + xPos);
+    } else {
+      xPos = lEnergyBlastPoint.position.x;
+      Debug.Log("Blast Point: " + xPos);
+    }
+    GameObject chargeBall = (GameObject)Instantiate(eBall, new Vector3(xPos, rEnergyBlastPoint.position.y, 1), Quaternion.identity);
     chargeBall.GetComponent<Momo_Attack_Special_Neutral_Collider>().parentName = transform.name;
-    chargeBall.GetComponent<Momo_Attack_Special_Neutral_Collider>().chargeStage = chargeStage;
-    switch (chargeStage)
+    chargeBall.GetComponent<Momo_Attack_Special_Neutral_Collider>().chargeStage = anim.GetInteger("chargeLevel");
+    
+    
+    switch (anim.GetInteger("chargeLevel"))
     {
+      case 0:
+
+        if (anim.GetInteger("Direction") > 0)
+        {
+          chargeBall.transform.localScale = new Vector3(.50f, .50f, .50f);
+          chargeBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(speed1, 0f));
+        }
+        else if (anim.GetInteger("Direction") < 0)
+        {
+          chargeBall.transform.localScale = new Vector3(.50f, .50f, .50f);
+          chargeBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(-speed1, 0f));
+        }
+
+        break;
+
       case 1:
 
         if (anim.GetInteger("Direction") > 0)
@@ -174,16 +231,39 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
         break;
     }
 
+    anim.SetBool("isCharging", false);
+    anim.SetBool("fireSpecial", true);
     releaseCharge = false;
-    isCharging = false;
+    // isCharging = false;
     startChargeTimer = false;
     chargeTimer = 0f;
-    chargeStage = 1;
-    anim.SetBool("canMove", true);
-    anim.SetBool("canTurn", true);
-    anim.SetBool("isCharging", false);
+    // chargeStage = 0;
+    anim.SetInteger("chargeLevel", 0);
     timeSinceLastCharge = 0f;
     runLastChargeTimer = true;
+    StartCoroutine(chargeRecover());
+
+    // releaseCharge = false;
+    // isCharging = false;
+    // startChargeTimer = false;
+    // chargeTimer = 0f;
+    // chargeStage = 0;
+    // anim.SetBool("canMove", true);
+    // anim.SetBool("canTurn", true);
+    // anim.SetBool("isCharging", false);
+    // anim.SetInteger("chargeLevel", 0);
+    // timeSinceLastCharge = 0f;
+    // runLastChargeTimer = true;
+    // // Debug.Log("Stop Charge");
+  }
+
+  private IEnumerator chargeRecover() {
+    yield return new WaitForSeconds(chargeRecoveryTime);
+
+    anim.SetBool("fireSpecial", false);
+    anim.SetBool("canMove", true);
+    anim.SetBool("canTurn", true);
+    // anim.SetInteger("chargeLevel", 0);
     // Debug.Log("Stop Charge");
   }
 }

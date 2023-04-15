@@ -8,6 +8,7 @@ public class Player_Attack_Collider : MonoBehaviour
   
   // public Player_Attack Player_Attack;
   public SpriteRenderer sprite;
+  public Animator anim;
 
   public float damage;
   public float xAttackForce;
@@ -18,6 +19,8 @@ public class Player_Attack_Collider : MonoBehaviour
   void Awake()
   {
     enemies = new List<GameObject>();
+
+    anim = gameObject.GetComponentInParent<Animator>();
 
     sprite = gameObject.GetComponent<SpriteRenderer>();
     sprite.color = new Color(0f, 0f, 0f, .1f);
@@ -31,11 +34,15 @@ public class Player_Attack_Collider : MonoBehaviour
     StartCoroutine(HurtEnemy());
   }
 
+  // public void FixedUpdate() {
+  //   if (anim.GetBool("isHurt"))
+  // }
+
   public IEnumerator HurtEnemy()
   {
     yield return new WaitForSeconds(timeBeforeAttack);
 
-    if (enemies.Count != 0)
+    if (enemies.Count != 0 && !anim.GetBool("isHurt"))
     {
       // Debug.Log("Enemies Found");
       foreach (GameObject enemy in enemies)

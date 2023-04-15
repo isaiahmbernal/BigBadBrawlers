@@ -11,13 +11,31 @@ public class Momo_Attack_Special_Neutral_Collider : MonoBehaviour
   public string parentName;
   public int chargeStage;
 
+  public float lifeTime;
+  public float currTime;
+
+  private void Awake() {
+    lifeTime = 3f;
+    currTime = 0f;
+  }
+
+  private void FixedUpdate() {
+    if (currTime < lifeTime) {
+      currTime += Time.deltaTime;
+      if (currTime > lifeTime) {
+        Destroy(gameObject);
+      }
+    }
+  }
+
   void OnTriggerEnter2D(Collider2D other)
   {
     if (other.gameObject.tag == "Player" && other.transform.parent.name != parentName)
     {
       Debug.Log("other.gameObject.name: " + other.gameObject.name);
       Debug.Log("parentName: " + parentName);
-      damage = 4 * chargeStage;
+      if (chargeStage == 0) chargeStage = 1;
+      damage = 8 * chargeStage;
       Animator otherAnim = other.gameObject.GetComponentInParent<Animator>();
 
       if (otherAnim.GetBool("isDodging"))
@@ -35,8 +53,8 @@ public class Momo_Attack_Special_Neutral_Collider : MonoBehaviour
       otherAnim.SetFloat("Health", otherAnim.GetFloat("Health") + damage);
       otherAnim.SetBool("wasHit", true);
 
-      xAttackForce = damage * .4f;
-      yAttackForce = damage * .4f;
+      xAttackForce = damage * .15f;
+      yAttackForce = damage * .15f;
 
       float directionX = gameObject.transform.position.x - other.gameObject.transform.position.x;
       float directionY = gameObject.transform.position.y - other.gameObject.transform.position.y;

@@ -112,6 +112,10 @@ public class Player_Attack : MonoBehaviour
                 releaseLight = true;
             }
         }
+
+        if (anim.GetBool("isHurt")) {
+            cancelLight();
+        }
     }
 
     void StartLight()
@@ -152,6 +156,13 @@ public class Player_Attack : MonoBehaviour
             // }
         }
         startLightTimer = true;
+    }
+
+    void cancelLight() {
+        releaseLight = false;
+        startLightTimer = false;
+        lightTimer = lightTimerMax;
+        anim.SetBool("isAttacking", false);
     }
 
     void StopLight()
