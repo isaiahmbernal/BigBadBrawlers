@@ -7,6 +7,7 @@ public class Angie_Attack_Special_Neutral_Collider : MonoBehaviour
   [SerializeField] private List<GameObject> enemies;
   // [SerializeField] private SpriteRenderer sprite;
   [SerializeField] private Animator anim;
+  [SerializeField] private AudioClip attackSound;
   [SerializeField] private float timeBetweenHits;
   [SerializeField] private float damage;
   [SerializeField] private float xAttackForce;
@@ -16,6 +17,7 @@ public class Angie_Attack_Special_Neutral_Collider : MonoBehaviour
   {
     enemies = new List<GameObject>();
     anim = gameObject.GetComponentInParent<Animator>();
+    // attackSound = transform.parent.Find("Audio-Attack").GetComponent<AudioClip>();
     timeBetweenHits = .05f;
     // sprite = gameObject.GetComponent<SpriteRenderer>();
     // sprite.enabled = false;
@@ -43,9 +45,12 @@ public class Angie_Attack_Special_Neutral_Collider : MonoBehaviour
   public void FlurryHit()
   {
     // sprite.enabled = true;
+    
 
     if (enemies.Count != 0 && !anim.GetBool("isHurt"))
     {
+      AudioSource.PlayClipAtPoint(attackSound, transform.position, 0.2f);
+      // attackSound.PlayOneShot();
       // Debug.Log("Enemies Found");
       foreach (GameObject enemy in enemies)
       {
@@ -93,9 +98,10 @@ public class Angie_Attack_Special_Neutral_Collider : MonoBehaviour
   public void FinalHit()
   {
     // sprite.enabled = true;
-
     if (enemies.Count != 0 && !anim.GetBool("isHurt"))
     {
+      AudioSource.PlayClipAtPoint(attackSound, transform.position, 0.2f);
+      // attackSound.PlayOneShot();
       // Debug.Log("Enemies Found");
       foreach (GameObject enemy in enemies)
       {

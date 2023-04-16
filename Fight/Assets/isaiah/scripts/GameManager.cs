@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
   public Transform playerOneLives;
   public Transform playerTwoLives;
   public GameObject momoPrefab;
-  public GameObject boxerPrefab;
-  public GameObject stickPrefab;
+  public GameObject angiePrefab;
+  public GameObject stickmanPrefab;
   public GameObject hudPrefab;
   public GameObject canvas;
   public Sprite[] indicatorList;
@@ -38,10 +38,10 @@ public class GameManager : MonoBehaviour
 
           if (PlayerPrefs.GetString("Player_One_Character") == "Momo") {
             charPrefab = momoPrefab;
-          } else if (PlayerPrefs.GetString("Player_One_Character") == "Boxer") {
-            charPrefab = boxerPrefab;
-          } else if (PlayerPrefs.GetString("Player_One_Character") == "Stick") {
-            charPrefab = stickPrefab;
+          } else if (PlayerPrefs.GetString("Player_One_Character") == "Angie") {
+            charPrefab = angiePrefab;
+          } else if (PlayerPrefs.GetString("Player_One_Character") == "Stickman") {
+            charPrefab = stickmanPrefab;
           }
 
           player = (GameObject)Instantiate(charPrefab, new Vector3(-1, 0, 1), Quaternion.identity);
@@ -58,10 +58,10 @@ public class GameManager : MonoBehaviour
           
           if (PlayerPrefs.GetString("Player_Two_Character") == "Momo") {
             charPrefab = momoPrefab;
-          } else if (PlayerPrefs.GetString("Player_Two_Character") == "Boxer") {
-            charPrefab = boxerPrefab;
-          } else if (PlayerPrefs.GetString("Player_Two_Character") == "Stick") {
-            charPrefab = stickPrefab;
+          } else if (PlayerPrefs.GetString("Player_Two_Character") == "Angie") {
+            charPrefab = angiePrefab;
+          } else if (PlayerPrefs.GetString("Player_Two_Character") == "Stickman") {
+            charPrefab = stickmanPrefab;
           }
           
           player = (GameObject)Instantiate(charPrefab, new Vector3(1, 0, 1), Quaternion.identity);
@@ -100,8 +100,15 @@ public class GameManager : MonoBehaviour
       int currLives = otherAnim.GetInteger("Lives");
       if (currLives == 0) {
         Debug.Log("Game Over");
-        otherAnim.SetFloat("Health", 0);
-        otherAnim.transform.position = new Vector3(0, 0, 1);
+        if (other.gameObject.name == "Player_One") {
+          PlayerPrefs.SetString("Winner", "Player_Two");
+          SceneManager.LoadScene("Victory Screen");
+        } else {
+          PlayerPrefs.SetString("Winner", "Player_One");
+          SceneManager.LoadScene("Victory Screen");
+        }
+        // otherAnim.SetFloat("Health", 0);
+        // otherAnim.transform.position = new Vector3(0, 0, 1);
         return;
       }
       otherAnim.SetInteger("Lives", otherAnim.GetInteger("Lives") - 1);

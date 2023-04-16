@@ -46,6 +46,7 @@ public class UI_CharacterSelection : MonoBehaviour
         }
         listOfCharacters[currCharIdx].gameObject.SetActive(true);
         charName = listOfCharacters[currCharIdx].gameObject.name;
+        Debug.Log(charName);
         nameText.text = charName;
         PlayerPrefs.SetString(playerName + "_Character", charName);
     }
@@ -60,6 +61,7 @@ public class UI_CharacterSelection : MonoBehaviour
         }
         listOfCharacters[currCharIdx].gameObject.SetActive(true);
         charName = listOfCharacters[currCharIdx].gameObject.name;
+        Debug.Log(charName);
         nameText.text = charName;
         PlayerPrefs.SetString(playerName + "_Character", charName);
     }

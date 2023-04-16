@@ -14,8 +14,8 @@ public class Player_HUD : MonoBehaviour
   public GameObject lifeSprite;
   public Image characterIcon;
   public Sprite momoIcon;
-  public Sprite boxerIcon;
-  public Sprite stickIcon;
+  public Sprite angieIcon;
+  public Sprite stickmanIcon;
 
   public GameObject player;
   public Animator anim;
@@ -36,10 +36,10 @@ public class Player_HUD : MonoBehaviour
       nameText.text = PlayerPrefs.GetString("Player_One_Character");
       if (PlayerPrefs.GetString("Player_One_Character") == "Momo") {
         characterIcon.sprite = momoIcon;
-      } else if (PlayerPrefs.GetString("Player_One_Character") == "Boxer") {
-        characterIcon.sprite = boxerIcon;
-      } else if (PlayerPrefs.GetString("Player_One_Character") == "Stick") {
-        characterIcon.sprite = stickIcon;
+      } else if (PlayerPrefs.GetString("Player_One_Character") == "Angie") {
+        characterIcon.sprite = angieIcon;
+      } else if (PlayerPrefs.GetString("Player_One_Character") == "Stickman") {
+        characterIcon.sprite = stickmanIcon;
       }
       player = GameObject.Find("Player_One");
     }
@@ -48,10 +48,10 @@ public class Player_HUD : MonoBehaviour
       nameText.text = PlayerPrefs.GetString("Player_Two_Character");
       if (PlayerPrefs.GetString("Player_Two_Character") == "Momo") {
         characterIcon.sprite = momoIcon;
-      } else if (PlayerPrefs.GetString("Player_Two_Character") == "Boxer") {
-        characterIcon.sprite = boxerIcon;
-      } else if (PlayerPrefs.GetString("Player_Two_Character") == "Stick") {
-        characterIcon.sprite = stickIcon;
+      } else if (PlayerPrefs.GetString("Player_Two_Character") == "Angie") {
+        characterIcon.sprite = angieIcon;
+      } else if (PlayerPrefs.GetString("Player_Two_Character") == "Stickman") {
+        characterIcon.sprite = stickmanIcon;
       }
       player = GameObject.Find("Player_Two");
     }

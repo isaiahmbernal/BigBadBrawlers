@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/isaiah/scenes/Home.unity
     guid: ec7758911c27e4a3791960d6a84babbf
-  - enabled: 1
+  - enabled: 0
     path: Assets/isaiah/scenes/Character Select.unity
     guid: f1f8f1c1ad6e84dea9d13d133077d5f6
-  - enabled: 1
+  - enabled: 0
     path: Assets/isaiah/scenes/Map Select.unity
     guid: db2d656974fd24297ba7ddfe8986570b
   - enabled: 1
@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/isaiah/scenes/Boxing Ring.unity
     guid: 477ffa11414f94ca695892aab439d10f
+  - enabled: 1
+    path: Assets/isaiah/scenes/Doodle Town.unity
+    guid: ec3d12391b183404d986721548a6f24c
+  - enabled: 1
+    path: Assets/isaiah/scenes/Victory Screen.unity
+    guid: 7a99f842b34254980940f9f49b0e472c
   m_configObjects: {}

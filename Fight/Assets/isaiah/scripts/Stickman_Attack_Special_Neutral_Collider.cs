@@ -26,7 +26,7 @@ public class Stickman_Attack_Special_Neutral_Collider : MonoBehaviour
     // sprite.color = new Color(0f, 0f, 0f, .1f);
 
     damage = 15f;
-    xAttackForce = damage * .10f;
+    xAttackForce = damage * .05f;
     yAttackForce = damage * .05f;
   }
 
@@ -64,11 +64,11 @@ public class Stickman_Attack_Special_Neutral_Collider : MonoBehaviour
             switch (gameObject.name)
             {
               case "R-Laser":
-                enemyRB.velocity = new Vector3 (xAttackForce + (currentDamage / 30), enemyRB.velocity.y + yAttackForce + (currentDamage / 30), 0f);
+                enemyRB.velocity = new Vector3 (xAttackForce + (currentDamage / 35), enemyRB.velocity.y + yAttackForce + (currentDamage / 30), 0f);
                 // Debug.Log("Hit For " + (xAttackForce + (currentDamage / 30)));
                 break;
               case "L-Laser":
-                enemyRB.velocity = new Vector3 (-xAttackForce - (currentDamage / 30), enemyRB.velocity.y + yAttackForce + (currentDamage / 30), 0f);
+                enemyRB.velocity = new Vector3 (-xAttackForce - (currentDamage / 35), enemyRB.velocity.y + yAttackForce + (currentDamage / 30), 0f);
                 // Debug.Log("Hit For " + (xAttackForce + (currentDamage / 30)));
                 break;
             }
