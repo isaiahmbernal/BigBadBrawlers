@@ -42,10 +42,13 @@ public class Player_Dodge : MonoBehaviour
             if (
                 (Input.GetAxis("Player_One_Horizontal_Controller") != 0
                 || Input.GetAxis("Player_One_Horizontal_Keyboard") != 0)
+                && !anim.GetBool("isHurt")
+                && !anim.GetBool("isAttacking")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial")
                 && anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && anim.GetBool("isGrounded")
-                && !anim.GetBool("isAttacking")
             )
             {
                 if (Input.GetAxis("Player_One_Horizontal_Controller") > 0f || Input.GetAxis("Player_One_Horizontal_Keyboard") > 0f)
@@ -62,6 +65,10 @@ public class Player_Dodge : MonoBehaviour
             else if (
                 // Input.GetButtonDown("Player_One_Horizontal_Controller")
                 Input.GetButtonDown("Player_One_Block")
+                && !anim.GetBool("isHurt")
+                && !anim.GetBool("isAttacking")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial")
                 && !anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && !anim.GetBool("isGrounded")
@@ -78,10 +85,13 @@ public class Player_Dodge : MonoBehaviour
             if (
                 (Input.GetAxis("Player_Two_Horizontal_Controller") != 0
                 || Input.GetAxis("Player_Two_Horizontal_Keyboard") != 0)
+                && !anim.GetBool("isHurt")
+                && !anim.GetBool("isAttacking")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial")
                 && anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && anim.GetBool("isGrounded")
-                && !anim.GetBool("isAttacking")
             )
             {
                 if (Input.GetAxis("Player_Two_Horizontal_Controller") > 0f || Input.GetAxis("Player_Two_Horizontal_Keyboard") > 0f)
@@ -98,6 +108,10 @@ public class Player_Dodge : MonoBehaviour
             else if (
                 // Input.GetButtonDown("Player_Two_Horizontal_Controller")
                 Input.GetButtonDown("Player_Two_Block")
+                && !anim.GetBool("isHurt")
+                && !anim.GetBool("isAttacking")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial")
                 && !anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
                 && !anim.GetBool("isGrounded")

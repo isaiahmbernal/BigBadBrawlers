@@ -41,10 +41,12 @@ public class Player_Block : MonoBehaviour
         {
             if (
                 Input.GetButtonDown("Player_One_Block")
+                && !anim.GetBool("isHurt")
                 && !anim.GetBool("isDodging")
                 && anim.GetFloat("ShieldHealth") > 0f
                 && !anim.GetBool("isAttacking")
-                && !anim.GetBool("isHurt")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial")
                 && anim.GetBool("isGrounded")
                 && !anim.GetBool("isCharging")
             )
@@ -63,7 +65,12 @@ public class Player_Block : MonoBehaviour
                 shieldSprite.enabled = false;
             }
 
-            if (Input.GetButtonUp("Player_One_Block") && !anim.GetBool("isDodging"))
+            if (Input.GetButtonUp("Player_One_Block")
+                && anim.GetBool("isBlocking")
+                && !anim.GetBool("isDodging")
+                && !anim.GetBool("isAttacking")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial"))
             {
                 anim.SetBool("isBlocking", false);
                 anim.SetBool("canMove", true);
@@ -74,10 +81,12 @@ public class Player_Block : MonoBehaviour
         {
             if (
                 Input.GetButtonDown("Player_Two_Block")
+                && !anim.GetBool("isHurt")
                 && !anim.GetBool("isDodging")
                 && anim.GetFloat("ShieldHealth") > 0f
                 && !anim.GetBool("isAttacking")
-                && !anim.GetBool("isHurt")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial")
                 && anim.GetBool("isGrounded")
                 && !anim.GetBool("isCharging")
             )
@@ -96,73 +105,12 @@ public class Player_Block : MonoBehaviour
                 shieldSprite.enabled = false;
             }
 
-            if (Input.GetButtonUp("Player_Two_Block") && !anim.GetBool("isDodging"))
-            {
-                anim.SetBool("isBlocking", false);
-                anim.SetBool("canMove", true);
-                shieldSprite.enabled = false;
-            }
-        }
-        else if (gameObject.name == "Player_Three")
-        {
-            if (
-                Input.GetButtonDown("Player_Three_Block")
+            if (Input.GetButtonUp("Player_Two_Block")
+                && anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
-                && anim.GetFloat("ShieldHealth") > 0f
                 && !anim.GetBool("isAttacking")
-                && !anim.GetBool("isHurt")
-                && anim.GetBool("isGrounded")
                 && !anim.GetBool("isCharging")
-            )
-            {
-                anim.SetBool("isBlocking", true);
-                anim.SetBool("canMove", false);
-                shieldSprite.enabled = true;
-            }
-
-            if (anim.GetFloat("ShieldHealth") < 0f)
-            {
-                anim.SetFloat("ShieldHealth", 0f);
-                anim.SetBool("isBlocking", false);
-                // anim.SetBool("canMove", true);
-                anim.SetBool("wasHit", true);
-                shieldSprite.enabled = false;
-            }
-
-            if (Input.GetButtonUp("Player_Three_Block") && !anim.GetBool("isDodging"))
-            {
-                anim.SetBool("isBlocking", false);
-                anim.SetBool("canMove", true);
-                shieldSprite.enabled = false;
-            }
-        }
-        else if (gameObject.name == "Player_Four")
-        {
-            if (
-                Input.GetButtonDown("Player_Four_Block")
-                && !anim.GetBool("isDodging")
-                && anim.GetFloat("ShieldHealth") > 0f
-                && !anim.GetBool("isAttacking")
-                && !anim.GetBool("isHurt")
-                && anim.GetBool("isGrounded")
-                && !anim.GetBool("isCharging")
-            )
-            {
-                anim.SetBool("isBlocking", true);
-                anim.SetBool("canMove", false);
-                shieldSprite.enabled = true;
-            }
-
-            if (anim.GetFloat("ShieldHealth") < 0f)
-            {
-                anim.SetFloat("ShieldHealth", 0f);
-                anim.SetBool("isBlocking", false);
-                // anim.SetBool("canMove", true);
-                anim.SetBool("wasHit", true);
-                shieldSprite.enabled = false;
-            }
-
-            if (Input.GetButtonUp("Player_Four_Block") && !anim.GetBool("isDodging"))
+                && !anim.GetBool("fireSpecial"))
             {
                 anim.SetBool("isBlocking", false);
                 anim.SetBool("canMove", true);

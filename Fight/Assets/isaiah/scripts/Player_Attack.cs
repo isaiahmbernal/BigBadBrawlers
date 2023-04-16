@@ -43,6 +43,8 @@ public class Player_Attack : MonoBehaviour
                 && anim.GetBool("isGrounded")
                 && !anim.GetBool("isHurt")
                 && !anim.GetBool("isAttacking")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial")
                 && !anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
             )
@@ -54,6 +56,8 @@ public class Player_Attack : MonoBehaviour
                 && !anim.GetBool("isGrounded")
                 && anim.GetInteger("Lights") > 0
                 && !anim.GetBool("isAttacking")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial")
                 && !anim.GetBool("isHurt")
                 && !anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
@@ -70,6 +74,8 @@ public class Player_Attack : MonoBehaviour
                 && anim.GetBool("isGrounded")
                 && !anim.GetBool("isHurt")
                 && !anim.GetBool("isAttacking")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial")
                 && !anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
             )
@@ -81,6 +87,8 @@ public class Player_Attack : MonoBehaviour
                 && !anim.GetBool("isGrounded")
                 && anim.GetInteger("Lights") > 0
                 && !anim.GetBool("isAttacking")
+                && !anim.GetBool("isCharging")
+                && !anim.GetBool("fireSpecial")
                 && !anim.GetBool("isHurt")
                 && !anim.GetBool("isBlocking")
                 && !anim.GetBool("isDodging")
@@ -188,10 +196,14 @@ public class Player_Attack : MonoBehaviour
             {
                 uAttack.sprite.color = new Color(0f, 0, 0f, .1f);
             }
-            // else if (anim.GetInteger("Look") == -1)
-            // {
-            //   dAttack.sprite.color = new Color(0f, 0, 0f, .1f);
-            // }
+            else if (anim.GetInteger("Look") == -1)
+            {
+             if (anim.GetInteger("Direction") > 0) {
+              rAttack.sprite.color = new Color(0f, 0, 0f, .1f);
+             } else {
+              lAttack.sprite.color = new Color(0f, 0, 0f, .1f);
+             }
+            }
         }
 
         anim.SetBool("isAttacking", false);

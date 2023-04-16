@@ -48,12 +48,26 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
   {
     if (gameObject.name == "Player_One")
     {
-      if (Input.GetButtonDown("Player_One_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer)
+      if (Input.GetButtonDown("Player_One_Heavy")
+        && !anim.GetBool("isHurt")
+        && !anim.GetBool("isAttacking")
+        && !anim.GetBool("isCharging")
+        && !anim.GetBool("fireSpecial")
+        && !anim.GetBool("isBlocking")
+        && !anim.GetBool("isDodging")
+        && !runLastChargeTimer)
       {
         pressedCharge = true;
       }
 
-      if (Input.GetButtonUp("Player_One_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer && anim.GetBool("isCharging"))
+      if (Input.GetButtonUp("Player_One_Heavy")
+        && !anim.GetBool("isHurt")
+        && !anim.GetBool("isAttacking")
+        && anim.GetBool("isCharging")
+        && !anim.GetBool("fireSpecial")
+        && !anim.GetBool("isBlocking")
+        && !anim.GetBool("isDodging")
+        && !runLastChargeTimer)
       {
         releaseCharge = true;
       }
@@ -61,12 +75,26 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
 
     if (gameObject.name == "Player_Two")
     {
-      if (Input.GetButtonDown("Player_Two_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer)
+      if (Input.GetButtonDown("Player_Two_Heavy")
+        && !anim.GetBool("isHurt")
+        && !anim.GetBool("isAttacking")
+        && !anim.GetBool("isCharging")
+        && !anim.GetBool("fireSpecial")
+        && !anim.GetBool("isBlocking")
+        && !anim.GetBool("isDodging")
+        && !runLastChargeTimer)
       {
         pressedCharge = true;
       }
 
-      if (Input.GetButtonUp("Player_Two_Heavy") && !anim.GetBool("isAttacking") && !runLastChargeTimer && anim.GetBool("isCharging"))
+      if (Input.GetButtonUp("Player_Two_Heavy")
+        && !anim.GetBool("isHurt")
+        && !anim.GetBool("isAttacking")
+        && anim.GetBool("isCharging")
+        && !anim.GetBool("fireSpecial")
+        && !anim.GetBool("isBlocking")
+        && !anim.GetBool("isDodging")
+        && !runLastChargeTimer)
       {
         releaseCharge = true;
       }

@@ -724,8 +724,8 @@ MonoBehaviour:
   rAttack: {fileID: 0}
   lAttack: {fileID: 0}
   uAttack: {fileID: 0}
-  lightTimerMax: 1
-  lightTimer: 1
+  lightTimerMax: 1.25
+  lightTimer: 1.25
 --- !u!114 &7785948635493504037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,7 +917,7 @@ MonoBehaviour:
   damage: 4
   xAttackForce: 0
   yAttackForce: 0
-  timeBeforeAttack: 0.3
+  timeBeforeAttack: 0.4
   isAttacking: 0
 --- !u!1 &5980050847338079029
 GameObject:
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   damage: 4
   xAttackForce: 0
   yAttackForce: 0
-  timeBeforeAttack: 0.3
+  timeBeforeAttack: 0.4
   isAttacking: 0
 --- !u!1 &5980050847655989388
 GameObject:

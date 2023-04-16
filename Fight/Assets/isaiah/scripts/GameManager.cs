@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
       }
       otherAnim.SetInteger("Lives", otherAnim.GetInteger("Lives") - 1);
       otherAnim.transform.position = new Vector3(0, 0, 1);
+      other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
       // Debug.Log(other.gameObject.name);
       if (other.gameObject.name == "Player_One") {
         Debug.Log("Player One Lost Life");

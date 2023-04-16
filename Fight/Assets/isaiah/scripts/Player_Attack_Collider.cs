@@ -26,7 +26,7 @@ public class Player_Attack_Collider : MonoBehaviour
     sprite.color = new Color(0f, 0f, 0f, .1f);
 
     // damage = 5f;
-    xAttackForce = damage * .60f;
+    xAttackForce = damage * .20f;
     yAttackForce = damage * .70f;
   }
   
@@ -72,11 +72,11 @@ public class Player_Attack_Collider : MonoBehaviour
             switch (gameObject.name)
             {
               case "R-Attack":
-                enemyRB.velocity = new Vector3 (xAttackForce + (currentDamage / 30), enemyRB.velocity.y, 0f);
+                enemyRB.velocity = new Vector3 (xAttackForce + (currentDamage / 20), enemyRB.velocity.y, 0f);
                 // Debug.Log("Hit For " + (xAttackForce + (currentDamage / 30)));
                 break;
               case "L-Attack":
-                enemyRB.velocity = new Vector3 (-xAttackForce - (currentDamage / 30), enemyRB.velocity.y, 0f);
+                enemyRB.velocity = new Vector3 (-xAttackForce - (currentDamage / 20), enemyRB.velocity.y, 0f);
                 // Debug.Log("Hit For " + (xAttackForce + (currentDamage / 30)));
                 break;
               case "U-Attack":
