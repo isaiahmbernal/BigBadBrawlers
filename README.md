@@ -77,3 +77,7 @@ https://youtu.be/H1pGjFwdHNI
 [April 09, 2023] State of the Game:
 
 https://youtu.be/FA7UH8cUTps
+
+[April 16, 2023] Alpha Release:
+
+https://youtu.be/-1Bq9uJlJ20
