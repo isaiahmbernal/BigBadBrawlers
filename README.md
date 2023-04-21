@@ -1,7 +1,7 @@
 # Big Bad Brawlers
 
 ## Playthough Video
-!Playthrough video](https://img.itch.zone/aW1nLzExODg1MjE2LnBuZw==/original/DLeUe6.png)](https://www.youtube.com/watch?v=cz4-OeZROjE
+[![Playthrough video](https://img.itch.zone/aW1nLzExODg1MjE2LnBuZw==/original/DLeUe6.png)](https://www.youtube.com/watch?v=cz4-OeZROjE)
 
 ## itch.io Page
 
