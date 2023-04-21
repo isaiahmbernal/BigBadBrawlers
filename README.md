@@ -1,25 +1,30 @@
-# Big Bad Brawlers
+# 👊 Big Bad Brawlers
 
-## Playthough Video
+## 🎥 Playthough Video
+
 [![Playthrough video](https://img.itch.zone/aW1nLzExODg1MjE2LnBuZw==/original/DLeUe6.png)](https://www.youtube.com/watch?v=cz4-OeZROjE)
 
-## itch.io Page
+  - Click image to go to video, or click here https://www.youtube.com/watch?v=cz4-OeZROjE
+
+## 🧑‍💻 itch.io Page
 
 [![itch.io Page](https://img.itch.zone/aW1nLzExODg1ODU1LnBuZw==/315x250%23c/rMi4QB.png)](https://isaiahmbernal.itch.io/big-bad-brawlers)
 
-## Unity Version:
+  - Click image to go to page, or click here https://isaiahmbernal.itch.io/big-bad-brawlers
+
+## ⚙️ Unity Version:
 
 - 2021.3.16
 - https://unity.com/releases/editor/archive
 
-## Features:
+## ✨ Features:
 
 - Platform Figther Directional Combat / Movement
 - Damage / Lives System
 - Blocking / Dodging
 - Character / Map Selection
 
-## Progress Videos
+## 📆 Progress Videos
 
 ### February
 
