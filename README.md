@@ -5,12 +5,12 @@
 
 ## itch.io Page
 
-https://isaiahmbernal.itch.io/big-bad-brawlers
+[![itch.io Page](https://img.itch.zone/aW1nLzExODg1ODU1LnBuZw==/315x250%23c/rMi4QB.png)](https://isaiahmbernal.itch.io/big-bad-brawlers)
 
 ## Unity Version:
 
-2021.3.16
-https://unity.com/releases/editor/archive
+- 2021.3.16
+- https://unity.com/releases/editor/archive
 
 ## Features:
 
