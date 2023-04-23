@@ -37,6 +37,8 @@ public class Angie_Attack_Special_Neutral : MonoBehaviour
             && !anim.GetBool("fireSpecial")
             && canCast)
             {
+                anim.SetBool("isBlocking", false);
+                anim.SetBool("fireSpecial", true);
                 pressedSpecial = true;
             }
         }
@@ -51,6 +53,8 @@ public class Angie_Attack_Special_Neutral : MonoBehaviour
             && !anim.GetBool("fireSpecial")
             && canCast)
             {
+                anim.SetBool("isBlocking", false);
+                anim.SetBool("fireSpecial", true);
                 pressedSpecial = true;
             }
         }
@@ -70,7 +74,6 @@ public class Angie_Attack_Special_Neutral : MonoBehaviour
     // each one whether they've been attacked so
     // we can cancel it)
     private IEnumerator FistFlurry() {
-
         // Start Special
         if (anim.GetBool("isHurt")) {
             anim.SetBool("fireSpecial", false);
