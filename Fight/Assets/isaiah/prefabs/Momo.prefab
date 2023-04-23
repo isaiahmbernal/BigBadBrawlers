@@ -705,7 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 0}
   platformCollider: {fileID: 0}
-  moveSpeed: 2
+  moveSpeed: 2.4
   myGravity: 0
   maxJumps: 2
   jumpForce: 2.3
@@ -799,6 +799,8 @@ MonoBehaviour:
   maxDodgeTimer: 0.5
   currDodgeTimer: 0.5
   dodgeForce: 2.2
+  rechargeTime: 0
+  canDodge: 0
 --- !u!1 &5980050846804325094
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ public class Player_Dodge : MonoBehaviour
     public float maxDodgeTimer;
     public float currDodgeTimer;
     public float dodgeForce;
+    [SerializeField] private float rechargeTime;
+    [SerializeField] private bool canDodge;
 
     float myGravity;
 
@@ -31,6 +33,8 @@ public class Player_Dodge : MonoBehaviour
         // maxDodgeTimer = .5f;
         currDodgeTimer = maxDodgeTimer;
         // dodgeForce = 5f;
+        rechargeTime = .75f;
+        canDodge = true;
 
         myGravity = rb2d.gravityScale;
     }
@@ -127,7 +131,7 @@ public class Player_Dodge : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (pressedDodge)
+        if (pressedDodge && canDodge)
         {
             Debug.Log("Pressed Dodge");
             pressedDodge = false;
@@ -140,13 +144,14 @@ public class Player_Dodge : MonoBehaviour
 
             if (currDodgeTimer < 0f)
             {
-                EndDodge();
+                StartCoroutine(EndDodge());
             }
         }
     }
 
     void StartDodge()
     {
+        canDodge = false;
         Debug.Log("Start Dodge");
         anim.SetBool("isDodging", true);
         anim.SetBool("isBlocking", false);
@@ -169,7 +174,7 @@ public class Player_Dodge : MonoBehaviour
         }
     }
 
-    void EndDodge()
+    private IEnumerator EndDodge()
     {
         Debug.Log("End Dodge");
         anim.SetBool("isDodging", false);
@@ -209,5 +214,8 @@ public class Player_Dodge : MonoBehaviour
         rb2d.velocity = new Vector2(0f, 0f);
         rb2d.gravityScale = myGravity;
         playerCollider.enabled = true;
+
+        yield return new WaitForSeconds(rechargeTime);
+        canDodge = true;
     }
 }
