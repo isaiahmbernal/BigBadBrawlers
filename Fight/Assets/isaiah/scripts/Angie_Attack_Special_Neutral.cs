@@ -55,7 +55,7 @@ public class Angie_Attack_Special_Neutral : MonoBehaviour
             }
         }
     }
-    
+
     private void FixedUpdate() {
         if (pressedSpecial){
             pressedSpecial = false;
@@ -105,11 +105,11 @@ public class Angie_Attack_Special_Neutral : MonoBehaviour
             canCast = true;
             yield break;
         }
-        if (anim.GetInteger("Direction") > 0) {
-            rFlurry.StopFlurry();
-        } else {
-            lFlurry.StopFlurry();
-        }
+        // if (anim.GetInteger("Direction") > 0) {
+        //     rFlurry.StopFlurry();
+        // } else {
+        //     lFlurry.StopFlurry();
+        // }
         
         // After Recovering
         yield return new WaitForSeconds(recoverTime);
