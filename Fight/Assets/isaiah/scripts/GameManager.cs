@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
 
           player = (GameObject)Instantiate(charPrefab, new Vector3(-1, 0, 1), Quaternion.identity);
           player.name = "Player_One";
+          player.transform.Find("Platform-Collider").gameObject.layer = LayerMask.NameToLayer("Momo-Platform");
+          player.transform.Find("Platform-Trigger").gameObject.layer = LayerMask.NameToLayer("Momo-Platform");
+          player.transform.Find("Stage-Collider").gameObject.layer = LayerMask.NameToLayer("Momo-Stage");
           player.transform.Find("Indicator").GetComponent<SpriteRenderer>().sprite = indicatorList[i];
           playerList.Add(player);
           Debug.Log("Player One Spawned");
@@ -66,6 +69,9 @@ public class GameManager : MonoBehaviour
           
           player = (GameObject)Instantiate(charPrefab, new Vector3(1, 0, 1), Quaternion.identity);
           player.name = "Player_Two";
+          player.transform.Find("Platform-Collider").gameObject.layer = LayerMask.NameToLayer("Boxer-Platform");
+          player.transform.Find("Platform-Trigger").gameObject.layer = LayerMask.NameToLayer("Boxer-Platform");
+          player.transform.Find("Stage-Collider").gameObject.layer = LayerMask.NameToLayer("Boxer-Stage");
           player.transform.Find("Indicator").GetComponent<SpriteRenderer>().sprite = indicatorList[i];
           playerList.Add(player);
           Debug.Log("Player Two Spawned");
@@ -98,7 +104,7 @@ public class GameManager : MonoBehaviour
       // Debug.Log("Player Dieded");
       Animator otherAnim = other.gameObject.GetComponent<Animator>();
       int currLives = otherAnim.GetInteger("Lives");
-      if (currLives == 0) {
+      if (currLives == 1) {
         Debug.Log("Game Over");
         if (other.gameObject.name == "Player_One") {
           PlayerPrefs.SetString("Winner", "Player_Two");
