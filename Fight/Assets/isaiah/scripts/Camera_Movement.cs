@@ -15,12 +15,16 @@ public class Camera_Movement : MonoBehaviour
     GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
   }
 
+  // Calculate every frame
   void FixedUpdate()
   {
     Distance();
     Position();
   }
 
+  // Get the positions of all players and set
+  // the position of the camera to the avg point
+  // of all of them
   void Position()
   {
     float totalX = 0f;
@@ -53,6 +57,11 @@ public class Camera_Movement : MonoBehaviour
     mainCamera.transform.position = new Vector3(centerX, centerY, transform.position.z);
   }
 
+  // Get the greatest distance from the
+  // distance between each player, and use
+  // it to set how far the camera should be
+  // from the stage (so it can see all players
+  // on the screen at once)
   void Distance()
   {
     float currGreatest = 0;

@@ -19,6 +19,8 @@ public class Momo_Attack_Special_Neutral_Collider : MonoBehaviour
     currTime = 0f;
   }
 
+  // Destroy the energy ball if its
+  // been alive for too long
   private void FixedUpdate() {
     if (currTime < lifeTime) {
       currTime += Time.deltaTime;
@@ -28,6 +30,8 @@ public class Momo_Attack_Special_Neutral_Collider : MonoBehaviour
     }
   }
 
+  // If it touches an enemy, damage
+  // them and knock them back
   void OnTriggerEnter2D(Collider2D other)
   {
     if (other.gameObject.tag == "Player" && other.transform.parent.name != parentName)

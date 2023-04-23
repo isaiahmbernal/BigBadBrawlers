@@ -17,8 +17,8 @@ public class UI_MapSelection : MonoBehaviour
     private void Start() {
         currMapIdx = 0;
 
-        prevMap.onClick.AddListener(PreviousCharacter);
-        nextMap.onClick.AddListener(NextCharacter);
+        prevMap.onClick.AddListener(PreviousMap);
+        nextMap.onClick.AddListener(NextMap);
         
         mapsTransform = transform.Find("Maps");
         foreach (Transform child in mapsTransform) {
@@ -33,7 +33,10 @@ public class UI_MapSelection : MonoBehaviour
         PlayerPrefs.SetString("Map", mapName);
     }
 
-    private void PreviousCharacter() {
+    // Disables the currently selected map and enables
+    // the previous map in the list (to properly display
+    // them on the canvas)
+    private void PreviousMap() {
         Debug.Log("Previous");
         listOfMaps[currMapIdx].gameObject.SetActive(false);
         if (currMapIdx == 0) {
@@ -47,7 +50,10 @@ public class UI_MapSelection : MonoBehaviour
         PlayerPrefs.SetString("Map", mapName);
     }
 
-    private void NextCharacter() {
+    // Disables the currently selected map and enables
+    // the next map in the list (to properly display
+    // them on the canvas)
+    private void NextMap() {
         Debug.Log("Next");
         listOfMaps[currMapIdx].gameObject.SetActive(false);
         if (currMapIdx >= listOfMaps.Count - 1) {

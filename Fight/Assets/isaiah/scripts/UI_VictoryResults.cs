@@ -10,6 +10,8 @@ public class UI_VictoryResults : MonoBehaviour
   [SerializeField] private GameObject angieObject;
   [SerializeField] private GameObject stickmanObject;
 
+  // Handles the victory screen, sets the proper
+  // canvas objects to active based on who won
   private void Awake() {
     if (PlayerPrefs.GetString("Winner") == "Player_One") {
       p1Win.SetActive(true);

@@ -16,6 +16,8 @@ public class UI_Button_LoadMap : MonoBehaviour
       startButton.onClick.AddListener(NextScene);
     }
 
+    // Gets the name of the map to load
+    // from PlayerPrefs and loads it
     public void NextScene() {
       SceneManager.LoadScene(PlayerPrefs.GetString("Map"));
     }

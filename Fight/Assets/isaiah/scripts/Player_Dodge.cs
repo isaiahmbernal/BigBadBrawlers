@@ -39,6 +39,7 @@ public class Player_Dodge : MonoBehaviour
         myGravity = rb2d.gravityScale;
     }
 
+    // Check for player input
     void Update()
     {
         if (gameObject.name == "Player_One")
@@ -131,6 +132,7 @@ public class Player_Dodge : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Start dodging if we can
         if (pressedDodge && canDodge)
         {
             Debug.Log("Pressed Dodge");
@@ -138,6 +140,8 @@ public class Player_Dodge : MonoBehaviour
             StartDodge();
         }
 
+        // If we're dodging, time it so
+        // we know when to stop it
         if (anim.GetBool("isDodging"))
         {
             currDodgeTimer -= Time.deltaTime;
@@ -149,6 +153,9 @@ public class Player_Dodge : MonoBehaviour
         }
     }
 
+    // Start the dodge, prevents us from
+    // being attacked and pushes us in the
+    // direction we move
     void StartDodge()
     {
         canDodge = false;
@@ -174,6 +181,9 @@ public class Player_Dodge : MonoBehaviour
         }
     }
 
+    // IEnumerator to end the dodge and wait
+    // for seconds to give a recharge time for
+    // being able to dodge again
     private IEnumerator EndDodge()
     {
         Debug.Log("End Dodge");

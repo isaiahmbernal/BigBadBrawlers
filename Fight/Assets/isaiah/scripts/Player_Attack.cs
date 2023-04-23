@@ -34,6 +34,7 @@ public class Player_Attack : MonoBehaviour
         lightTimer = lightTimerMax;
     }
 
+    // Check for player inputs
     void Update()
     {
         if (gameObject.name == "Player_One")
@@ -126,6 +127,9 @@ public class Player_Attack : MonoBehaviour
         }
     }
 
+    // Start the light attack and access the correct
+    // attack collider based on which direction
+    // we're attacking
     void StartLight()
     {
         pressedLight = false;
@@ -166,6 +170,7 @@ public class Player_Attack : MonoBehaviour
         startLightTimer = true;
     }
 
+    // Cancels the light attack (if we're hurt)
     void cancelLight() {
         releaseLight = false;
         startLightTimer = false;
@@ -173,6 +178,8 @@ public class Player_Attack : MonoBehaviour
         anim.SetBool("isAttacking", false);
     }
 
+    // Stop the light attack and allows us
+    // to move again
     void StopLight()
     {
         releaseLight = false;

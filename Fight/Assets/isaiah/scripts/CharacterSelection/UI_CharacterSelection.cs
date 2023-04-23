@@ -15,7 +15,10 @@ public class UI_CharacterSelection : MonoBehaviour
     public TMP_Text nameText;
     public string playerName;
 
-
+    // Create a list of characters, enable the
+    // first character gameObject so it can be
+    // seen in-game, and globally set that character
+    // to the selected character in PlayerPrefs
     private void Start() {
         currCharIdx = 0;
         playerName = gameObject.transform.name;
@@ -36,6 +39,8 @@ public class UI_CharacterSelection : MonoBehaviour
         PlayerPrefs.SetString(playerName + "_Character", charName);
     }
 
+    // Go to previous pos in list and globally
+    // save that selected character in PlayerPrefs
     private void PreviousCharacter() {
         Debug.Log("Previous");
         listOfCharacters[currCharIdx].gameObject.SetActive(false);
@@ -51,6 +56,8 @@ public class UI_CharacterSelection : MonoBehaviour
         PlayerPrefs.SetString(playerName + "_Character", charName);
     }
 
+    // Go to next pos in list and globally
+    // save that selected character in PlayerPrefs
     private void NextCharacter() {
         Debug.Log("Next");
         listOfCharacters[currCharIdx].gameObject.SetActive(false);

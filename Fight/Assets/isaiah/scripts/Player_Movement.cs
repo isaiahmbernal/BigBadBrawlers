@@ -36,6 +36,7 @@ public class Player_Movement : MonoBehaviour
         rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+    // Check for player input
     private void Update()
     {
         Movement();
@@ -53,6 +54,7 @@ public class Player_Movement : MonoBehaviour
             StopJump();
         }
 
+        // Timer to give a max jump time
         if (startJumpTimer)
         {
             jumpTimer -= Time.deltaTime;
@@ -63,6 +65,7 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
+    // Check for player input
     private void Movement()
     {
         Vector3 movement = new Vector3(0f, 0f, 0f);
@@ -202,10 +205,12 @@ public class Player_Movement : MonoBehaviour
             }
         }
 
+        // IDLE
         if (movement.x == 0 || !anim.GetBool("isGrounded"))
         {
             anim.SetBool("isRunning", false);
         }
+        // RUN
         else if (
             (movement.x > 0 || movement.x < 0) && rb2d.velocity.y == 0 && anim.GetBool("isGrounded")
         )
@@ -213,36 +218,43 @@ public class Player_Movement : MonoBehaviour
             anim.SetBool("isRunning", true);
         }
 
+        // FALL
         if (rb2d.velocity.y < 0)
         {
             anim.SetBool("isFalling", true);
             anim.SetBool("isAscending", false);
         }
+        // NOT FALLING OR ASCENDING
         else if (rb2d.velocity.y == 0)
         {
             anim.SetBool("isFalling", false);
             anim.SetBool("isAscending", false);
         }
+        // ASCENDING
         else if (rb2d.velocity.y > 0)
         {
             anim.SetBool("isFalling", false);
             anim.SetBool("isAscending", true);
         }
 
+        // LOOK RIGHT
         if (movement.x > 0 && anim.GetInteger("Direction") != 1 && anim.GetBool("canTurn"))
         {
             anim.SetInteger("Direction", 1);
             sprite.flipX = false;
         }
+        // LOOK LEFT
         else if (movement.x < 0 && anim.GetInteger("Direction") != -1 && anim.GetBool("canTurn"))
         {
             anim.SetInteger("Direction", -1);
             sprite.flipX = true;
         }
 
+        // Move based on player input and speed
         transform.position += movement * Time.deltaTime * moveSpeed;
     }
 
+    // Start jump and add force / remove gravity
     private void StartJump()
     {
         // Resetting Y velocity to 0 to remove downward force
@@ -257,6 +269,8 @@ public class Player_Movement : MonoBehaviour
         platformCollider.enabled = false;
     }
 
+    // End the jump (either from max jump time
+    // or letting go of jump) and reintroduce gravity
     private void StopJump()
     {
         rb2d.gravityScale = myGravity;
@@ -267,6 +281,8 @@ public class Player_Movement : MonoBehaviour
         // platformCollider.enabled = true;
     }
 
+    // If we collide with the floor,
+    // update our state
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (
@@ -288,6 +304,7 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
+    // If we are no longer grounded, update our state
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.transform.tag == "Floor" || other.transform.tag == "Platform")
@@ -297,6 +314,7 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
+    // If we collide with a platform, update our state
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (
@@ -319,6 +337,7 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
+    // If we leave a platform, update our state
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.transform.tag == "Platform")

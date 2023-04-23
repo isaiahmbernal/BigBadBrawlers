@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
   public GameObject canvas;
   public Sprite[] indicatorList;
 
+  // Instantiate all players and track them
   void Awake()
   {
     canvas = GameObject.Find("Canvas");
@@ -89,6 +90,7 @@ public class GameManager : MonoBehaviour
     Application.targetFrameRate = 60;
   }
 
+  // Debug button to reset match
   void Update()
   {
     if (Input.GetKeyDown("`"))
@@ -97,11 +99,15 @@ public class GameManager : MonoBehaviour
     }
   }
 
+  // If a player leaves the game area, remove
+  // a life, reset their health, and put them
+  // back on the stage (also sets game over if
+  // someone loses all lives)
   void OnTriggerExit2D(Collider2D other)
   {
     if (other.gameObject.tag == "Player")
     {
-      // Debug.Log("Player Dieded");
+      // Debug.Log("Player Died");
       Animator otherAnim = other.gameObject.GetComponent<Animator>();
       int currLives = otherAnim.GetInteger("Lives");
       if (currLives == 1) {

@@ -24,6 +24,7 @@ public class Angie_Attack_Special_Neutral : MonoBehaviour
         lFlurry = gameObject.transform.Find("L-Flurry").GetComponent<Angie_Attack_Special_Neutral_Collider>();
     }
 
+    // Check for player input
     private void Update() {
 
         if (gameObject.name == "Player_One")
@@ -54,7 +55,7 @@ public class Angie_Attack_Special_Neutral : MonoBehaviour
             }
         }
     }
-
+    
     private void FixedUpdate() {
         if (pressedSpecial){
             pressedSpecial = false;
@@ -62,6 +63,12 @@ public class Angie_Attack_Special_Neutral : MonoBehaviour
         }
     }
 
+    // IEnumerator to start the fist flurry
+    // attack, and waits to time the charge
+    // time, the duration of the actual attack,
+    // and the recovery time (also checks before
+    // each one whether they've been attacked so
+    // we can cancel it)
     private IEnumerator FistFlurry() {
 
         // Start Special

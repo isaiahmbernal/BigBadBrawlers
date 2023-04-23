@@ -25,6 +25,7 @@ public class Stickman_Attack_Special_Neutral : MonoBehaviour
     rLaser = gameObject.transform.Find("R-Laser").GetComponent<Stickman_Attack_Special_Neutral_Collider>();
   }
 
+  // Check for player input
   private void Update()
   {
     if (gameObject.name == "Player_One")
@@ -58,6 +59,8 @@ public class Stickman_Attack_Special_Neutral : MonoBehaviour
     }
   }
 
+  // Start the laser Coroutine if
+  // we press the special button
   private void FixedUpdate() {
     if (pressedCharge) {
       pressedCharge = false;
@@ -65,6 +68,9 @@ public class Stickman_Attack_Special_Neutral : MonoBehaviour
     }
   }
 
+  // IEnumerator so we can WaitForSeconds,
+  // and apply a charge time, a life time of
+  // the actual laser, and a recovery time
   private IEnumerator Laser() {
     if (anim.GetBool("isHurt")) {
       anim.SetBool("isCharging", false);

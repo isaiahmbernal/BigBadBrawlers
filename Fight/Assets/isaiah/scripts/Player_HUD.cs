@@ -29,6 +29,8 @@ public class Player_HUD : MonoBehaviour
     playerLives = gameObject.transform.Find("Player_Lives");
   }
 
+  // Check which player we're tracking and
+  // updates assets accordingly
   void Start()
   {
     if (gameObject.name == "Player_One_HUD")
@@ -59,6 +61,8 @@ public class Player_HUD : MonoBehaviour
     healthText.text = anim.GetFloat("Health").ToString("0.00") + "%";
   }
 
+  // If the damage text doesn't match the health
+  // of the player, update it
   void FixedUpdate()
   {
     if (healthText.text != anim.GetFloat("Health").ToString("0.00") + "%")

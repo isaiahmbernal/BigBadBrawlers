@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Momo_Bomb : MonoBehaviour
 {
+  // WIP ATTACK
+
+
+
+
+
+
+  
   public Animator anim;
   // public string parentName;
-
   public List<GameObject> enemies;
-
   public bool isExploding;
   public float timer;
 

@@ -44,6 +44,7 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
     lEnergyBlastPoint = gameObject.transform.Find("L-EnergyBlastPoint");
   }
 
+  // Check for player input
   void Update()
   {
     if (gameObject.name == "Player_One")
@@ -124,6 +125,8 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
       StopCharge();
     }
 
+    // Check how long Momo's been charging
+    // to set the level of the charge
     if (startChargeTimer)
     {
       chargeTimer += Time.deltaTime;
@@ -149,6 +152,7 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
     }
   }
 
+  // Start the charge
   void StartCharge()
   {
     pressedCharge = false;
@@ -166,6 +170,9 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
     // Debug.Log("Start Charge");
   }
 
+  // Stop the charge and instantiate the
+  // energy, variables depending on the
+  // charge level
   void StopCharge()
   {
     if (anim.GetBool("isHurt")) {
@@ -271,20 +278,11 @@ public class Momo_Attack_Special_Neutral_Charge : MonoBehaviour
     runLastChargeTimer = true;
     StartCoroutine(chargeRecover());
 
-    // releaseCharge = false;
-    // isCharging = false;
-    // startChargeTimer = false;
-    // chargeTimer = 0f;
-    // chargeStage = 0;
-    // anim.SetBool("canMove", true);
-    // anim.SetBool("canTurn", true);
-    // anim.SetBool("isCharging", false);
-    // anim.SetInteger("chargeLevel", 0);
-    // timeSinceLastCharge = 0f;
-    // runLastChargeTimer = true;
-    // // Debug.Log("Stop Charge");
+    // Debug.Log("Stop Charge");
   }
 
+  // IEnumerator to wait until Momo can
+  // act again, serving as recovery time
   private IEnumerator chargeRecover() {
     yield return new WaitForSeconds(chargeRecoveryTime);
 

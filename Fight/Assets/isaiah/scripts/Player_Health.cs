@@ -6,7 +6,6 @@ public class Player_Health : MonoBehaviour
 {
   public Animator anim;
   public SpriteRenderer sprite;
-
   public bool isHurt;
   public bool startHurtTimer;
   public float hurtTimerMax;
@@ -24,16 +23,19 @@ public class Player_Health : MonoBehaviour
 
   void FixedUpdate()
   {
+    // Start the hurt func if we were hurt
     if (anim.GetBool("wasHit"))
     {
       StartHurt();
     }
 
+    // End the flinch if the recovery time is over
     if (!anim.GetBool("wasHit") && !isHurt && startHurtTimer && hurtTimer <= 0)
     {
       EndHurt();
     }
 
+    // Times the recovery to end the flinch
     if (startHurtTimer)
     {
       hurtTimer -= Time.deltaTime;
@@ -45,6 +47,7 @@ public class Player_Health : MonoBehaviour
     
   }
 
+  // Immobilizes us if we were hit
   void StartHurt()
   {
     anim.SetBool("wasHit", false);
@@ -57,6 +60,7 @@ public class Player_Health : MonoBehaviour
     sprite.color = Color.red;
   }
 
+  // Allows us to move again after recovering
   void EndHurt()
   {
     startHurtTimer = false;

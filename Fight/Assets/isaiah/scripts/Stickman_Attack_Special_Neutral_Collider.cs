@@ -30,6 +30,9 @@ public class Stickman_Attack_Special_Neutral_Collider : MonoBehaviour
     yAttackForce = damage * .05f;
   }
 
+  // Activate the laser sprite, and if
+  // there's an enemy within the collider,
+  // attack them
   public void StartLaser()
   {
     sprite.enabled = true;
@@ -80,10 +83,14 @@ public class Stickman_Attack_Special_Neutral_Collider : MonoBehaviour
     }
   }
 
+  // Deactivate the laser sprite
   public void StopLaser() {
     sprite.enabled = false;
   }
 
+  // If an enemy enters the collider,
+  // start tracking them so we can attack
+  // them later
   public void OnTriggerEnter2D(Collider2D other)
   {
     // Debug.Log(gameObject.name + ": Something Entered");
@@ -101,6 +108,8 @@ public class Stickman_Attack_Special_Neutral_Collider : MonoBehaviour
     }
   }
 
+  // If an enemy leaves the collider, stop
+  // tracking them so we don't attack them
   public void OnTriggerExit2D(Collider2D other)
   {
     // sprite.color = new Color(0f, 0f, 0f, .1f);

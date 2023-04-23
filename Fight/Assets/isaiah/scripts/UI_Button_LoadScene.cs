@@ -17,6 +17,7 @@ public class UI_Button_LoadScene : MonoBehaviour
       startButton.onClick.AddListener(NextScene);
     }
 
+    // Loads the scene we set in the Editor
     public void NextScene() {
       SceneManager.LoadScene(sceneName);
     }

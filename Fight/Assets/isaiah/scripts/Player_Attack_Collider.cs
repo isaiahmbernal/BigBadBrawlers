@@ -32,6 +32,8 @@ public class Player_Attack_Collider : MonoBehaviour
     yAttackForce = damage * .30f;
   }
   
+  // Called by the player attack script
+  // so we can use the IEnumerator func
   public void StartHurt() {
     StartCoroutine(HurtEnemy());
   }
@@ -40,6 +42,10 @@ public class Player_Attack_Collider : MonoBehaviour
   //   if (anim.GetBool("isHurt"))
   // }
 
+  // IEnumerator so we can time the actual attacking
+  // to the sprite animation, so we wait "timeBeforeAttack",
+  // and if there's an enemy within the attack collider,
+  // damage and knock them back
   public IEnumerator HurtEnemy()
   {
     yield return new WaitForSeconds(timeBeforeAttack);
@@ -99,6 +105,9 @@ public class Player_Attack_Collider : MonoBehaviour
     }
   }
 
+  // If an enemy enters the collider, keep track
+  // of them so they can be interacted with
+  // when we attack
   public void OnTriggerEnter2D(Collider2D other)
   {
     // Debug.Log(gameObject.name + ": Something Entered");
@@ -116,6 +125,8 @@ public class Player_Attack_Collider : MonoBehaviour
     }
   }
 
+  // If an enemy exits the collider, remove them
+  // from our tracked list so we don't attack them
   public void OnTriggerExit2D(Collider2D other)
   {
     sprite.color = new Color(0f, 0f, 0f, .1f);

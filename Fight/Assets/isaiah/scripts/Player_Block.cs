@@ -35,6 +35,9 @@ public class Player_Block : MonoBehaviour
         // recoverScale = (shieldRecover * maxScale) / maxShieldHealth;
     }
 
+    // Check for player inputs and set
+    // state to be blocking (prevents enemies)
+    // from hurting us
     void Update()
     {
         if (gameObject.name == "Player_One")
@@ -119,6 +122,8 @@ public class Player_Block : MonoBehaviour
         }
     }
 
+    // Constantly rescale the size of the shield
+    // to show how much health it has left
     void FixedUpdate()
     {
         if (anim.GetBool("isBlocking") && anim.GetFloat("ShieldHealth") > 0f)

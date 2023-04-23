@@ -13,6 +13,7 @@ public class UI_Button_QuitApplication : MonoBehaviour
         quitButton.onClick.AddListener(QuitGame);
     }
 
+    // Exits the application
     private void QuitGame() {
         Application.Quit();
     }
