@@ -1,6 +1,6 @@
 # 👊 Big Bad Brawlers
 
-## 🎥 Playthough Video
+## 🎥 Playthrough Video
 
 [![Playthrough video](https://img.itch.zone/aW1hZ2UvMjAyMDQ5OS8xMTk0MzI5Ni5wbmc=/original/CWlx9a.png)](https://www.youtube.com/watch?v=cz4-OeZROjE)
 
