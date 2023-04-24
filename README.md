@@ -2,7 +2,14 @@
 
 ## 🎥 Playthough Video
 
-[![Playthrough video](https://img.itch.zone/aW1nLzExODg1MjE2LnBuZw==/original/DLeUe6.png)](https://www.youtube.com/watch?v=cz4-OeZROjE)
+[![Playthrough video](https://img.itch.zone/aW1hZ2UvMjAyMDQ5OS8xMTk0MzI5Ni5wbmc=/original/CWlx9a.png)](https://www.youtube.com/watch?v=cz4-OeZROjE)
+
+  - Click image to go to video, or click here https://www.youtube.com/watch?v=cz4-OeZROjE
+
+
+## 🎥 Process Video
+
+[![Process video](https://img.itch.zone/aW1nLzExODg1MjE2LnBuZw==/original/DLeUe6.png)](https://youtu.be/0ULw-Tqkk-8)
 
   - Click image to go to video, or click here https://www.youtube.com/watch?v=cz4-OeZROjE
 
