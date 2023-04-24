@@ -11,7 +11,7 @@
 
 [![Process video](https://img.itch.zone/aW1nLzExODg1MjE2LnBuZw==/original/DLeUe6.png)](https://youtu.be/0ULw-Tqkk-8)
 
-  - Click image to go to video, or click here https://www.youtube.com/watch?v=cz4-OeZROjE
+  - Click image to go to video, or click here https://youtu.be/0ULw-Tqkk-8
 
 ## 🧑‍💻 itch.io Page
 
