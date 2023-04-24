@@ -19,12 +19,12 @@
 
   - Click image to go to page, or click here https://isaiahmbernal.itch.io/big-bad-brawlers
 
-## ⚙️ Unity Version:
+## ⚙️ Unity Version
 
 - 2021.3.16
 - https://unity.com/releases/editor/archive
 
-## ✨ Features:
+## ✨ Features
 
 - Platform Figther Directional Combat / Movement
 - Damage / Lives System
