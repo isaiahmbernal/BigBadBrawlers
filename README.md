@@ -7,13 +7,13 @@
   - Click image to go to video, or click here https://www.youtube.com/watch?v=cz4-OeZROjE
 
 
-## 🎥 Process Video
+## 🧑‍💻 Process Video
 
 [![Process video](https://img.itch.zone/aW1nLzExODg1MjE2LnBuZw==/original/DLeUe6.png)](https://youtu.be/0ULw-Tqkk-8)
 
   - Click image to go to video, or click here https://youtu.be/0ULw-Tqkk-8
 
-## 🧑‍💻 itch.io Page
+## 🎮 itch.io Page
 
 [![itch.io Page](https://img.itch.zone/aW1nLzExODg1ODU1LnBuZw==/315x250%23c/rMi4QB.png)](https://isaiahmbernal.itch.io/big-bad-brawlers)
 
