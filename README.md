@@ -6,7 +6,6 @@
 
   - Click image to go to video, or click here https://www.youtube.com/watch?v=cz4-OeZROjE
 
-
 ## 🧑‍💻 Process Video
 
 [![Process video](https://img.itch.zone/aW1nLzExODg1MjE2LnBuZw==/original/DLeUe6.png)](https://youtu.be/0ULw-Tqkk-8)
@@ -15,9 +14,15 @@
 
 ## 🎮 itch.io Page
 
-[![itch.io Page](https://img.itch.zone/aW1nLzExODg1ODU1LnBuZw==/315x250%23c/rMi4QB.png)](https://isaiahmbernal.itch.io/big-bad-brawlers)
+[![itch.io Page](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.saashub.com%2Fimages%2Fapp%2Fservice_logos%2F9%2Fbf2e69df0760%2Flarge.png%3F1528162848&f=1&nofb=1&ipt=ba07563d5da9ec1c6525a1a940ab2f43bc43bf2fdd170c447eeb4d4c861c7fda&ipo=images)](https://isaiahmbernal.itch.io/big-bad-brawlers)
 
   - Click image to go to page, or click here https://isaiahmbernal.itch.io/big-bad-brawlers
+
+## 📄 Miro Board
+
+[![Miro Board](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.com%2Fstatic%2Fimages%2Fawwapp-miro%2Fmiro_logo_rounded.png&f=1&nofb=1&ipt=1ccc475485ce75ec66d9e55bd4823cc246750fc98ca2abc762c054700db68233&ipo=images)](https://miro.com/app/board/uXjVPxWR184=/?share_link_id=586075505787)
+
+  - Click image to go to page, or click here https://miro.com/app/board/uXjVPxWR184=/?share_link_id=586075505787
 
 ## ⚙️ Unity Version
 
